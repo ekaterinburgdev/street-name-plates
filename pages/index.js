@@ -53,6 +53,7 @@ export default function Home() {
       </main>
 
       Кнопка 1
+      Кнопка 2
 
       <footer className={styles.footer}>
         <a
