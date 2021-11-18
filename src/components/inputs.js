@@ -48,6 +48,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
+                            // alert(e.target.checked);
                             setCheckbox(i, e.target.checked);
                         }}
                     />

@@ -7,6 +7,8 @@
 
 html,
 body {
+  background-color: whitesmoke;
+  /*mix-blend-mode: soft-light;*/
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -21,3 +23,5 @@ a {
 * {
   box-sizing: border-box;
 }
+
+

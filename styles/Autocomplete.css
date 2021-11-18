@@ -5,9 +5,9 @@
 /*    font-style: normal;*/
 /*}*/
 
-body {
-    background-color: #EBEAE8;
-}
+/*body {*/
+/*    background-color: #EBEAE8;*/
+/*}*/
 
 /*Стили для списка предложений автокомплита*/
 
@@ -21,7 +21,7 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 140%;
+    line-height: 28px;
     /* identical to box height, or 28px */
 
     text-align: center;
@@ -100,7 +100,7 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 29.3333px;
-    line-height: 100%;
+    line-height: 29px;
     /* or 29px */
 
     letter-spacing: 0.11em;
@@ -108,7 +108,7 @@ body {
 
     /* Тёмно-синий */
 
-    color: #26255D;
+    color: #26255d;
 }
 
 .street-name {
@@ -120,8 +120,8 @@ body {
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 55px;
-    line-height: 100%;
+    font-size: 67px;
+    line-height: 69px;
     /* or 69px */
 
     letter-spacing: 0.03em;
@@ -143,7 +143,7 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 28.4444px;
-    line-height: 100%;
+    line-height: 28px;
     /* or 28px */
 
     letter-spacing: 0.18em;
@@ -180,6 +180,7 @@ body {
     margin-left: 2px;
     margin-right: 2px;
     border-radius: 10px;
+    opacity: 0.5;
 
 }
 
@@ -222,7 +223,7 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 26.6667px;
-    line-height: 100%;
+    line-height: 27px;
     /* identical to box height, or 27px */
 
     letter-spacing: -0.02em;
@@ -253,11 +254,8 @@ span {
     font-style: normal;
     font-weight: normal;
     font-size: 22px;
-    line-height: 140%;
+    line-height: 31px;
     /* or 31px */
-
-    /* Серый */
-    color: rgba(17, 34, 51, 0.4);
 }
 
 .plate-width-size{
@@ -266,11 +264,14 @@ span {
     grid-row-start: 1;
     justify-self: center;
     margin-left: -15px;
-    margin-right: -20px; /*Два костыля, тк были отступы, не ясно откуда появившиеся*/
+    margin-right: -27px; /*Два костыля, тк были отступы, не ясно откуда появившиеся*/
+    color: #00000080;
 }
 
 .plate-length-size {
     grid-column-start: 2;
     grid-row-start: 2;
     justify-self: center;
+    color: #00000080;
+    /*opacity: 0.5;*/ /*плохое свойство!*/
 }
