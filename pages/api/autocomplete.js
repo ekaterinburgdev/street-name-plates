@@ -17,10 +17,10 @@ var streetItems = itemsjs(data, {
 
 export default function handler(req, res) {
     const beginning = req.query.street
-    const maximumDelivery = req.query.maximumDelivery
+    const maximumSuggestions = req.query.maximumSuggestions
     var answer = streetItems.search({
         sort: 'street_asc',
-        per_page: maximumDelivery,
+        per_page: maximumSuggestions,
         filter: function(item) {
             return item.street.slice(0, beginning.length).toLowerCase() === beginning.toLowerCase() ;
           }
