@@ -4,7 +4,8 @@ import {ChangeColorContext} from "./ChangeColor";
 type StreetType = {
     streetName: string,
     streetType: string,
-    streetLatin: string}
+    streetLatin: string
+}
 const STREETS: StreetType[] = require('../../public/sign-suggest-list.json');
 
 const Autocomplete = () => {
@@ -17,7 +18,7 @@ const Autocomplete = () => {
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
     const [plateLengthPX, setPlateLengthPX] = React.useState('640px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
-    const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px')
+    const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px');
 
     const {colorContext} = React.useContext(ChangeColorContext);
 
@@ -38,9 +39,8 @@ const Autocomplete = () => {
     }
 
     const findSuggestions = (event: React.ChangeEvent<HTMLInputElement>) => { //вообще, фильтрация же будет осуществляться на беке, значит тут нужен просто запрос
-        console.log('тут на')
         setInputVal(undefined); // костыль... (наверное)
-        const value: string = event.target.value;
+        const value: string = event.target.value || '';
         console.log(value);
 
         changePlateLengthSize(value.length);
@@ -48,6 +48,7 @@ const Autocomplete = () => {
         const newSuggestions = STREETS.filter(street =>
             street.streetName.toUpperCase().indexOf(value.toUpperCase()) == 0).slice(-5);
         setSuggestions(newSuggestions);
+        console.log('newSuggestions');
         console.log(newSuggestions);
 
         if (value.length != 0 && newSuggestions.length > 0) {
@@ -88,16 +89,18 @@ const Autocomplete = () => {
     const renderSuggestion = () => {
         return (
             <ul className={'suggestions'}>
+                {console.log('suggestions')}
+                {console.log(suggestions)}
                 {suggestions.map(suggestion => (
-                    <li key={suggestion.streetName}>
+                    <li key={suggestion.streetName + suggestion.streetType}>
                         <span
                             className={'suggestion-active'}
-                            key={suggestion.streetName}
-                            onClick={setStreet} //вылитает варнинг, неконталируемове изменение инпута, это норма?
+                            key={suggestion.streetName + suggestion.streetType}
+                            onClick={setStreet}
                             onMouseEnter={event => {
                                 const sug = event.currentTarget.innerText;
                                 setSavedInnerHtml(event.currentTarget.innerHTML);
-                                event.currentTarget.innerHTML = sug;
+                                event.currentTarget.innerText = sug;
                             }}
                             onMouseLeave={event => {
                                 // @ts-ignore
