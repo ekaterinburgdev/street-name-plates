@@ -79,7 +79,8 @@ const Autocomplete = () => {
 
         return (
             <React.Fragment>
-                {suggestion.streetType} <span className={'suggestion-pref'}>{pref}</span>{suf}
+                <span style={{opacity: 0.5}}>{suggestion.streetType}</span> <span key={suggestion.streetName + suggestion.streetType}
+                                                                                  className={'suggestion-pref'}>{pref}</span><span style={{opacity: 0.5}}>{suf}</span>
             </React.Fragment>
         )
     }
@@ -172,7 +173,8 @@ const Autocomplete = () => {
     }
 
     return (
-        <div className={'plate-container'}>
+        // @ts-ignore
+        <div className={'plate-container'} style={{'--font-color': colorContext.fontColor}}>
             <span className={'plate-width-size'}>320мм</span>
             <div className={'plate'} style={{width: plateLengthPX}}>
                 <div className={'street'}>
@@ -181,7 +183,6 @@ const Autocomplete = () => {
                         value={streetType}
                         readOnly={true}
                         placeholder={'улица'}
-                        style={{color: colorContext.fontColor}}
                     />
                     <input
                         className={'street-name'}
@@ -190,19 +191,17 @@ const Autocomplete = () => {
                         onKeyDown={navOnSuggestion}
                         value={inputVal}
                         placeholder={'8 Марта'}
-                        style={{color: colorContext.fontColor}}
                     />
                     <input
                         className={'street-latin'}
                         value={latinName}
                         readOnly={true}
                         placeholder={'8 MARTA STREET'}
-                        style={{color: colorContext.fontColor}}
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
                 <div className={'separator'}
-                     style={{backgroundColor: colorContext.fontColor, borderColor: colorContext.fontColor}}></div>
+                ></div>
                 <div className={'building'}>
                     <input
                         type={'text'}
@@ -210,7 +209,7 @@ const Autocomplete = () => {
                         className={'building-number'}
                         placeholder={'7'}
                         onChange={adjustFrontSize}
-                        style={{fontSize: fontSizeBuildingNumber, color: colorContext.fontColor}}
+                        style={{fontSize: fontSizeBuildingNumber}}
                     />
                     {/*<div>*/}
                     {/*    <input className={'building-near-number'} placeholder={'7'}/>*/} {/*Вроде решили это убрать*/}
