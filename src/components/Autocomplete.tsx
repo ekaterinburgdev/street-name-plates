@@ -1,5 +1,6 @@
 import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
+import Style from '../../styles/Autocomplete.module.css'
 
 type StreetType = {
     streetName: string,
@@ -80,7 +81,7 @@ const Autocomplete = () => {
         return (
             <React.Fragment>
                 <span style={{opacity: 0.5}}>{suggestion.streetType}</span> <span key={suggestion.streetName + suggestion.streetType}
-                                                                                  className={'suggestion-pref'}>{pref}</span><span style={{opacity: 0.5}}>{suf}</span>
+                                                                                  className={Style.suggestion_pref}>{pref}</span><span style={{opacity: 0.5}}>{suf}</span>
             </React.Fragment>
         )
     }
@@ -131,11 +132,11 @@ const Autocomplete = () => {
 
     const renderSuggestion = () => {
         return (
-            <ul className={'suggestions'}>
+            <ul className={Style.suggestions}>
                 {suggestions.map((suggestion, index) => (
                     <li key={suggestion.streetName + suggestion.streetType}>
                         <span
-                            className={index != indexActiveSuggestion ? 'suggestion' : 'suggestion_active'}
+                            className={index != indexActiveSuggestion ? Style.suggestion : Style.suggestion_active}
                             key={suggestion.streetName + suggestion.streetType}
                             onClick={setStreet}
                             onMouseEnter={event => {
@@ -174,18 +175,18 @@ const Autocomplete = () => {
 
     return (
         // @ts-ignore
-        <div className={'plate-container'} style={{'--font-color': colorContext.fontColor}}>
-            <span className={'plate-width-size'}>320мм</span>
-            <div className={'plate'} style={{width: plateLengthPX}}>
-                <div className={'street'}>
+        <div className={Style.plate_container} style={{'--font-color': colorContext.fontColor}}>
+            <span className={Style.plate_width_size}>320мм</span>
+            <div className={Style.plate} style={{width: plateLengthPX}}>
+                <div className={Style.street}>
                     <input
-                        className={'street-type'}
+                        className={Style.street_type}
                         value={streetType}
                         readOnly={true}
                         placeholder={'улица'}
                     />
                     <input
-                        className={'street-name'}
+                        className={Style.street_name}
                         type={'text'}
                         onChange={findSuggestions}
                         onKeyDown={navOnSuggestion}
@@ -193,20 +194,20 @@ const Autocomplete = () => {
                         placeholder={'8 Марта'}
                     />
                     <input
-                        className={'street-latin'}
+                        className={Style.street_latin}
                         value={latinName}
                         readOnly={true}
                         placeholder={'8 MARTA STREET'}
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
-                <div className={'separator'}
+                <div className={Style.separator}
                 ></div>
-                <div className={'building'}>
+                <div className={Style.building}>
                     <input
                         type={'text'}
                         maxLength={6}
-                        className={'building-number'}
+                        className={Style.building_number}
                         placeholder={'7'}
                         onChange={adjustFrontSize}
                         style={{fontSize: fontSizeBuildingNumber}}
@@ -220,7 +221,7 @@ const Autocomplete = () => {
                 </div>
 
             </div>
-            <span className={'plate-length-size'}>{plateLengthSize}</span>
+            <span className={Style.plate_length_size}>{plateLengthSize}</span>
         </div>
     )
 };
