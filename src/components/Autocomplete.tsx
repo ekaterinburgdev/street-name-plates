@@ -41,6 +41,8 @@ const Autocomplete = () => {
 
     const findSuggestions = (event: React.ChangeEvent<HTMLInputElement>) => { //вообще, фильтрация же будет осуществляться на беке, значит тут нужен просто запрос
         setInputVal(undefined); // костыль... (наверное)
+        setStreetType('');
+        setLatinName('');
         const value: string = event.target.value || '';
         console.log(value);
 
@@ -58,8 +60,6 @@ const Autocomplete = () => {
             setIsFind(true);
         } else {
             setIsFind(false);
-            setLatinName(undefined);
-            setStreetType(undefined);
         }
 
     }

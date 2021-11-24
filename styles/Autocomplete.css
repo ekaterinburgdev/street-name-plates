@@ -17,6 +17,7 @@
     height: 47px;
 
     margin: 0px;
+    padding-left: 15px;
 
     font-family: Iset Sans;
     font-style: normal;
@@ -25,7 +26,7 @@
     line-height: 28px;
     /* identical to box height, or 28px */
 
-    text-align: center;
+    text-align: left;
     vertical-align: middle; /*по вертикали выравнивать = боль=( пришлось юзать костыль в виде span в li*/
     display: table-cell;
 
@@ -41,6 +42,7 @@
     height: 47px;
 
     margin: 0px;
+    padding-left: 15px;
 
     font-family: Iset Sans;
     font-style: normal;
@@ -49,7 +51,7 @@
     line-height: 28px;
     /* identical to box height, or 28px */
 
-    text-align: center;
+    text-align: left;
     vertical-align: middle; /*по вертикали выравнивать = боль=( пришлось юзать костыль в виде span в li*/
     display: table-cell;
 
@@ -95,9 +97,9 @@
     list-style-type: none;
     align-items: center;
     margin-top: 41px; /*от инпута с латинским названием*/
+    margin-left: -25px; /*костылёк)*/
 
 }
-
 
 /*Стили для таблички*/
 
