@@ -11,7 +11,7 @@
 
 /*Стили для списка предложений автокомплита*/
 
-.suggestion-active{
+.suggestion {
     width: 515px;
     height: 47px;
 
@@ -34,6 +34,30 @@
     /*opacity: 0.5;*/
 }
 
+.suggestion_active {
+    width: 515px;
+    height: 47px;
+
+    margin: 0px;
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    /* identical to box height, or 28px */
+
+    text-align: center;
+    vertical-align: middle; /*по вертикали выравнивать = боль=( пришлось юзать костыль в виде span в li*/
+    display: table-cell;
+
+    color: whitesmoke;
+
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #26255D;
+}
+
 .suggestion-pref {
     /*opacity: 1;*/ /*не работает тут, поэтому уберу отовсюду)*/
     color: #26255D;
@@ -47,7 +71,7 @@
     height: 47px;
 }
 
-.suggestion-active:hover{
+.suggestion:hover {
     background-color: #26255D;
     /*opacity: 1;*/
     color: whitesmoke;
@@ -56,7 +80,7 @@
     cursor: pointer;
 }
 
-.suggestions{
+.suggestions {
     background: #FFFFFF;
     box-shadow: -1px 20px 25px rgba(38, 37, 93, 0.3);
     border-radius: 8px;
@@ -70,6 +94,7 @@
     margin-top: 41px; /*от инпута с латинским названием*/
 
 }
+
 
 /*Стили для таблички*/
 
@@ -237,9 +262,9 @@
 .plate-container {
     display: grid;
     grid-gap: 20px;
-    grid-auto-columns:min-content;
+    grid-auto-columns: min-content;
     grid-auto-rows: min-content;
-    margin:0px;
+    margin: 0px;
     padding: 0px;
     align-items: center;
 }
@@ -258,7 +283,7 @@ span {
     /* or 31px */
 }
 
-.plate-width-size{
+.plate-width-size {
     transform: rotate(-90deg);
     grid-column-start: 1;
     grid-row-start: 1;

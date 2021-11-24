@@ -19,19 +19,20 @@ const Autocomplete = () => {
     const [plateLengthPX, setPlateLengthPX] = React.useState('640px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px');
+    const [indexActiveSuggestion, setIndexActiveSuggestion] = React.useState(0);
 
     const {colorContext} = React.useContext(ChangeColorContext);
 
     const changePlateLengthSize = (lengthStreetName: number) => {
-        if (lengthStreetName <= 8){
+        if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
             setPlateLengthPX('640px');
             //изменение в самую маленькую табличку
-        } else if (lengthStreetName >= 9 && lengthStreetName <=13){
+        } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
             setPlateLengthPX('800px');
             //изменение в среднюю табличку
-        } else if (lengthStreetName >= 14){
+        } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
             setPlateLengthPX('960px');
             //изменение в сааамую большую табличку
@@ -53,6 +54,7 @@ const Autocomplete = () => {
 
         if (value.length != 0 && newSuggestions.length > 0) {
             setInputPref(value);
+            setIndexActiveSuggestion(0);
             setIsFind(true);
         } else {
             setIsFind(false);
@@ -62,9 +64,18 @@ const Autocomplete = () => {
 
     }
 
-    const getSuggestion = (suggestion: StreetType) => {
-        const pref = inputPref; //делать первую букву заглавной...
-        const suf = suggestion.streetName.slice(pref?.length);
+    const getSuggestion = (suggestion: StreetType, flag: boolean) => {
+
+        if (!flag) {
+            return (
+                <React.Fragment>
+                    {suggestion.streetType} {suggestion.streetName}
+                </React.Fragment>
+            )
+        }
+
+        const pref = suggestion.streetName.slice(0, inputPref?.length);
+        const suf = suggestion.streetName.slice(inputPref?.length);
 
         return (
             <React.Fragment>
@@ -73,10 +84,9 @@ const Autocomplete = () => {
         )
     }
 
-    const setStreet = (event:  React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    const setStreet = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         const streetName = event.currentTarget.innerText.split(' ').slice(1).join(' ');
-        console.log(streetName);
-        console.log(suggestions);
+
         const sug = suggestions.filter(suggestion => suggestion.streetName.toUpperCase() == streetName.toUpperCase())[0];
         console.log(sug);
         changePlateLengthSize(sug.streetName.length);
@@ -86,15 +96,45 @@ const Autocomplete = () => {
         setIsFind(false);
     }
 
+    const navOnSuggestion = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        const key = event.key || '';
+
+        if (!isFind) {
+            return;
+        }
+
+        if (key == 'ArrowDown') {
+            const newIndex = indexActiveSuggestion + 1;
+            if (newIndex >= suggestions.length) {
+                setIndexActiveSuggestion(0)
+            } else {
+                setIndexActiveSuggestion(newIndex)
+            }
+        } else if (key == 'ArrowUp') {
+            const newIndex = indexActiveSuggestion - 1;
+            if (newIndex < 0) {
+                setIndexActiveSuggestion(suggestions.length - 1)
+            } else {
+                setIndexActiveSuggestion(newIndex)
+            }
+        } else if (key == 'Enter') {
+            const sug = suggestions[indexActiveSuggestion];
+            console.log(sug);
+            changePlateLengthSize(sug.streetName.length);
+            setInputVal(sug.streetName);
+            setLatinName(sug.streetLatin);
+            setStreetType(sug.streetType);
+            setIsFind(false);
+        }
+    }
+
     const renderSuggestion = () => {
         return (
             <ul className={'suggestions'}>
-                {console.log('suggestions')}
-                {console.log(suggestions)}
-                {suggestions.map(suggestion => (
+                {suggestions.map((suggestion, index) => (
                     <li key={suggestion.streetName + suggestion.streetType}>
                         <span
-                            className={'suggestion-active'}
+                            className={index != indexActiveSuggestion ? 'suggestion' : 'suggestion_active'}
                             key={suggestion.streetName + suggestion.streetType}
                             onClick={setStreet}
                             onMouseEnter={event => {
@@ -107,7 +147,7 @@ const Autocomplete = () => {
                                 event.currentTarget.innerHTML = savedInnerHtml;
                             }}
                         >
-                        {getSuggestion(suggestion)}
+                        {getSuggestion(suggestion, index != indexActiveSuggestion)}
                     </span>
                     </li>
                 ))}
@@ -117,22 +157,21 @@ const Autocomplete = () => {
 
     const adjustFrontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value;
-        if(val.length <= 2){
+        if (val.length <= 2) {
             setFontSizeBuildingNumber('105px');
-        } else if (val.length == 3){
+        } else if (val.length == 3) {
             setFontSizeBuildingNumber('80px');
-        } else if (val.length == 4){
+        } else if (val.length == 4) {
             setFontSizeBuildingNumber('60px');
-        } else if (val.length == 5){
+        } else if (val.length == 5) {
             setFontSizeBuildingNumber('50px');
-        } else if (val.length == 6){
+        } else if (val.length == 6) {
             setFontSizeBuildingNumber('40px');
         }
 
     }
 
     return (
-        //очень много дивов, возможно, есть смысл юзать React.Fragment
         <div className={'plate-container'}>
             <span className={'plate-width-size'}>320мм</span>
             <div className={'plate'} style={{width: plateLengthPX}}>
@@ -148,6 +187,7 @@ const Autocomplete = () => {
                         className={'street-name'}
                         type={'text'}
                         onChange={findSuggestions}
+                        onKeyDown={navOnSuggestion}
                         value={inputVal}
                         placeholder={'8 Марта'}
                         style={{color: colorContext.fontColor}}
@@ -161,7 +201,8 @@ const Autocomplete = () => {
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
-                <div className={'separator'} style={{backgroundColor: colorContext.fontColor, borderColor: colorContext.fontColor}}></div>
+                <div className={'separator'}
+                     style={{backgroundColor: colorContext.fontColor, borderColor: colorContext.fontColor}}></div>
                 <div className={'building'}>
                     <input
                         type={'text'}
