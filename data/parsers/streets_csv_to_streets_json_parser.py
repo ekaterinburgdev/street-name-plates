@@ -5,6 +5,8 @@ with open("streets.csv", encoding="utf-8", mode="r") as f:
         target.write("[\n")
         id_counter = 1
         while True:
+            if id_counter > 1:
+                target.write(",\n")
             line = f.readline()
             if not line:
                 break
@@ -12,5 +14,6 @@ with open("streets.csv", encoding="utf-8", mode="r") as f:
             if len(elems) < 3:
                 continue
 
-            target.write("\t{\n\t\t\"street\": \"" + elems[0].strip("\"") + "\",\n\t\t\"type\": \"" + elems[1].strip("\"") + "\",\n\t\t\"english_name\": \"" + elems[2].strip("\"") + "\"\n\t},\n")
+            target.write("\t{\n\t\t\"street\": \"" + elems[0].strip("\"") + "\",\n\t\t\"type\": \"" + elems[1].strip("\"") + "\",\n\t\t\"english_name\": \"" + elems[2].strip("\"") + "\"\n\t}")
+            id_counter += 1
         target.write("]")
