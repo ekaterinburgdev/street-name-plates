@@ -60,9 +60,6 @@
     background-color: var(--font-color);
 }
 
-.suggestion_pref {
-    color: var(--font-color);
-}
 
 .suggestions li {
     padding-left: 6px;
@@ -80,6 +77,22 @@
     border-radius: 4px;
     cursor: pointer;
     opacity: 1;
+}
+
+.suggestion_pref {
+    color: var(--font-color);
+}
+
+.suggestion .suggestion_part {
+    opacity: 0.5;
+}
+
+.suggestion_active .suggestion_part {
+    opacity: 1;
+}
+
+.suggestion_active .suggestion_pref {
+    color: whitesmoke;
 }
 
 .suggestions {

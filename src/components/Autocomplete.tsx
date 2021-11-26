@@ -65,23 +65,16 @@ const Autocomplete = () => {
 
     }
 
-    const getSuggestion = (suggestion: StreetType, flag: boolean) => {
-
-        if (!flag) {
-            return (
-                <React.Fragment>
-                    {suggestion.streetType} {suggestion.streetName}
-                </React.Fragment>
-            )
-        }
-
+    const getSuggestion = (suggestion: StreetType) => {
         const pref = suggestion.streetName.slice(0, inputPref?.length);
         const suf = suggestion.streetName.slice(inputPref?.length);
 
         return (
             <React.Fragment>
-                <span style={{opacity: 0.5}}>{suggestion.streetType}</span> <span key={suggestion.streetName + suggestion.streetType}
-                                                                                  className={Style.suggestion_pref}>{pref}</span><span style={{opacity: 0.5}}>{suf}</span>
+                <span className={Style.suggestion_part}>{suggestion.streetType}</span> <span
+                key={suggestion.streetName + suggestion.streetType}
+                className={Style.suggestion_pref}>{pref}
+            </span><span className={Style.suggestion_part} >{suf}</span>
             </React.Fragment>
         )
     }
@@ -137,7 +130,6 @@ const Autocomplete = () => {
                     <li key={suggestion.streetName + suggestion.streetType}>
                         <span
                             className={index != indexActiveSuggestion ? Style.suggestion : Style.suggestion_active}
-                            key={suggestion.streetName + suggestion.streetType}
                             onClick={setStreet}
                             onMouseEnter={event => {
                                 const sug = event.currentTarget.innerText;
@@ -149,7 +141,7 @@ const Autocomplete = () => {
                                 event.currentTarget.innerHTML = savedInnerHtml;
                             }}
                         >
-                        {getSuggestion(suggestion, index != indexActiveSuggestion)}
+                        {getSuggestion(suggestion)}
                     </span>
                     </li>
                 ))}
