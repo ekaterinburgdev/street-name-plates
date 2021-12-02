@@ -1,0 +1,52 @@
+.change_color_container {
+    display: flex;
+    height: 60px;
+    /*width: 240px;*/
+}
+
+.color_container {
+    /*display: block;*/
+    position: relative;
+    /*padding-left: 35px;*/
+    /*margin-bottom: 12px;*/
+    cursor: pointer;
+    /*font-size: 22px;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.color_container input {
+    /*position: absolute;*/
+    opacity: 0;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 60px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.color_container:hover input ~ .checkmark {
+    border: 5px solid #000000;
+    border-radius: 35px;
+}
+
+.color_container input:checked ~ .checkmark {
+    border: 5px solid #000000;
+    border-radius: 35px;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}

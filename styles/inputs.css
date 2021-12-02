@@ -1,0 +1,64 @@
+.StyledInput {
+    font-family: 'Iset Sans';
+    border: none;
+    display: flex;
+    flex-basis: 640px;
+    width: 640px;
+    height: 82px;
+    /*margin-left: 80px;*/
+    margin-right: 720px;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 30px;
+    color: #000000;
+    background: white;
+    border-radius: 5px;
+}
+
+.Checkbox {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: white;
+    appearance: none; /*фиг пойми как оно работает...*/
+}
+
+.Checkbox:checked {
+    content: "\f00c";
+    z-index: 99;
+    /*background-color: black;*/
+}
+
+.CheckboxLabel {
+    font-family: Iset Sans;
+    outline-width: 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 140%;
+    display: flex;
+    margin-top: 30px;
+}
+
+p{
+    margin: 0px;
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 42px;
+    /* or 42px */
+
+
+    /* Черный */
+
+    color: #000000;
+}
+
+.inputs-container {
+    width: 640px;
+    height: 696px;
+}
