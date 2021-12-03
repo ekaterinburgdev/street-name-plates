@@ -1,9 +1,9 @@
-var itemsjs = require('itemsjs');
+const itemsjs = require('itemsjs');
+const data = require('../../data/streets.json');
 
 
 export default function getStreetItems() {
-    var data = require('../../data/streets.json');
-    var streetItems = itemsjs(data, {
+    const streetItems = itemsjs(data, {
         sortings: {
             street_asc: {
                 field: 'street',

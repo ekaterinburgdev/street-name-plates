@@ -1,9 +1,9 @@
-var itemsjs = require('itemsjs');
+const itemsjs = require('itemsjs');
+const data = require('../../data/hist-streets.json');
 
 
 export default function getStreetItems() {
-    var data = require('../../data/hist-streets.json');
-    var streetItems = itemsjs(data, {
+    const streetItems = itemsjs(data, {
         searchableFields: ['street_name', 'type', 'building_no']
     });
     return streetItems;

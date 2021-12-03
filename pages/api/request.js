@@ -1,9 +1,9 @@
 const nodemailer = require("nodemailer");
+require('dotenv').config()
 import validate from "../../src/functions/validation-info"
 
 
-//the recepient of the letter mail address (only Yandex)
-const RECEPIENT = "???"
+const RECEPIENTS = process.env.RECEPIENTS
 
 
 let transporter = nodemailer.createTransport({
@@ -11,16 +11,18 @@ let transporter = nodemailer.createTransport({
   port: 25,
   secure: false,
   auth: {
-    user: "street.name.plates.sender",
-    //need to hide password?
-    pass: "0UFb5SLpZ3a2038qLfYuFIt6GdCFTgux",
+    user: process.env.MAIL_USR,
+    pass: process.env.MAIL_PSW,
   },
 });
 
 
-//POST /request (user_data: {type: "улица", street_name: "Малышева", customer_name: "", number: 1, width: 1700, height: 320, contact: "", dismanting: false, mounting: false})
+//POST /request (user_data:
+//{type: "улица", street_name: "Малышева", customer_name: "",
+//number: 1, width: 1700, height: 320, contact: "",
+//dismanting: false, mounting: false, color-code: #code})
 export default function handler(req, res) {
-  var body = ""
+  let body = "";
   try {
     body = JSON.parse(/({.+})/.exec(req.body)[1]);
   } catch (e) {
@@ -32,12 +34,14 @@ export default function handler(req, res) {
     !body.hasOwnProperty("type") ||
     !body.hasOwnProperty("street_name") ||
     !body.hasOwnProperty("customer_name") ||
+    !body.hasOwnProperty("communication") ||
     !body.hasOwnProperty("number") ||
     !body.hasOwnProperty("width") ||
     !body.hasOwnProperty("height") ||
     !body.hasOwnProperty("contact") ||
     !body.hasOwnProperty("dismanting") ||
-    !body.hasOwnProperty("mounting")
+    !body.hasOwnProperty("mounting") ||
+    !body.hasOwnProperty("color-code")
   ) 
   {
     res.status(400).json({ });
@@ -50,30 +54,42 @@ export default function handler(req, res) {
     return;
   }
 
-  var price = validation_info["price"]
-  var extra_options = []
+  let price = validation_info["price"]
+  const extra_options = []
 
   if (body["mounting"]) {
     price += 3000;
-    extra_options.push("mounting");
+    extra_options.push("монтаж");
   }
 
   if (body["dismanting"]) {
     price += 3000;
-    extra_options.push("dismanting");
+    extra_options.push("демонтаж");
   }
   
-  const text = `type: ${body["type"]} 
-street name: ${body["street_name"]}
-building №: ${body["number"]}
-width: ${body["width"]}
-height: ${body["height"]}
-extra_options: ${extra_options.length > 0 ? extra_options.join(', ') : "none"}
-price: ${price}`;
+  const text = `Поступила заявка на адресную табличку:
+type: ${body["type"]}
+${body["street_name"]}, ${body["number"]}
+${validation_info["english_name"]}
+${body["width"]} х ${body["height"]} мм
+${body["color-code"]}
+
+Историческое: ${validation_info["is_hist"] ? "да" : "нет"}
+
+Опции:
+
+${extra_options.length > 0 ? extra_options.join(', ') : "none"}
+
+Цена:
+${validation_info["price"]}
+
+Контактное лицо:
+${body["customer-name"]}
+${body["communication"]}`;
 
   let mailOptions = {
-    from: '"SNP-sender" <street.name.plates.sender@yandex.ru>',
-    to: RECEPIENT,
+    from: `"SNP-sender" <${process.env.MAIL_ADDR}>`,
+    to: RECEPIENTS,
     subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
     text: text
     //this code can attach pdf file to letter
@@ -85,7 +101,6 @@ price: ${price}`;
   };
 
   //the mail sender. don't use frequently, pls
-  //don't forget to define the recepient at the top
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error)

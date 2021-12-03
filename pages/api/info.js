@@ -2,9 +2,9 @@ import validate from "../../src/functions/validation-info"
 
 
 export default function handler(req, res) {
-    if (!req.query.hasOwnProperty("type")
-    || !req.query.hasOwnProperty("street") 
-    || !req.query.hasOwnProperty("building")) {
+    if (!req.query.type
+    || !req.query.street
+    || !req.query.building) {
         res.status(400).json({});
         return;
     }

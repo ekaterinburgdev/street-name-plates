@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "itemsjs": "^2.1.10",
     "next": "11.1.2",
     "nodemailer": "^6.7.1",

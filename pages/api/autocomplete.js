@@ -4,7 +4,7 @@ import getStreetItems from "../../src/functions/streets-items";
 const streetItems = getStreetItems();
 
 export default function handler(req, res) {
-    if (!req.query.hasOwnProperty("street")) {
+    if (!req.query.street) {
         res.status(400).json({});
         return;
     }
