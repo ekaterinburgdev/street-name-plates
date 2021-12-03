@@ -12,7 +12,7 @@ export default function handler(req, res) {
     const beginning = req.query.street;
     var maximumSuggestions = 10;
 
-    if (req.query.hasOwnProperty("maximumSuggestions")) {
+    if (req.query.maximumSuggestions) {
         maximumSuggestions = req.query.maximumSuggestions;
     }
 

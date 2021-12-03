@@ -8,16 +8,16 @@ const histStreetItems = getHistStreetItems();
 
 export default function validate(type, street, building) {
     type = type[0].toUpperCase() + type.slice(1);
-    street = street[0].toUpperCase() + street.slice(1);
+    street = street.split(" ").map(s => s[0].toUpperCase() + s.slice(1)).join(" ")
 
-    const streetInfo = streetItems.search({
+    const streetsInfo = streetItems.search({
         filter: function(item) {
             return item.street === street
             && item.type === type
           }
     }).data.items;
 
-    if (streetsInfo.length > 0)
+    if (streetsInfo.length === 0)
         return {
             is_hist: false,
             is_valid: false,

@@ -19,8 +19,8 @@ let transporter = nodemailer.createTransport({
 
 //POST /request (user_data:
 //{type: "улица", street_name: "Малышева", customer_name: "",
-//number: 1, width: 1700, height: 320, contact: "",
-//dismanting: false, mounting: false, color-code: #code})
+//number: 1, width: 1700, height: 320, contact: "", dismanting: false,
+//mounting: false, color-code: #code, communication: @vasya_ebaaat})
 export default function handler(req, res) {
   let body = "";
   try {
@@ -73,18 +73,16 @@ ${body["street_name"]}, ${body["number"]}
 ${validation_info["english_name"]}
 ${body["width"]} х ${body["height"]} мм
 ${body["color-code"]}
-
 Историческое: ${validation_info["is_hist"] ? "да" : "нет"}
 
 Опции:
-
 ${extra_options.length > 0 ? extra_options.join(', ') : "none"}
 
 Цена:
 ${validation_info["price"]}
 
 Контактное лицо:
-${body["customer-name"]}
+${body["customer_name"]}
 ${body["communication"]}`;
 
   let mailOptions = {
@@ -108,5 +106,5 @@ ${body["communication"]}`;
     console.log(info)
   });
   
-  res.status(200).json(text);
+  res.status(200).json({ });
 }
