@@ -15,6 +15,39 @@
     border-radius: 5px;
 }
 
+
+.check {
+    font-family: Iset Sans;
+    outline-width: 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 140%;
+    display: flex;
+    margin-top: 30px;
+}
+
+.check__input {
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.check__box {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='4' fill='white'/%3E%3C/svg%3E%0A");
+}
+
+.check__input:checked + .check__box {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='4' fill='white'/%3E%3Cpath d='M32.7446 10.355H30.5175C30.2052 10.355 29.9089 10.4984 29.7178 10.7437L16.5813 27.3849L10.2822 19.4036C10.187 19.2827 10.0655 19.1848 9.92699 19.1175C9.78849 19.0502 9.63653 19.0151 9.48252 19.0149H7.25541C7.04194 19.0149 6.92405 19.2603 7.05468 19.4259L15.7815 30.4819C16.1894 30.998 16.9732 30.998 17.3842 30.4819L32.9453 10.7628C33.076 10.6003 32.9581 10.355 32.7446 10.355Z' fill='black'/%3E%3C/svg%3E%0A");
+}
+
+/*
 .Checkbox {
     display: flex;
     width: 40px;
@@ -22,13 +55,13 @@
     border-radius: 5px;
     margin-right: 20px;
     background-color: white;
-    appearance: none; /*фиг пойми как оно работает...*/
+    appearance: none;
 }
 
 .Checkbox:checked {
     content: "\f00c";
     z-index: 99;
-    /*background-color: black;*/
+    background-color: black;
 }
 
 .CheckboxLabel {
@@ -41,6 +74,7 @@
     display: flex;
     margin-top: 30px;
 }
+*/
 
 p{
     margin: 0px;

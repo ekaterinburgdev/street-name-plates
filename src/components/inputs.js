@@ -42,9 +42,9 @@ function Checkboxes({checkboxes, setCheckbox}) {
     return (
         <>
             {checkboxes.map((checkbox, i) => (
-                <label className={'CheckboxLabel'} key={i}>
+                <label className={'check option'} key={i}>
                     <input
-                        className={'Checkbox'}
+                        className={'check__input'}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -52,7 +52,8 @@ function Checkboxes({checkboxes, setCheckbox}) {
                             setCheckbox(i, e.target.checked);
                         }}
                     />
-                    {checkbox.name}
+                    <span className="check__box">
+                    </span>{checkbox.name}
                 </label>
             ))}
         </>
@@ -65,15 +66,6 @@ function FinalCheckbox() {
     return (
         <div>
             <Checkboxes {...checkboxes} />
-            {/*
-        <span>
-          Value:
-          {checkboxes.checkboxes
-            .filter((t) => t.checked)
-            .map((checkbox) => checkbox.name)
-            .join(", ")}
-        </span>
-        */}
         </div>
     );
 }
