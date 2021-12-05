@@ -1,0 +1,38 @@
+.Button {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 55px;
+
+    position: static;
+    width: 640px;
+    height: 82px;
+    right: 0;
+    top: 614px;
+
+    border: none;
+
+    /* Черный 10% */
+
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 140%;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 6;
+    flex-grow: 0;
+    margin: 30px 0;
+}
+
+.Button:hover {
+    text-decoration: underline;
+}

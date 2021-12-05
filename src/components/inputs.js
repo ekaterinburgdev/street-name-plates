@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Button from "./Button";
 
 function useInput(defaultValue) {
     const [value, setValue] = useState(defaultValue);
@@ -89,6 +90,7 @@ function Inputs() {
             />
             <p>Дополнительно:</p>
             <FinalCheckbox/>
+            <Button name={"Оформить заявку на табличку"}/>
         </div>
     );
 }
