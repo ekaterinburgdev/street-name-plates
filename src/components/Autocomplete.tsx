@@ -1,13 +1,13 @@
 import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
 import Style from '../../styles/Autocomplete.module.css'
+import {ButtonSendOrderContext} from "./inputs";
 
-type StreetType = {
+export type StreetType = {
     streetName: string,
     streetType: string,
     streetLatin: string
 }
-const STREETS: StreetType[] = require('../../public/sign-suggest-list.json');
 
 const Autocomplete = () => {
     const [isFind, setIsFind] = React.useState(false);
@@ -23,6 +23,7 @@ const Autocomplete = () => {
     const [indexActiveSuggestion, setIndexActiveSuggestion] = React.useState(0);
 
     const {colorContext} = React.useContext(ChangeColorContext);
+    const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const changePlateLengthSize = (lengthStreetName: number) => {
         if (lengthStreetName <= 8) {
@@ -45,13 +46,11 @@ const Autocomplete = () => {
         setStreetType('');
         setLatinName('');
         const value: string = event.target.value || '';
-        console.log(value);
 
         changePlateLengthSize(value.length);
 
-        const maximumSuggestions = 10;
+        const maximumSuggestions = 5;
 
-        console.log(value);
 
         changePlateLengthSize(value.length);
 
@@ -60,11 +59,14 @@ const Autocomplete = () => {
         //console.log(window.location.href);
         //console.log(document.URL);
 
-        const newSuggestions = streets.streets.map(s => { const res : StreetType = {
-            streetName: s.street,
-            streetType: s.type,
-            streetLatin: s.english_name}; return res});
-        console.log(newSuggestions);
+        const newSuggestions = streets.streets.map(s => {
+            const res: StreetType = {
+                streetName: s.street,
+                streetType: s.type,
+                streetLatin: s.english_name
+            };
+            return res
+        });
         setSuggestions(newSuggestions);
 
         //Старый код:
@@ -94,7 +96,7 @@ const Autocomplete = () => {
                 <span className={Style.suggestion_part}>{suggestion.streetType}</span> <span
                 key={suggestion.streetName + suggestion.streetType}
                 className={Style.suggestion_pref}>{pref}
-            </span><span className={Style.suggestion_part} >{suf}</span>
+            </span><span className={Style.suggestion_part}>{suf}</span>
             </React.Fragment>
         )
     }
@@ -103,12 +105,17 @@ const Autocomplete = () => {
         const streetName = event.currentTarget.innerText.split(' ').slice(1).join(' ');
 
         const sug = suggestions.filter(suggestion => suggestion.streetName.toUpperCase() == streetName.toUpperCase())[0];
-        console.log(sug);
         changePlateLengthSize(sug.streetName.length);
         setInputVal(sug.streetName);
         setLatinName(sug.streetLatin);
         setStreetType(sug.streetType);
         setIsFind(false);
+
+        setButtonSendOrderContext({
+            ...buttonSendOrderContext, street: sug
+        });
+        console.log('аааааааа');
+        console.log(buttonSendOrderContext);
     }
 
     const navOnSuggestion = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -134,12 +141,15 @@ const Autocomplete = () => {
             }
         } else if (key == 'Enter') {
             const sug = suggestions[indexActiveSuggestion];
-            console.log(sug);
             changePlateLengthSize(sug.streetName.length);
             setInputVal(sug.streetName);
             setLatinName(sug.streetLatin);
             setStreetType(sug.streetType);
             setIsFind(false);
+
+            setButtonSendOrderContext({
+                ...buttonSendOrderContext, street: sug
+            });
         }
     }
 
@@ -171,6 +181,8 @@ const Autocomplete = () => {
 
     const adjustFrontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value;
+        setButtonSendOrderContext({ ...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
+
         if (val.length <= 2) {
             setFontSizeBuildingNumber('105px');
         } else if (val.length == 3) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from '../../styles/ChangeColor.module.css';
 import {type} from "os";
+import {ButtonSendOrderContext} from "./inputs";
 
 type ColorChangeType = {
     color: string,
@@ -26,6 +27,7 @@ export const ChangeColorContext = React.createContext({
 const ChangeColor = (props) => {
 
     const {setColorContext} = React.useContext(ChangeColorContext);
+    const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     return (
         <div className={props.className}>
@@ -38,7 +40,8 @@ const ChangeColor = (props) => {
                                 name={'color'}
                                 defaultChecked={color.checked}
                                 onClick={() => {
-                                    setColorContext(color)
+                                    setColorContext(color);
+                                    setButtonSendOrderContext({...buttonSendOrderContext, color: color.fontColor})
                                 }}
                             />
                             <span className={Style.checkmark} style={{backgroundColor: color.color}}></span>
