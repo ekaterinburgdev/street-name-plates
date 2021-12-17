@@ -1,27 +1,32 @@
-const nodemailer = require("nodemailer");
-require('dotenv').config()
 import validate from "../../src/functions/validation-info"
 
 
-const RECEPIENTS = process.env.RECEPIENTS
+//const nodemailer = require("nodemailer");
+
+require('dotenv').config();
+
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDER)
+
+const RECEPIENTS = process.env.RECEPIENTS.split(', ');
 
 
-let transporter = nodemailer.createTransport({
-  host: "smtp.yandex.ru",
-  port: 25,
-  secure: false,
-  auth: {
-    user: process.env.MAIL_USR,
-    pass: process.env.MAIL_PSW,
-  },
-});
+// let transporter = nodemailer.createTransport({
+//   host: "smtp.yandex.ru",
+//   port: 25,
+//   secure: false,
+//   auth: {
+//     user: process.env.MAIL_USR,
+//     pass: process.env.MAIL_PSW,
+//   },
+// });
 
 
 //POST /request (user_data:
 //{"type": "улица", "street_name": "Малышева", "customer_name": "Vaska",
 //"number": 1, "width": 1700, "height": 320, "contact": "", "dismanting": false,
 //"mounting": false, "color-code": "FF7F50", "communication": "@vasya_ebaaat"})
-export default function handler(req, res) {
+export default async function handler(req, res) {
   let body = "";
   try {
     body = JSON.parse(/({.+})/.exec(req.body)[1]);
@@ -50,8 +55,7 @@ export default function handler(req, res) {
 
   const validation_info = validate(body["type"], body["street_name"], body["number"])
   if (!validation_info["is_valid"]) {
-    res.status(400);
-    return;
+    return res.status(400).json({ });
   }
 
   let price = validation_info["price"]
@@ -85,26 +89,57 @@ ${validation_info["price"]}
 ${body["customer_name"]}
 ${body["communication"]}`;
 
-  let mailOptions = {
-    from: `"SNP-sender" <${process.env.MAIL_ADDR}>`,
-    to: RECEPIENTS,
-    subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
-    text: text
-    //this code can attach pdf file to letter
-    /*attachments: [{
-      filename: '1st-Chusovskoy-Lane-228.pdf',
-      path: './data/1st-Chusovskoy-Lane-228.pdf',
-      cid: '1st-Chusovskoy-Lane-228.pdf'
-   }],*/
-  };
+  // let mailOptions = {
+  //   from: `"SNP-sender" <${process.env.MAIL_ADDR}>`,
+  //   to: RECEPIENTS,
+  //   subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
+  //   text: text
+  //   //this code can attach pdf file to letter
+  //   /*attachments: [{
+  //     filename: '1st-Chusovskoy-Lane-228.pdf',
+  //     path: './data/1st-Chusovskoy-Lane-228.pdf',
+  //     cid: '1st-Chusovskoy-Lane-228.pdf'
+  //  }],*/
+  // };
 
   //the mail sender. don't use frequently, pls
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error)
-    }
-    console.log(info)
+  // await new Promise((resolve, reject) => {
+  //     transporter.sendMail(mailOptions, (error, info) => {
+  //     if (error) {
+  //       console.log(error);
+  //       reject(error);
+  //     }
+  //     else
+  //     {
+  //       console.log(info);
+  //       resolve(info);
+  //     }
+  //   })
+  // });
+  await new Promise((resolve, reject) => {
+    RECEPIENTS.forEach(r => {
+      const msg = {
+        to: r,
+        from: process.env.MAIL_ADDR,
+        subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
+        text: text,
+      };
+      sgMail
+      .send(msg)
+      .then((response) => {
+        console.log(response[0].statusCode);
+        console.log(response[0].headers);
+      })
+      .catch((error) => {
+        console.error(error);
+        reject(error);
+      });
+    });
+    resolve();
   });
   
-  res.status(200).json({ });
+  
+  
+  
+  res.status(200).json({ status: "Ok" });
 }
