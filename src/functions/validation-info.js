@@ -7,12 +7,12 @@ const histStreetItems = getHistStreetItems();
 
 
 export default function validate(type, street, building) {
-    type = type[0].toUpperCase() + type.slice(1);
-    street = street.split(" ").map(s => s[0].toUpperCase() + s.slice(1)).join(" ")
+    type = type[0].toUpperCase() + type.slice(1).toLowerCase();
+    street = street.toLowerCase();
 
     const streetsInfo = streetItems.search({
         filter: function(item) {
-            return item.street === street
+            return item.street_lower === street
             && item.type === type
           }
     }).data.items;
@@ -24,9 +24,11 @@ export default function validate(type, street, building) {
             english_name: "",
             price: 0
         }
+
     let isHist = false;
     let price = 0;
-    const englishName = streetsInfo[0].english_name
+    const englishName = streetsInfo[0].english_name;
+    street = streetsInfo[0].street;
 
     isHist = histStreetItems.search({
         filter: function(item) {

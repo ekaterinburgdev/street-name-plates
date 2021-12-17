@@ -1,12 +1,12 @@
 const itemsjs = require('itemsjs');
-const data = require('../../data/streets.json');
+const data = require('../../data/streets-lower.json');
 
 
 export default function getStreetItems() {
     const streetItems = itemsjs(data, {
         sortings: {
             street_asc: {
-                field: 'street',
+                field: 'street_lower',
                 order: 'asc'
             },
             type_asc: {
@@ -14,7 +14,7 @@ export default function getStreetItems() {
                 order: 'asc'
             }
         },
-        searchableFields: ['street', 'type']
+        searchableFields: ['street_lower', 'type']
     });
     return streetItems;
 }

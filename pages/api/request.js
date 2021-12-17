@@ -18,9 +18,9 @@ let transporter = nodemailer.createTransport({
 
 
 //POST /request (user_data:
-//{type: "улица", street_name: "Малышева", customer_name: "",
-//number: 1, width: 1700, height: 320, contact: "", dismanting: false,
-//mounting: false, color-code: #code, communication: @vasya_ebaaat})
+//{"type": "улица", "street_name": "Малышева", "customer_name": "Vaska",
+//"number": 1, "width": 1700, "height": 320, "contact": "", "dismanting": false,
+//"mounting": false, "color-code": "FF7F50", "communication": "@vasya_ebaaat"})
 export default function handler(req, res) {
   let body = "";
   try {

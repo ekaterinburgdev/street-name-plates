@@ -9,18 +9,18 @@ export default function handler(req, res) {
         return;
     }
 
-    const beginning = req.query.street;
-    var maximumSuggestions = 10;
+    const beginning = req.query.street.toLowerCase();
+    let maximumSuggestions = 10;
 
-    if (req.query.maximumSuggestions) {
+    if (req.query.maximumSuggestions && Number.isInteger(req.query.maximumSuggestions)) {
         maximumSuggestions = req.query.maximumSuggestions;
     }
 
-    var answer = streetItems.search({
+    const answer = streetItems.search({
         sort: 'street_asc',
         per_page: maximumSuggestions,
         filter: function(item) {
-            return item.street.slice(0, beginning.length).toLowerCase() === beginning.toLowerCase() ;
+            return item.street_lower.slice(0, beginning.length) === beginning ;
           }
     });
     res.status(200).json({
