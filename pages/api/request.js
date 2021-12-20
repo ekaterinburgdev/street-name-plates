@@ -1,7 +1,5 @@
 import validate from "../../src/functions/validation-info"
 
-//
-//const nodemailer = require("nodemailer");
 
 require('dotenv').config();
 
@@ -10,22 +8,6 @@ sgMail.setApiKey(process.env.SENDER)
 
 const RECEPIENTS = process.env.RECEPIENTS.split(', ');
 
-
-// let transporter = nodemailer.createTransport({
-//   host: "smtp.yandex.ru",
-//   port: 25,
-//   secure: false,
-//   auth: {
-//     user: process.env.MAIL_USR,
-//     pass: process.env.MAIL_PSW,
-//   },
-// });
-
-
-//POST /request (user_data:
-//{"type": "улица", "street_name": "Малышева", "customer_name": "Vaska",
-//"number": 1, "width": 1700, "height": 320, "contact": "", "dismanting": false,
-//"mounting": false, "color-code": "FF7F50", "communication": "@vasya_ebaaat"})
 export default async function handler(req, res) {
   let body = "";
   try {
@@ -89,33 +71,6 @@ ${validation_info["price"]}
 ${body["customer_name"]}
 ${body["communication"]}`;
 
-  // let mailOptions = {
-  //   from: `"SNP-sender" <${process.env.MAIL_ADDR}>`,
-  //   to: RECEPIENTS,
-  //   subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
-  //   text: text
-  //   //this code can attach pdf file to letter
-  //   /*attachments: [{
-  //     filename: '1st-Chusovskoy-Lane-228.pdf',
-  //     path: './data/1st-Chusovskoy-Lane-228.pdf',
-  //     cid: '1st-Chusovskoy-Lane-228.pdf'
-  //  }],*/
-  // };
-
-  //the mail sender. don't use frequently, pls
-  // await new Promise((resolve, reject) => {
-  //     transporter.sendMail(mailOptions, (error, info) => {
-  //     if (error) {
-  //       console.log(error);
-  //       reject(error);
-  //     }
-  //     else
-  //     {
-  //       console.log(info);
-  //       resolve(info);
-  //     }
-  //   })
-  // });
   for (const r of RECEPIENTS)
   {
     const msg = {
