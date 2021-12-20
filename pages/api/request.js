@@ -116,30 +116,24 @@ ${body["communication"]}`;
   //     }
   //   })
   // });
-  await new Promise((resolve, reject) => {
-    RECEPIENTS.forEach(r => {
-      const msg = {
-        to: r,
-        from: process.env.MAIL_ADDR,
-        subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
-        text: text,
-      };
-      sgMail
-      .send(msg)
-      .then((response) => {
-        console.log(response[0].statusCode);
-        console.log(response[0].headers);
-      })
-      .catch((error) => {
-        console.error(error);
-        reject(error);
-      });
+  for (const r of RECEPIENTS)
+  {
+    const msg = {
+      to: r,
+      from: process.env.MAIL_ADDR,
+      subject: `plate ${body["type"]} ${body["street_name"]}, ${body["number"]}`,
+      text: text,
+    };
+    await sgMail
+    .send(msg)
+    .then((response) => {
+      console.log(response[0].statusCode);
+      console.log(response[0].headers);
+    })
+    .catch((error) => {
+      console.error(error);
     });
-    resolve();
-  });
-  
-  
-  
+  }
   
   res.status(200).json({ status: "Ok" });
 }
