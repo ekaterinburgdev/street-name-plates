@@ -1,6 +1,6 @@
 import validate from "../../src/functions/validation-info"
 
-
+//
 //const nodemailer = require("nodemailer");
 
 require('dotenv').config();
