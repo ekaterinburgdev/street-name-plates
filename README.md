@@ -1,3 +1,5 @@
+[Документация на API](https://app.gitbook.com/s/x0jVcKAEn3Hq3ylHJU6T/)
+
 Приложение работает на базе [React](https://reactjs.org/) и [Next.js](https://nextjs.org/) (bootstrapped via [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)).
 
 ## Запуск
