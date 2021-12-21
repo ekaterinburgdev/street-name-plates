@@ -49,7 +49,7 @@ const Autocomplete = () => {
 
         changePlateLengthSize(value.length);
 
-        const maximumSuggestions = 5;
+        const maximumSuggestions = 4;
 
 
         changePlateLengthSize(value.length);

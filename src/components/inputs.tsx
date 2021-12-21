@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Button from "./Button";
 import {StreetType} from "./Autocomplete";
+import {COLORS} from "./ChangeColor";
+import Style from '../../styles/Home.module.css' // так делать плохо, но я  так сделал, нужно будет переделать...
 
 type MessageDataType = {
     street: StreetType,
@@ -119,7 +121,7 @@ function Inputs() {
 
     return (
         <div className={'inputs-container'}>
-            <p>
+            <p className={Style.p_wrapper}>
                 Оставьте любимый способ связи.
                 <br/>
                 Мы напишем или позвоним, чтобы обсудить детали и оплату.
@@ -142,14 +144,16 @@ function Inputs() {
             <FinalCheckbox/>
             <Button name={"Оформить заявку на табличку"} onClick={() =>
                 alert(`
-            тип улицы: ${buttonSendOrderContext.street.streetType || 'не нашёл'},
-            название улицы: ${buttonSendOrderContext.street.streetName || 'не нашёл'},
-            улица на латинице: ${buttonSendOrderContext.street.streetLatin || 'не нашёл'},
+            тип улицы: ${buttonSendOrderContext.street.streetType},
+            название улицы: ${buttonSendOrderContext.street.streetName},
+            улица на латинице: ${buttonSendOrderContext.street.streetLatin},
             дом: ${buttonSendOrderContext.build},
-            цвет: ${buttonSendOrderContext.color},
+            цвет: ${buttonSendOrderContext.color || COLORS[0].fontColor},
+            имя клиента: ${buttonSendOrderContext.clientName},
+            любимый способ связи: ${buttonSendOrderContext.clientContact},
             Монтаж: ${buttonSendOrderContext.montagePlate},
             Демонтаж: ${buttonSendOrderContext.dismantlingOldPlate}
-            `)
+            `) //в поле цвет - костыль... тут
             }
                     labelColor={undefined} disabled={undefined}
                     type={undefined} style={undefined}/>
