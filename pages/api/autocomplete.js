@@ -1,31 +1,29 @@
-var itemsjs = require('itemsjs')
-var data = require('../../data/streets.json');
-var streetItems = itemsjs(data, {
-    sortings: {
-        street_asc: {
-            field: 'street',
-            order: 'asc'
-        },
-        type_asc: {
-            field: 'type',
-            order: 'asc'
-        }
-    },
-    searchableFields: ['street', 'type']
-})
+import getStreetItems from "../../src/functions/streets-items";
 
+
+const streetItems = getStreetItems();
 
 export default function handler(req, res) {
-    const beginning = req.query.street
-    const maximumSuggestions = req.query.maximumSuggestions
-    var answer = streetItems.search({
+    if (!req.query.street) {
+        res.status(400).json({});
+        return;
+    }
+
+    const beginning = req.query.street.toLowerCase();
+    let maximumSuggestions = 10;
+
+    if (req.query.maximumSuggestions && Number.isInteger(req.query.maximumSuggestions)) {
+        maximumSuggestions = req.query.maximumSuggestions;
+    }
+
+    const answer = streetItems.search({
         sort: 'street_asc',
         per_page: maximumSuggestions,
         filter: function(item) {
-            return item.street.slice(0, beginning.length).toLowerCase() === beginning.toLowerCase() ;
+            return item.street_lower.slice(0, beginning.length) === beginning ;
           }
-    })
+    });
     res.status(200).json({
         streets: answer.data.items
-    })
-  }
+    });
+}
