@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "i": "^0.3.7",
     "@sendgrid/mail": "^7.6.0",
     "dotenv": "^10.0.0",
     "itemsjs": "^2.1.13",
