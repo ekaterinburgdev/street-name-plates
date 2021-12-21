@@ -38,17 +38,32 @@ export default function validate(type, street, building) {
         }
     }).data.items.length > 0;
 
+    const height = 320;
+
+    let width;
+
     if (street.length <= 8)
-        price = 4990
+    {
+        price = 4990;
+        width = 1300;
+    }
     else if (street.length > 8 && street.length <= 13)
-        price = 7990
+    {
+        price = 7990;
+        width = 1700;
+    }
     else
-        price = 11990
+    {
+        price = 11990;
+        width = 2050;
+    }
 
     return {
         is_hist: isHist,
         is_valid: true,
         english_name: englishName,
-        price: price
-    }
+        price: price,
+        height: height,
+        width: width
+    };
 }

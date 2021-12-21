@@ -8,6 +8,13 @@ sgMail.setApiKey(process.env.SENDER)
 
 const RECEPIENTS = process.env.RECEPIENTS.split(', ');
 
+
+/*
+ожидается, что в body запроса будет лежать строка следующего формата:
+user_data: {"type": "улица", "street_name": "Малышева", 
+"customer_name": "ФАРШШШШШ", "number": 1, "dismanting": false, 
+"mounting": false, "color-code": "FF7F50", "communication": "@vasya_ebaaat"}
+*/
 export default async function handler(req, res) {
   let body = "";
   try {
@@ -23,9 +30,6 @@ export default async function handler(req, res) {
     !body.hasOwnProperty("customer_name") ||
     !body.hasOwnProperty("communication") ||
     !body.hasOwnProperty("number") ||
-    !body.hasOwnProperty("width") ||
-    !body.hasOwnProperty("height") ||
-    !body.hasOwnProperty("contact") ||
     !body.hasOwnProperty("dismanting") ||
     !body.hasOwnProperty("mounting") ||
     !body.hasOwnProperty("color-code")
@@ -52,12 +56,14 @@ export default async function handler(req, res) {
     price += 3000;
     extra_options.push("демонтаж");
   }
+
+
   
   const text = `Поступила заявка на адресную табличку:
 type: ${body["type"]}
 ${body["street_name"]}, ${body["number"]}
 ${validation_info["english_name"]}
-${body["width"]} х ${body["height"]} мм
+${validation_info["width"]} х ${validation_info["height"]} мм
 ${body["color-code"]}
 Историческое: ${validation_info["is_hist"] ? "да" : "нет"}
 
