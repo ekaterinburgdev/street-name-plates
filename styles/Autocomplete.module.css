@@ -6,6 +6,7 @@
     grid-auto-columns: min-content;
     grid-auto-rows: min-content;
     margin: 0px;
+    margin-top: 40px;
     padding: 0px;
     align-items: center;
     --front-color: #EBEAE8;

@@ -1,21 +1,24 @@
 import React from 'react';
 import Style from '../../styles/ChangeColor.module.css';
 import {type} from "os";
+import {ButtonSendOrderContext} from "./inputs";
 
 type ColorChangeType = {
     color: string,
     fontColor: string,
-    frontColor: string,
+    frontImage: string,
     checked: boolean
 }
 
 export const COLORS: ColorChangeType[] = [
-    {color: '#CCCCCC', frontColor: '#EBEAE8', fontColor: '#26255D', checked: true},
-    {color: '#DED7BA', frontColor: '#BFAA40', fontColor: '#8F7D24', checked: false},
-    {color: '#C9D4C4', frontColor: '#79936C', fontColor: '#536B47', checked: false},
-    {color: '#D6C2C2', frontColor: '#A65959', fontColor: '#993333', checked: false},
-    {color: '#9CBAC9', frontColor: '#598CA6', fontColor: '#26255D', checked: false}
+    {color: '#4E4D4B', frontImage: './frontImages/gray.jpg', fontColor: '#26255D', checked: true},
+    {color: '#BFAA40', frontImage: './frontImages/yellow.jpg', fontColor: '#8F7D24', checked: false},
+    {color: '#658655', frontImage: './frontImages/green.jpg', fontColor: '#536B47', checked: false},
+    {color: '#953737', frontImage: './frontImages/red.jpg', fontColor: '#993333', checked: false},
+    {color: '#266D90', frontImage: './frontImages/blue.jpg', fontColor: '#26255D', checked: false}
 ]
+
+export const DEFAULTCOLOR = COLORS[0]
 
 export const ChangeColorContext = React.createContext({
     colorContext: COLORS[0],
@@ -26,6 +29,7 @@ export const ChangeColorContext = React.createContext({
 const ChangeColor = (props) => {
 
     const {setColorContext} = React.useContext(ChangeColorContext);
+    const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     return (
         <div className={props.className}>
@@ -38,7 +42,8 @@ const ChangeColor = (props) => {
                                 name={'color'}
                                 defaultChecked={color.checked}
                                 onClick={() => {
-                                    setColorContext(color)
+                                    setColorContext(color);
+                                    setButtonSendOrderContext({...buttonSendOrderContext, color: color.fontColor})
                                 }}
                             />
                             <span className={Style.checkmark} style={{backgroundColor: color.color}}></span>
