@@ -12,7 +12,7 @@ export default function handler(req, res) {
     const beginning = req.query.street.toLowerCase();
     let maximumSuggestions = 10;
 
-    if (req.query.maximumSuggestions && Number.isInteger(req.query.maximumSuggestions)) {
+    if (req.query.maximumSuggestions && Number.isInteger(parseInt(req.query.maximumSuggestions))) {
         maximumSuggestions = req.query.maximumSuggestions;
     }
 
