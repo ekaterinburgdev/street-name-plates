@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Button from "./Button";
-import {StreetType} from "./Autocomplete";
+import {StreetType, defaultPlateLength} from "./Autocomplete";
 import {COLORS} from "./ChangeColor";
 import Style from '../../styles/Home.module.css' // так делать плохо, но я  так сделал, нужно будет переделать...
 
@@ -8,6 +8,7 @@ type MessageDataType = {
     street: StreetType,
     build: string,
     color: string,
+    plateLength: string,
     clientName: string,
     clientContact: string,
     montagePlate: boolean,
@@ -18,6 +19,7 @@ export const defaultMessageData: MessageDataType = {
     street: undefined,
     build: undefined,
     color: undefined,
+    plateLength: undefined,
     clientName: undefined,
     clientContact: undefined,
     montagePlate: false,
@@ -149,6 +151,7 @@ function Inputs() {
             улица на латинице: ${buttonSendOrderContext.street.streetLatin},
             дом: ${buttonSendOrderContext.build},
             цвет: ${buttonSendOrderContext.color || COLORS[0].fontColor},
+            длина: ${buttonSendOrderContext.plateLength},
             имя клиента: ${buttonSendOrderContext.clientName},
             любимый способ связи: ${buttonSendOrderContext.clientContact},
             Монтаж: ${buttonSendOrderContext.montagePlate},

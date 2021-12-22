@@ -2,6 +2,7 @@ import Autocomplete from "../src/components/Autocomplete";
 import Inputs, {defaultMessageData, ButtonSendOrderContext} from '../src/components/inputs';
 import Window from "../src/components/Window";
 import ChangeColor from "../src/components/ChangeColor";
+import Price from "../src/components/Price";
 import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
 import React from "react";
 import Style from '../styles/Home.module.css';
@@ -24,6 +25,7 @@ const Home = () => {
                             <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
                             <Autocomplete/>
                         </div>
+                        <Price className={Style.price} isTotalPrice={false}/>
                     </div>
                     <div className={Style.inputs}>
                         <div className={Style.change_color_container}>

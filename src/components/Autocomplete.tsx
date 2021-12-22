@@ -9,6 +9,8 @@ export type StreetType = {
     streetLatin: string
 }
 
+export const defaultPlateLength = '1300мм';
+
 const Autocomplete = () => {
     const [isFind, setIsFind] = React.useState(false);
     const [suggestions, setSuggestions] = React.useState<StreetType[]>([]);
@@ -39,6 +41,8 @@ const Autocomplete = () => {
             setPlateLengthPX('960px');
             //изменение в сааамую большую табличку
         }
+
+        setButtonSendOrderContext({...buttonSendOrderContext, plateLength: plateLengthSize})
     }
 
     const findSuggestions = async (event: React.ChangeEvent<HTMLInputElement>) => { //вообще, фильтрация же будет осуществляться на беке, значит тут нужен просто запрос
@@ -225,8 +229,7 @@ const Autocomplete = () => {
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
-                <div className={Style.separator}
-                ></div>
+                <div className={Style.separator}></div>
                 <div className={Style.building}>
                     <input
                         type={'text'}
@@ -246,6 +249,7 @@ const Autocomplete = () => {
 
             </div>
             <span className={Style.plate_length_size}>{plateLengthSize}</span>
+            <div>{}</div>
         </div>
     )
 };

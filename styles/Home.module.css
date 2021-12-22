@@ -94,3 +94,18 @@
     margin-right: 40px;
 }
 
+.price {
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 60px;
+    /* identical to box height, or 60px */
+
+    text-align: right;
+
+    /* Белый 80% */
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
