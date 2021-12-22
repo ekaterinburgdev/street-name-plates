@@ -121,6 +121,17 @@ function Inputs() {
 
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
+    const sendMail = async (event) => {
+        const a = await fetch(/*event.target.baseURI*/'https://eplates.vercel.app/api/request', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-type': 'text'
+            },
+            body: `user_data: {"type": "${buttonSendOrderContext.street.streetType}", "street_name": "${buttonSendOrderContext.street.streetName}", "customer_name": "${buttonSendOrderContext.clientName}", "number": ${buttonSendOrderContext.build}, "dismanting": ${buttonSendOrderContext.dismantlingOldPlate}, "mounting": ${buttonSendOrderContext.montagePlate}, "color-code": "${buttonSendOrderContext.color}", "communication": "${buttonSendOrderContext.clientContact}"}`
+        });
+    }
+
     return (
         <div className={'inputs-container'}>
             <p className={Style.p_wrapper}>
@@ -144,19 +155,19 @@ function Inputs() {
             />
             <p>Дополнительно:</p>
             <FinalCheckbox/>
-            <Button name={"Оформить заявку на табличку"} onClick={() =>
-                alert(`
-            тип улицы: ${buttonSendOrderContext.street.streetType},
-            название улицы: ${buttonSendOrderContext.street.streetName},
-            улица на латинице: ${buttonSendOrderContext.street.streetLatin},
-            дом: ${buttonSendOrderContext.build},
-            цвет: ${buttonSendOrderContext.color || COLORS[0].fontColor},
-            длина: ${buttonSendOrderContext.plateLength},
-            имя клиента: ${buttonSendOrderContext.clientName},
-            любимый способ связи: ${buttonSendOrderContext.clientContact},
-            Монтаж: ${buttonSendOrderContext.montagePlate},
-            Демонтаж: ${buttonSendOrderContext.dismantlingOldPlate}
-            `) //в поле цвет - костыль... тут
+            <Button name={"Оформить заявку на табличку"} onClick={(event) => sendMail(event)
+                //     alert(`
+                // тип улицы: ${buttonSendOrderContext.street.streetType},
+                // название улицы: ${buttonSendOrderContext.street.streetName},
+                // улица на латинице: ${buttonSendOrderContext.street.streetLatin},
+                // дом: ${buttonSendOrderContext.build},
+                // цвет: ${buttonSendOrderContext.color || COLORS[0].fontColor},
+                // длина: ${buttonSendOrderContext.plateLength},
+                // имя клиента: ${buttonSendOrderContext.clientName},
+                // любимый способ связи: ${buttonSendOrderContext.clientContact},
+                // Монтаж: ${buttonSendOrderContext.montagePlate},
+                // Демонтаж: ${buttonSendOrderContext.dismantlingOldPlate}
+                // `) //в поле цвет - костыль... тут
             }
                     labelColor={undefined} disabled={undefined}
                     type={undefined} style={undefined}/>
