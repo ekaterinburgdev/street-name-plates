@@ -63,14 +63,15 @@ const Autocomplete = () => {
         //console.log(window.location.href);
         //console.log(document.URL);
 
-        const newSuggestions = streets.streets.map(s => {
+
+        const newSuggestions = streets.hasOwnProperty('streets') ? streets.streets.map(s => {
             const res: StreetType = {
                 streetName: s.street,
                 streetType: s.type,
                 streetLatin: s.english_name
             };
             return res
-        });
+        }) : [];
         setSuggestions(newSuggestions);
 
         //Старый код:
@@ -185,7 +186,7 @@ const Autocomplete = () => {
 
     const adjustFrontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value;
-        setButtonSendOrderContext({ ...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
+        setButtonSendOrderContext({...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
 
         if (val.length <= 2) {
             setFontSizeBuildingNumber('105px');
