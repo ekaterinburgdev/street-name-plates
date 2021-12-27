@@ -65,7 +65,7 @@ const Autocomplete = () => {
 
         changePlateLengthSize(value.length);
 
-        let streets = await (await fetch( `./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
+        let streets = await (await fetch( `https://eplates.vercel.app/api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
         //console.log(event.target.baseURI);
         //console.log(window.location.href);
         //console.log(document.URL);
@@ -105,7 +105,7 @@ const Autocomplete = () => {
         название: ${inputVal},
         номер: ${bNum}
         `)
-        const h = await (await fetch(`./api/info?street=${inputVal}&building=${bNum}&type=${streetType}`)).json();
+        const h = await (await fetch(`https://eplates.vercel.app/api/info?street=${inputVal}&building=${bNum}&type=${streetType}`)).json();
         console.log(h);
         const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
         setIsHistory(isH);
