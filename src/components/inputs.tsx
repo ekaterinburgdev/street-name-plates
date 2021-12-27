@@ -12,7 +12,8 @@ type MessageDataType = {
     clientName: string,
     clientContact: string,
     montagePlate: boolean,
-    dismantlingOldPlate: boolean
+    dismantlingOldPlate: boolean,
+    platePrice: number
 }
 
 export const defaultMessageData: MessageDataType = {
@@ -23,7 +24,8 @@ export const defaultMessageData: MessageDataType = {
     clientName: undefined,
     clientContact: undefined,
     montagePlate: false,
-    dismantlingOldPlate: false
+    dismantlingOldPlate: false,
+    platePrice: 0
 };
 
 export const ButtonSendOrderContext = React.createContext({

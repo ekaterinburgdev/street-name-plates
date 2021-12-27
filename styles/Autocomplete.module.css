@@ -310,18 +310,43 @@
     margin: 0px;
     padding: 0px;
 
-    /*background-color: whitesmoke;*/
+    /* Текст по-жирнее */
 
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 22px;
-    line-height: 31px;
-    /* or 31px */
+    font-size: 40px;
+    line-height: 140%;
+    /* identical to box height, or 56px */
 
+
+    /* Белый 80% */
+
+    color: rgba(255, 255, 255, 0.8);
+
+    /*opacity: 0.5;*/ /*плохое свойство!*/
+}
+
+.size_and_price_container{
+    display: flex;
     grid-column-start: 2;
     grid-row-start: 2;
-    justify-self: center;
-    color: #00000080;
-    /*opacity: 0.5;*/ /*плохое свойство!*/
+    justify-content: space-between;
+}
+
+.price {
+    /* H3 */
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 100%;
+    /* identical to box height, or 60px */
+
+    text-align: right;
+
+    /* Белый 80% */
+
+    color: rgba(255, 255, 255, 0.8);
 }

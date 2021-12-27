@@ -2,6 +2,7 @@ import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
 import Style from '../../styles/Autocomplete.module.css'
 import {ButtonSendOrderContext} from "./inputs";
+import Price from "./Price";
 
 export type StreetType = {
     streetName: string,
@@ -21,6 +22,7 @@ const Autocomplete = () => {
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
     const [plateLengthPX, setPlateLengthPX] = React.useState('640px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
+    const [platePrice, setPlatePrice] = React.useState(4990)
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px');
     const [indexActiveSuggestion, setIndexActiveSuggestion] = React.useState(0);
 
@@ -31,18 +33,21 @@ const Autocomplete = () => {
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
             setPlateLengthPX('640px');
+            setPlatePrice(4990)
             //изменение в самую маленькую табличку
         } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
             setPlateLengthPX('800px');
+            setPlatePrice(7990);
             //изменение в среднюю табличку
         } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
             setPlateLengthPX('960px');
+            setPlatePrice(11990);
             //изменение в сааамую большую табличку
         }
 
-        setButtonSendOrderContext({...buttonSendOrderContext, plateLength: plateLengthSize})
+        setButtonSendOrderContext({...buttonSendOrderContext, plateLength: plateLengthSize, platePrice: platePrice})
     }
 
     const findSuggestions = async (event: React.ChangeEvent<HTMLInputElement>) => { //вообще, фильтрация же будет осуществляться на беке, значит тут нужен просто запрос
@@ -205,7 +210,6 @@ const Autocomplete = () => {
     return (
         // @ts-ignore
         <div className={Style.plate_container} style={{'--font-color': colorContext.fontColor}}>
-            <span className={Style.plate_width_size}>320мм</span>
             <div className={Style.plate} style={{width: plateLengthPX}}>
                 <div className={Style.street}>
                     <input
@@ -247,10 +251,11 @@ const Autocomplete = () => {
                     {/*           style={{marginLeft: '0px', textAlign: "right"}}/>*/}
                     {/*</div>*/}
                 </div>
-
             </div>
-            <span className={Style.plate_length_size}>{plateLengthSize}</span>
-            <div>{}</div>
+            <div className={Style.size_and_price_container}>
+                <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
+                <span className={Style.price}>{platePrice} ₽</span>
+            </div>
         </div>
     )
 };
