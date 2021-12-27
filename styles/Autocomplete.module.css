@@ -11,6 +11,8 @@
     align-items: center;
     --front-color: #EBEAE8;
     --font-color: #26255D;
+    --text-align-input: left;
+    --plate-color: #FFFFFF;
 }
 
 .suggestion {
@@ -125,6 +127,7 @@
 }
 
 .street input {
+    text-align: var(--text-align-input);
     border: none;
     background: transparent;
     outline: none;
@@ -140,6 +143,7 @@
 .street_type {
     display: block;
     /*width: 426.67px;*/
+    width: 100%;
     height: 29px;
 
     font-family: Iset Sans;
@@ -207,7 +211,7 @@
 
     padding-left: 24px;
     display: flex;
-    background-color: #FFFFFF;
+    background-color: var(--plate-color);
     /*width: 640px;*/
     height: 160px;
 

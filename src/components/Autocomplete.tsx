@@ -20,6 +20,8 @@ const Autocomplete = () => {
     const [latinName, setLatinName] = React.useState<string>();
     const [streetType, setStreetType] = React.useState<string>();
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
+    const [isHistory, setIsHistory] = React.useState(false);
+    const [buildNumber, setBuildNumber] = React.useState<string>();
     const [plateLengthPX, setPlateLengthPX] = React.useState('640px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [platePrice, setPlatePrice] = React.useState(4990)
@@ -63,7 +65,7 @@ const Autocomplete = () => {
 
         changePlateLengthSize(value.length);
 
-        let streets = await (await fetch(event.target.baseURI + `/api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
+        let streets = await (await fetch( `./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
         //console.log(event.target.baseURI);
         //console.log(window.location.href);
         //console.log(document.URL);
@@ -97,6 +99,19 @@ const Autocomplete = () => {
 
     }
 
+    const checkHistory = async (bNum) => {
+        console.log(`
+        тип: ${streetType},
+        название: ${inputVal},
+        номер: ${bNum}
+        `)
+        const h = await (await fetch(`./api/info?street=${inputVal}&building=${bNum}&type=${streetType}`)).json();
+        console.log(h);
+        const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
+        setIsHistory(isH);
+        console.log(isH);
+    }
+
     const getSuggestion = (suggestion: StreetType) => {
         const pref = suggestion.streetName.slice(0, inputPref?.length);
         const suf = suggestion.streetName.slice(inputPref?.length);
@@ -124,8 +139,7 @@ const Autocomplete = () => {
         setButtonSendOrderContext({
             ...buttonSendOrderContext, street: sug
         });
-        console.log('аааааааа');
-        console.log(buttonSendOrderContext);
+
     }
 
     const navOnSuggestion = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -191,6 +205,7 @@ const Autocomplete = () => {
 
     const adjustFrontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value;
+        setBuildNumber(val);
         setButtonSendOrderContext({...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
 
         if (val.length <= 2) {
@@ -204,12 +219,18 @@ const Autocomplete = () => {
         } else if (val.length == 6) {
             setFontSizeBuildingNumber('40px');
         }
+        console.log(buildNumber);
 
     }
 
+    // @ts-ignore
     return (
         // @ts-ignore
-        <div className={Style.plate_container} style={{'--font-color': colorContext.fontColor}}>
+        <div className={Style.plate_container} style={{
+            '--font-color': isHistory ? '#FFFFFF' : colorContext.fontColor,
+            '--text-align-input' : isHistory ? 'center' : 'left',
+            '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
+        }}>
             <div className={Style.plate} style={{width: plateLengthPX}}>
                 <div className={Style.street}>
                     <input
@@ -241,7 +262,10 @@ const Autocomplete = () => {
                         maxLength={6}
                         className={Style.building_number}
                         placeholder={'7'}
-                        onChange={adjustFrontSize}
+                        onChange={event => {
+                            adjustFrontSize(event);
+                            checkHistory(event.target.value);
+                        }}
                         style={{fontSize: fontSizeBuildingNumber}}
                     />
                     {/*<div>*/}
