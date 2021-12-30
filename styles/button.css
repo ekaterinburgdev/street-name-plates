@@ -3,41 +3,49 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 35px 55px 30px 35px;
-
-    position: static;
-    width: 900px;
-    height: 150px;
-    right: 0px;
-    top: 688px;
-
-    /* Черный */
-
-    background: #000000;
-    border-radius: 100px;
-
-    /* Inside Auto Layout */
-
-    flex: none;
-    order: 3;
-    flex-grow: 0;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    padding: 10px 40px;
+    margin-top: 50px;
+    background: black;
 
     font-family: Iset Sans;
     font-style: normal;
     font-weight: 600;
     font-size: 50px;
+    color: white;
     line-height: 140%;
-    /* identical to box height, or 98px */
 
-    text-align: center;
+    width: 900px;
+    height: 150px;
 
-    /* Белый */
+    position: relative;
+    box-sizing: border-box;
 
-    color: #FFFFFF;
+    background-clip: padding-box;
+    border: solid 10px transparent;
+    border-radius: 100px;
+}
 
-    border: 10px solid;
-    border-image: linear-gradient(#FEC72E, #FEC72E, #00D200, #00D200, #00B4FF, #00B4FF);
-    border-image-slice: 1;
+.Button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -10px;
+    border-radius: inherit;
+    background: linear-gradient(
+            #fec72e,
+            #fec72e,
+            #00d200,
+            #00d200,
+            #00b4ff,
+            #00b4ff
+    );
+}
+
+.Button:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
