@@ -96,7 +96,6 @@ const Autocomplete = () => {
         } else {
             setIsFind(false);
         }
-
     }
 
     const checkHistory = async (bNum) => {

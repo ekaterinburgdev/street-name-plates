@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import Button from "./Button";
-import {StreetType, defaultPlateLength} from "./Autocomplete";
-import {COLORS} from "./ChangeColor";
-import Style from '../../styles/Home.module.css' // так делать плохо, но я  так сделал, нужно будет переделать...
+import {StreetType} from "./Autocomplete";
+import {FinalPrice} from "./FinalPrice";
 
 type MessageDataType = {
     street: StreetType,
@@ -80,7 +79,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
             {checkboxes.map((checkbox, i) => (
                 <label className={'check option'} key={i}>
                     <input
-                        className={'check__input'}
+                        className={`check__input`}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -134,9 +133,22 @@ function Inputs() {
         });
     }
 
+    const styleInfoText = {
+        marginTop: "120px",
+        marginBottom: "40px",
+
+        fontFamily: "Iset Sans",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "40px",
+        lineHeight: "140%",
+
+        color: "rgba(255, 255, 255, 0.8)"
+    };
+
     return (
         <div className={'inputs-container'}>
-            <p className={Style.p_wrapper}>
+            <p style={styleInfoText}>
                 Оставьте любимый способ связи.
                 <br/>
                 Мы напишем или позвоним, чтобы обсудить детали и оплату.
@@ -155,22 +167,9 @@ function Inputs() {
                     clientContact: event.target.value
                 })}
             />
-            <p>Дополнительно:</p>
+            <p style={{color: "white"}}>Дополнительно:</p>
             <FinalCheckbox/>
-            <Button name={"Оформить заявку на табличку"} onClick={(event) => sendMail(event)
-                //     alert(`
-                // тип улицы: ${buttonSendOrderContext.street.streetType},
-                // название улицы: ${buttonSendOrderContext.street.streetName},
-                // улица на латинице: ${buttonSendOrderContext.street.streetLatin},
-                // дом: ${buttonSendOrderContext.build},
-                // цвет: ${buttonSendOrderContext.color || COLORS[0].fontColor},
-                // длина: ${buttonSendOrderContext.plateLength},
-                // имя клиента: ${buttonSendOrderContext.clientName},
-                // любимый способ связи: ${buttonSendOrderContext.clientContact},
-                // Монтаж: ${buttonSendOrderContext.montagePlate},
-                // Демонтаж: ${buttonSendOrderContext.dismantlingOldPlate}
-                // `) //в поле цвет - костыль... тут
-            }
+            <Button name={"Оформить заявку на табличку"} onClick={(event) => sendMail(event)}
                     labelColor={undefined} disabled={undefined}
                     type={undefined} style={undefined}/>
         </div>
