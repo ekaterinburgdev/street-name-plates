@@ -223,10 +223,8 @@ const Autocomplete = () => {
 
     }
 
-    // @ts-ignore
     return (
-        // @ts-ignore
-        <div className={Style.plate_container} style={{
+        <div className={Style.plate_container} /*@ts-ignore*/ style={{
             '--font-color': isHistory ? '#FFFFFF' : colorContext.fontColor,
             '--text-align-input' : isHistory ? 'center' : 'left',
             '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
