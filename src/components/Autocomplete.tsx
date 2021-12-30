@@ -2,6 +2,7 @@ import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
 import Style from '../../styles/Autocomplete.module.css'
 import {ButtonSendOrderContext} from "./inputs";
+import Price from "./Price";
 
 export type StreetType = {
     streetName: string,
@@ -19,8 +20,11 @@ const Autocomplete = () => {
     const [latinName, setLatinName] = React.useState<string>();
     const [streetType, setStreetType] = React.useState<string>();
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
+    const [isHistory, setIsHistory] = React.useState(false);
+    const [buildNumber, setBuildNumber] = React.useState<string>();
     const [plateLengthPX, setPlateLengthPX] = React.useState('640px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
+    const [platePrice, setPlatePrice] = React.useState(4990)
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px');
     const [indexActiveSuggestion, setIndexActiveSuggestion] = React.useState(0);
 
@@ -31,18 +35,21 @@ const Autocomplete = () => {
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
             setPlateLengthPX('640px');
+            setPlatePrice(4990)
             //изменение в самую маленькую табличку
         } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
             setPlateLengthPX('800px');
+            setPlatePrice(7990);
             //изменение в среднюю табличку
         } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
             setPlateLengthPX('960px');
+            setPlatePrice(11990);
             //изменение в сааамую большую табличку
         }
 
-        setButtonSendOrderContext({...buttonSendOrderContext, plateLength: plateLengthSize})
+        setButtonSendOrderContext({...buttonSendOrderContext, plateLength: plateLengthSize, platePrice: platePrice})
     }
 
     const findSuggestions = async (event: React.ChangeEvent<HTMLInputElement>) => { //вообще, фильтрация же будет осуществляться на беке, значит тут нужен просто запрос
@@ -58,19 +65,20 @@ const Autocomplete = () => {
 
         changePlateLengthSize(value.length);
 
-        let streets = await (await fetch(event.target.baseURI + `/api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
+        let streets = await (await fetch( `./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
         //console.log(event.target.baseURI);
         //console.log(window.location.href);
         //console.log(document.URL);
 
-        const newSuggestions = streets.streets.map(s => {
+
+        const newSuggestions = streets.hasOwnProperty('streets') ? streets.streets.map(s => {
             const res: StreetType = {
                 streetName: s.street,
                 streetType: s.type,
                 streetLatin: s.english_name
             };
             return res
-        });
+        }) : [];
         setSuggestions(newSuggestions);
 
         //Старый код:
@@ -89,6 +97,19 @@ const Autocomplete = () => {
             setIsFind(false);
         }
 
+    }
+
+    const checkHistory = async (bNum) => {
+        console.log(`
+        тип: ${streetType},
+        название: ${inputVal},
+        номер: ${bNum}
+        `)
+        const h = await (await fetch(`./api/info?street=${inputVal}&building=${bNum}&type=${streetType}`)).json();
+        console.log(h);
+        const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
+        setIsHistory(isH);
+        console.log(isH);
     }
 
     const getSuggestion = (suggestion: StreetType) => {
@@ -118,8 +139,7 @@ const Autocomplete = () => {
         setButtonSendOrderContext({
             ...buttonSendOrderContext, street: sug
         });
-        console.log('аааааааа');
-        console.log(buttonSendOrderContext);
+
     }
 
     const navOnSuggestion = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -185,7 +205,8 @@ const Autocomplete = () => {
 
     const adjustFrontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value;
-        setButtonSendOrderContext({ ...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
+        setBuildNumber(val);
+        setButtonSendOrderContext({...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
 
         if (val.length <= 2) {
             setFontSizeBuildingNumber('105px');
@@ -198,13 +219,16 @@ const Autocomplete = () => {
         } else if (val.length == 6) {
             setFontSizeBuildingNumber('40px');
         }
+        console.log(buildNumber);
 
     }
 
     return (
-        // @ts-ignore
-        <div className={Style.plate_container} style={{'--font-color': colorContext.fontColor}}>
-            <span className={Style.plate_width_size}>320мм</span>
+        <div className={Style.plate_container} /*@ts-ignore*/ style={{
+            '--font-color': isHistory ? '#FFFFFF' : colorContext.fontColor,
+            '--text-align-input' : isHistory ? 'center' : 'left',
+            '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
+        }}>
             <div className={Style.plate} style={{width: plateLengthPX}}>
                 <div className={Style.street}>
                     <input
@@ -236,7 +260,10 @@ const Autocomplete = () => {
                         maxLength={6}
                         className={Style.building_number}
                         placeholder={'7'}
-                        onChange={adjustFrontSize}
+                        onChange={event => {
+                            adjustFrontSize(event);
+                            checkHistory(event.target.value);
+                        }}
                         style={{fontSize: fontSizeBuildingNumber}}
                     />
                     {/*<div>*/}
@@ -246,10 +273,11 @@ const Autocomplete = () => {
                     {/*           style={{marginLeft: '0px', textAlign: "right"}}/>*/}
                     {/*</div>*/}
                 </div>
-
             </div>
-            <span className={Style.plate_length_size}>{plateLengthSize}</span>
-            <div>{}</div>
+            <div className={Style.size_and_price_container}>
+                <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
+                <span className={Style.price}>{platePrice} ₽</span>
+            </div>
         </div>
     )
 };

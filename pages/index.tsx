@@ -25,7 +25,6 @@ const Home = () => {
                             <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
                             <Autocomplete/>
                         </div>
-                        <Price className={Style.price} isTotalPrice={false}/>
                     </div>
                     <div className={Style.inputs}>
                         <div className={Style.change_color_container}>

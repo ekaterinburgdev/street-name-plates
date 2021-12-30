@@ -1,4 +1,5 @@
 .Button {
+    color: whitesmoke;
 
     display: flex;
     flex-direction: row;
