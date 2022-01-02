@@ -7,13 +7,6 @@
     margin-top: 50px;
     background: black;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 50px;
-    color: white;
-    line-height: 140%;
-
     width: 900px;
     height: 150px;
 
@@ -23,6 +16,21 @@
     background-clip: padding-box;
     border: solid 10px transparent;
     border-radius: 100px;
+}
+
+input {
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 140%;
+    border: none;
+    display: inline;
+    width: auto;
+    height: auto;
+    background: black;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 .Button::before {
@@ -45,7 +53,22 @@
     );
 }
 
-.Button:hover {
-    text-decoration: underline;
-    cursor: pointer;
+.Button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -10px;
+    border-radius: inherit;
+    background: linear-gradient(
+            #00b4ff,
+            #00b4ff,
+            #00d200,
+            #00d200,
+            #fec72e,
+            #fec72e
+    );
 }

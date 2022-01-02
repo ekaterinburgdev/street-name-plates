@@ -2,7 +2,6 @@ import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
 import Style from '../../styles/Autocomplete.module.css'
 import {ButtonSendOrderContext} from "./inputs";
-import Price from "./Price";
 
 export type StreetType = {
     streetName: string,

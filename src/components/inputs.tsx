@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Button from "./Button";
 import {StreetType} from "./Autocomplete";
-import {FinalPrice} from "./FinalPrice";
 
 type MessageDataType = {
     street: StreetType,
@@ -46,7 +45,10 @@ function useInput(defaultValue) {
     };
 }
 
-const checkboxesList = ["Монтаж", "Демонтаж"];
+const checkboxesList = [
+    "Демонтаж старой таблички",
+    "Монтаж новой"
+];
 
 const getDefaultCheckboxes = () =>
     checkboxesList.map((checkbox) => ({
@@ -79,13 +81,13 @@ function Checkboxes({checkboxes, setCheckbox}) {
             {checkboxes.map((checkbox, i) => (
                 <label className={'check option'} key={i}>
                     <input
-                        className={`check__input`}
+                        className={`check__input__${i}`}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
-                            if (checkbox.name == 'Монтаж') {
+                            if (checkbox.name == 'Монтаж новой') {
                                 setButtonSendOrderContext({...buttonSendOrderContext, montagePlate: e.target.checked});
-                            } else if (checkbox.name == 'Демонтаж') {
+                            } else if (checkbox.name == 'Демонтаж старой таблички') {
                                 setButtonSendOrderContext({
                                     ...buttonSendOrderContext,
                                     dismantlingOldPlate: e.target.checked
@@ -95,7 +97,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                             setCheckbox(i, e.target.checked);
                         }}
                     />
-                    <span className="check__box">
+                    <span className={`check__box__${i}`}>
                     </span>{checkbox.name}
                 </label>
             ))}
@@ -148,32 +150,35 @@ function Inputs() {
 
     return (
         <div className={'inputs-container'}>
-            <p style={styleInfoText}>
-                Оставьте любимый способ связи.
-                <br/>
-                Мы напишем или позвоним, чтобы обсудить детали и оплату.
-            </p>
-            <input className={'StyledInput'} {...inputNameProps} placeholder="Имя"
-                   onChange={event => setButtonSendOrderContext({
-                       ...buttonSendOrderContext,
-                       clientName: event.target.value
-                   })}/>
-            <input
-                className={'StyledInput'}
-                {...inputCommProps}
-                placeholder="Почта, телефон, телеграм, что угодно"
-                onChange={event => setButtonSendOrderContext({
-                    ...buttonSendOrderContext,
-                    clientContact: event.target.value
-                })}
-            />
-            <p style={{color: "white"}}>Дополнительно:</p>
-            <FinalCheckbox/>
-            <Button name={"Оформить заявку на табличку"} onClick={(event) => sendMail(event)}
-                    labelColor={undefined} disabled={undefined}
-                    type={undefined} style={undefined}/>
+            <form onSubmit={() => {
+                event.preventDefault()
+            }}>
+                <p style={styleInfoText}>
+                    Оставьте любимый способ связи.
+                    <br/>
+                    Мы напишем или позвоним, чтобы обсудить детали и оплату.
+                </p>
+                <input required={true}
+                       className={'StyledInput'} {...inputNameProps}
+                       placeholder="Имя"
+                       onChange={event => setButtonSendOrderContext({
+                           ...buttonSendOrderContext,
+                           clientName: event.target.value
+                       })}/>
+                <input required={true}
+                    className={'StyledInput'}
+                    {...inputCommProps}
+                    placeholder="Способ связи. Например, email"
+                    onChange={event => setButtonSendOrderContext({
+                        ...buttonSendOrderContext,
+                        clientContact: event.target.value
+                    })}
+                />
+                <FinalCheckbox/>
+                <Button value={"Оформить заявку на табличку"} onClick={() => console.log(1)}/>
+            </form>
         </div>
     );
 }
-
+/*(event) => sendMail(event)}/>*/
 export default Inputs;
