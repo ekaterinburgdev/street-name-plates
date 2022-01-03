@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Button from "./Button";
 import {StreetType} from "./Autocomplete";
+import {ExportPrice} from "./Autocomplete";
 
 type MessageDataType = {
     street: StreetType,
@@ -47,7 +48,7 @@ function useInput(defaultValue) {
 
 const checkboxesList = [
     "Демонтаж старой таблички",
-    "Монтаж новой"
+    "Монтаж новой таблички"
 ];
 
 const getDefaultCheckboxes = () =>
@@ -74,7 +75,10 @@ function useCheckboxes(defaultCheckboxes) {
 }
 
 function Checkboxes({checkboxes, setCheckbox}) {
-    const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
+    const {
+        buttonSendOrderContext,
+        setButtonSendOrderContext
+    } = React.useContext(ButtonSendOrderContext);
 
     return (
         <>
@@ -85,7 +89,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
-                            if (checkbox.name == 'Монтаж новой') {
+                            if (checkbox.name == 'Монтаж новой таблички') {
                                 setButtonSendOrderContext({...buttonSendOrderContext, montagePlate: e.target.checked});
                             } else if (checkbox.name == 'Демонтаж старой таблички') {
                                 setButtonSendOrderContext({
@@ -148,6 +152,31 @@ function Inputs() {
         color: "rgba(255, 255, 255, 0.8)"
     };
 
+    const styleFinalPrice = {
+        fontFamily: "Iset Sans",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        color: "white",
+        fontSize: "40px",
+        lineHeight: "140%",
+        TextAlign: "center",
+        margin: "40px 20px 20px 20px"
+    };
+
+    console.log(ExportPrice);
+
+    function calculateFinalPrice(price : number) {
+        if (buttonSendOrderContext.dismantlingOldPlate) {
+            price += 2990
+        }
+
+        if (buttonSendOrderContext.montagePlate) {
+            price += 6990
+        }
+
+        return price
+    }
+
     return (
         <div className={'inputs-container'}>
             <form onSubmit={() => {
@@ -176,6 +205,10 @@ function Inputs() {
                 />
                 <FinalCheckbox/>
                 <Button value={"Оформить заявку на табличку"} onClick={() => console.log(1)}/>
+                <p style={styleFinalPrice}>
+                    Финальная цена — до {ExportPrice == undefined ? calculateFinalPrice(4990) : calculateFinalPrice(ExportPrice)} ₽
+                </p>
+                <br/>
             </form>
         </div>
     );

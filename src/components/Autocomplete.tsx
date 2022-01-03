@@ -10,6 +10,7 @@ export type StreetType = {
 }
 
 export const defaultPlateLength = '1300мм';
+export let ExportPrice;
 
 const Autocomplete = () => {
     const [isFind, setIsFind] = React.useState(false);
@@ -34,17 +35,20 @@ const Autocomplete = () => {
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
             setPlateLengthPX('640px');
-            setPlatePrice(4990)
+            setPlatePrice(4990);
+            ExportPrice = 4990;
             //изменение в самую маленькую табличку
         } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
             setPlateLengthPX('800px');
             setPlatePrice(7990);
+            ExportPrice = 7990;
             //изменение в среднюю табличку
         } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
             setPlateLengthPX('960px');
             setPlatePrice(11990);
+            ExportPrice = 11990;
             //изменение в сааамую большую табличку
         }
 
@@ -60,7 +64,6 @@ const Autocomplete = () => {
         changePlateLengthSize(value.length);
 
         const maximumSuggestions = 4;
-
 
         changePlateLengthSize(value.length);
 
