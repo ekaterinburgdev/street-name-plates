@@ -163,7 +163,12 @@ function OrderForm() {
         margin: "40px 20px 20px 20px"
     };
 
-    console.log(ExportPrice);
+    const styleFooter = {
+      color: "white",
+      fontFamily: "Iset Sans",
+      fontStyle: "normal",
+      fontWeight: "normal",
+    }
 
     function calculateFinalPrice(price : number) {
         if (buttonSendOrderContext.dismantlingOldPlate) {
@@ -177,34 +182,14 @@ function OrderForm() {
         return price
     }
 
-    function FinalPriceWithMounting() {
+    function FinalPrice() {
         return <p style={styleFinalPrice}>
-            Финальная цена зависит от сложности монтажа, но будет до {
+            Общая стоимость — до {
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
         } ₽
         </p>
     }
-
-    function FinalPriceWithoutMounting() {
-        return <p style={styleFinalPrice}>
-            Финальная цена — до {
-            ExportPrice == undefined ? calculateFinalPrice(4990)
-                : calculateFinalPrice(ExportPrice)
-        } ₽
-        </p>
-    }
-
-    function RenderFinalPrice(props) {
-        const isMounting = props.isMounting;
-
-        if (isMounting) {
-            return <FinalPriceWithMounting />;
-        }
-
-        return <FinalPriceWithoutMounting />;
-    }
-
 
     return (
         <div className={'inputs-container'}>
@@ -236,9 +221,13 @@ function OrderForm() {
                 <Button value={"Оформить заявку на табличку"} onClick={
                     (event) => sendMail(event)
                 }/>
-                <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}/>
+                <FinalPrice />
                 <br/>
             </form>
+            <footer style={styleFooter}>
+                * Цена зависит от сложности монтажа
+            </footer>
+            <br/>
         </div>
     );
 }

@@ -111,7 +111,6 @@
     align-items: center;
     margin-top: 41px; /*от инпута с латинским названием*/
     margin-left: -25px; /*костылёк)*/
-
 }
 
 /*Стили для таблички*/
@@ -120,9 +119,6 @@
     margin-top: 15.11px;
     margin-bottom: 14.67px;
     display: block;
-    /*width: 474.67px;*/
-    /*width: auto;*/
-    /*margin-right: 25px;*/
     width: calc(100% - 186px); /*костыль*/
 }
 
@@ -142,7 +138,6 @@
 
 .street_type {
     display: block;
-    /*width: 426.67px;*/
     width: 100%;
     height: 29px;
 
@@ -151,19 +146,15 @@
     font-weight: normal;
     font-size: 29.3333px;
     line-height: 29px;
-    /* or 29px */
 
     letter-spacing: 0.11em;
     text-transform: uppercase;
-
-    /* Тёмно-синий */
 
     color: var(--font-color);
 }
 
 .street_name {
     display: block;
-    /*width: 426.67px;*/
     width: 100%;
     height: 69px;
 
@@ -321,14 +312,8 @@
     font-weight: normal;
     font-size: 40px;
     line-height: 140%;
-    /* identical to box height, or 56px */
-
-
-    /* Белый 80% */
 
     color: rgba(255, 255, 255, 0.8);
-
-    /*opacity: 0.5;*/ /*плохое свойство!*/
 }
 
 .size_and_price_container{
