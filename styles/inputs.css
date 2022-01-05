@@ -1,4 +1,5 @@
 .StyledInput {
+    outline: none !important;
     font-family: Iset Sans;
     display: flex;
     flex-direction: row;
@@ -29,7 +30,7 @@
     margin: 24px 0px;
     width: 900px;
     height: 120px;
-    border: none;
+    border: 8px solid #FFFFFF;
     padding: 32px 24px 32px 32px;
     color: #FFFFFF;
     font-style: normal;
