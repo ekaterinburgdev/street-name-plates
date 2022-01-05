@@ -233,12 +233,13 @@ function OrderForm() {
                     })}
                 />
                 <FinalCheckbox/>
-                <Button value={"Оформить заявку на табличку"} onClick={() => console.log(1)}/>
+                <Button value={"Оформить заявку на табличку"} onClick={
+                    (event) => sendMail(event)
+                }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}/>
                 <br/>
             </form>
         </div>
     );
 }
-/*(event) => sendMail(event)}/>*/
 export default OrderForm;
