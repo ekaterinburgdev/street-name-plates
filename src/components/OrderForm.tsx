@@ -163,13 +163,6 @@ function OrderForm() {
         margin: "40px 20px 20px 20px"
     };
 
-    const styleFooter = {
-      color: "white",
-      fontFamily: "Iset Sans",
-      fontStyle: "normal",
-      fontWeight: "normal",
-    }
-
     function calculateFinalPrice(price : number) {
         if (buttonSendOrderContext.dismantlingOldPlate) {
             price += 2990

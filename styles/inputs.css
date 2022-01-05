@@ -92,6 +92,15 @@
     background-image: url("../src/checkboxStates/Демонтаж-Активный.png");
 }
 
+.check__input__0:focus + .check__box__0 {
+    background-image: url("../src/checkboxStates/Демонтаж-Фокус.png");
+}
+
+.check__input__0:checked:focus + .check__box__0 {
+    border: inset;
+    background-image: url("../src/checkboxStates/Демонтаж-Активный.png");
+}
+
 .check__input__1 {
     position: absolute;
     -webkit-appearance: none;
@@ -109,6 +118,15 @@
 }
 
 .check__input__1:checked + .check__box__1 {
+    background-image: url("../src/checkboxStates/Монтаж-Активный.png");
+}
+
+.check__input__1:focus + .check__box__1 {
+    background-image: url("../src/checkboxStates/Монтаж-Фокус.png");
+}
+
+.check__input__1:checked:focus + .check__box__1 {
+    border: inset;
     background-image: url("../src/checkboxStates/Монтаж-Активный.png");
 }
 
