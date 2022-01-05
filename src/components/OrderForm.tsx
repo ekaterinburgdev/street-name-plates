@@ -191,6 +191,48 @@ function OrderForm() {
         </p>
     }
 
+    function FinalPriceWithMounting() {
+        return <p style={styleFinalPrice}>
+            Общая стоимость зависит от сложности монтажа, но будет до {
+            ExportPrice == undefined ? calculateFinalPrice(4990)
+                : calculateFinalPrice(ExportPrice)
+        } ₽
+        </p>
+    }
+
+    function FinalPriceWithDismounting() {
+        return <p style={styleFinalPrice}>
+            Общая стоимость зависит от сложности демонтажа, но будет до {
+            ExportPrice == undefined ? calculateFinalPrice(4990)
+                : calculateFinalPrice(ExportPrice)
+        } ₽
+        </p>
+    }
+
+    function FinalPriceWithDismountingAndMounting() {
+        return <p style={styleFinalPrice}>
+            Общая стоимость зависит от сложности монтажа и демонтажа, но будет до {
+            ExportPrice == undefined ? calculateFinalPrice(4990)
+                : calculateFinalPrice(ExportPrice)
+        } ₽
+        </p>
+    }
+
+    function RenderFinalPrice(props) {
+        const isMounting = props.isMounting;
+        const isDismounting = props.isDismounting;
+
+        if (isMounting && isDismounting) {
+            return <FinalPriceWithDismountingAndMounting/>
+        } else if (isMounting) {
+            return <FinalPriceWithMounting/>
+        } else if (isDismounting) {
+            return <FinalPriceWithDismounting/>
+        } else {
+            return <FinalPrice/>
+        }
+    }
+
     return (
         <div className={'inputs-container'}>
             <form onSubmit={() => {
@@ -221,13 +263,10 @@ function OrderForm() {
                 <Button value={"Оформить заявку на табличку"} onClick={
                     (event) => sendMail(event)
                 }/>
-                <FinalPrice />
+                <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
+                                  isDismounting={buttonSendOrderContext.dismantlingOldPlate} />
                 <br/>
             </form>
-            <footer style={styleFooter}>
-                * Цена зависит от сложности монтажа
-            </footer>
-            <br/>
         </div>
     );
 }
