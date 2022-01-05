@@ -1,7 +1,7 @@
 import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
 import Style from '../../styles/Autocomplete.module.css'
-import {ButtonSendOrderContext} from "./inputs";
+import {ButtonSendOrderContext} from "./OrderForm";
 
 export type StreetType = {
     streetName: string,
@@ -12,7 +12,7 @@ export type StreetType = {
 export const defaultPlateLength = '1300мм';
 export let ExportPrice;
 
-const Autocomplete = () => {
+const StreerPlate = () => {
     const [isFind, setIsFind] = React.useState(false);
     const [suggestions, setSuggestions] = React.useState<StreetType[]>([]);
     const [inputVal, setInputVal] = React.useState<string>();
@@ -283,4 +283,4 @@ const Autocomplete = () => {
     )
 };
 
-export default Autocomplete;
+export default StreerPlate;

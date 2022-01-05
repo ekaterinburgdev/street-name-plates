@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Button from "./Button";
-import {StreetType} from "./Autocomplete";
-import {ExportPrice} from "./Autocomplete";
+import {StreetType} from "./StreerPlate";
+import {ExportPrice} from "./StreerPlate";
 
 type MessageDataType = {
     street: StreetType,
@@ -120,7 +120,7 @@ function FinalCheckbox() {
     );
 }
 
-function Inputs() {
+function OrderForm() {
     // @ts-ignore
     const inputNameProps = useInput();
     // @ts-ignore
@@ -149,7 +149,7 @@ function Inputs() {
         fontSize: "40px",
         lineHeight: "140%",
 
-        color: "rgba(255, 255, 255, 0.8)"
+        color: "#FFFFFF"
     };
 
     const styleFinalPrice = {
@@ -176,6 +176,35 @@ function Inputs() {
 
         return price
     }
+
+    function FinalPriceWithMounting() {
+        return <p style={styleFinalPrice}>
+            Финальная цена зависит от сложности монтажа, но будет до {
+            ExportPrice == undefined ? calculateFinalPrice(4990)
+                : calculateFinalPrice(ExportPrice)
+        } ₽
+        </p>
+    }
+
+    function FinalPriceWithoutMounting() {
+        return <p style={styleFinalPrice}>
+            Финальная цена — до {
+            ExportPrice == undefined ? calculateFinalPrice(4990)
+                : calculateFinalPrice(ExportPrice)
+        } ₽
+        </p>
+    }
+
+    function RenderFinalPrice(props) {
+        const isMounting = props.isMounting;
+
+        if (isMounting) {
+            return <FinalPriceWithMounting />;
+        }
+
+        return <FinalPriceWithoutMounting />;
+    }
+
 
     return (
         <div className={'inputs-container'}>
@@ -205,13 +234,11 @@ function Inputs() {
                 />
                 <FinalCheckbox/>
                 <Button value={"Оформить заявку на табличку"} onClick={() => console.log(1)}/>
-                <p style={styleFinalPrice}>
-                    Финальная цена — до {ExportPrice == undefined ? calculateFinalPrice(4990) : calculateFinalPrice(ExportPrice)} ₽
-                </p>
+                <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}/>
                 <br/>
             </form>
         </div>
     );
 }
 /*(event) => sendMail(event)}/>*/
-export default Inputs;
+export default OrderForm;
