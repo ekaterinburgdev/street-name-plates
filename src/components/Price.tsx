@@ -1,7 +1,7 @@
 import React from 'react';
-import {ButtonSendOrderContext} from "./inputs";
+import {ButtonSendOrderContext} from "./OrderForm";
 
-const PlatePrices = {
+export const PlatePrices = {
     '1300мм': 4990,
     '1700мм': 7990,
     '2050мм': 11990

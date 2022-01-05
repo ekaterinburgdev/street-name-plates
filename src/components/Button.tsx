@@ -1,11 +1,10 @@
-import {StreetType} from "./Autocomplete";
 import React from "react";
 
-const Button = ({ name, onClick, labelColor, disabled, type, style, ...props }) => {
+const Button = ({ value, onClick }) => {
     return (
-        <button className="Button" onClick={onClick}>
-            {name || 'label'}
-        </button>
+        <div className="Button">
+            <input type={"submit"} onClick={onClick} value={value}/>
+        </div>
     );
 };
 
