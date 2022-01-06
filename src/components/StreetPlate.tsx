@@ -12,7 +12,7 @@ export type StreetType = {
 export const defaultPlateLength = '1300мм';
 export let ExportPrice;
 
-const StreerPlate = () => {
+const StreetPlate = () => {
     const [isFind, setIsFind] = React.useState(false);
     const [suggestions, setSuggestions] = React.useState<StreetType[]>([]);
     const [inputVal, setInputVal] = React.useState<string>();
@@ -22,7 +22,7 @@ const StreerPlate = () => {
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
     const [isHistory, setIsHistory] = React.useState(false);
     const [buildNumber, setBuildNumber] = React.useState<string>();
-    const [plateLengthPX, setPlateLengthPX] = React.useState('640px');
+    const [plateWidthPX, setPlateWidthPX] = React.useState('225px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [platePrice, setPlatePrice] = React.useState(4990)
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px');
@@ -34,19 +34,19 @@ const StreerPlate = () => {
     const changePlateLengthSize = (lengthStreetName: number) => {
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
-            setPlateLengthPX('640px');
+            setPlateWidthPX('225px');
             setPlatePrice(4990);
             ExportPrice = 4990;
             //изменение в самую маленькую табличку
         } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
-            setPlateLengthPX('800px');
+            setPlateWidthPX('180px');
             setPlatePrice(7990);
             ExportPrice = 7990;
             //изменение в среднюю табличку
         } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
-            setPlateLengthPX('960px');
+            setPlateWidthPX('150px');
             setPlatePrice(11990);
             ExportPrice = 11990;
             //изменение в сааамую большую табличку
@@ -230,7 +230,7 @@ const StreerPlate = () => {
             '--text-align-input' : isHistory ? 'center' : 'left',
             '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
         }}>
-            <div className={Style.plate} style={{width: plateLengthPX}}>
+            <div className={Style.plate} style={{width: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
                 <div className={Style.street}>
                     <input
                         className={Style.street_type}
@@ -283,4 +283,4 @@ const StreerPlate = () => {
     )
 };
 
-export default StreerPlate;
+export default StreetPlate;

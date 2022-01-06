@@ -1,4 +1,4 @@
-import StreerPlate from "../src/components/StreerPlate";
+import StreetPlate from "../src/components/StreetPlate";
 import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/components/OrderForm';
 import Window from "../src/components/Window";
 import ChangeColor from "../src/components/ChangeColor";
@@ -23,7 +23,7 @@ const Home = () => {
                         <div className={Style.front_wrapper}>
                             <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                             <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                            <StreerPlate/>
+                            <StreetPlate/>
                         </div>
                     </div>
                     <div className={Style.inputs}>

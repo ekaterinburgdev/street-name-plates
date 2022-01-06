@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Button from "./Button";
-import {StreetType} from "./StreerPlate";
-import {ExportPrice} from "./StreerPlate";
+import {StreetType} from "./StreetPlate";
+import {ExportPrice} from "./StreetPlate";
 
 type MessageDataType = {
     street: StreetType,
