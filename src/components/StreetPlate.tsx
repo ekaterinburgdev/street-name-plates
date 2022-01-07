@@ -25,7 +25,7 @@ const StreetPlate = () => {
     const [plateWidthPX, setPlateWidthPX] = React.useState('225px');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [platePrice, setPlatePrice] = React.useState(4990)
-    const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('105px');
+    const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('0.75em');
     const [indexActiveSuggestion, setIndexActiveSuggestion] = React.useState(0);
 
     const {colorContext} = React.useContext(ChangeColorContext);
@@ -209,16 +209,20 @@ const StreetPlate = () => {
         setBuildNumber(val);
         setButtonSendOrderContext({...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
 
-        if (val.length <= 2) {
-            setFontSizeBuildingNumber('105px');
+        //считай нейронку написал:)
+
+        if (val.length == 1) {
+            setFontSizeBuildingNumber('0.75em');
+        } else if (val.length == 2){
+            setFontSizeBuildingNumber('0.55em')
         } else if (val.length == 3) {
-            setFontSizeBuildingNumber('80px');
+            setFontSizeBuildingNumber('0.36em');
         } else if (val.length == 4) {
-            setFontSizeBuildingNumber('60px');
+            setFontSizeBuildingNumber('0.27em');
         } else if (val.length == 5) {
-            setFontSizeBuildingNumber('50px');
+            setFontSizeBuildingNumber('0.22em');
         } else if (val.length == 6) {
-            setFontSizeBuildingNumber('40px');
+            setFontSizeBuildingNumber('0.17em');
         }
         console.log(buildNumber);
 

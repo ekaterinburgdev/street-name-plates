@@ -223,23 +223,23 @@
     opacity: 0.5;
 }
 
-.building {
-    padding-top: -30px;
-    margin: 0px;
-    align-content: center;
-}
+/*.building {*/
+/*    padding-top: -30px;*/
+/*    margin: 0px;*/
+/*    align-content: center;*/
+/*}*/
 
-.building input {
-    border: none;
-    background: transparent;
-    outline: none;
-    padding: 0px;
-}
+/*.building input {*/
+/*    border: none;*/
+/*    background: transparent;*/
+/*    outline: none;*/
+/*    padding: 0px;*/
+/*}*/
 
-.building input::placeholder {
-    color: var(--font-color);
-    opacity: 0.5;
-}
+/*.building input::placeholder {*/
+/*    color: var(--font-color);*/
+/*    opacity: 0.5;*/
+/*}*/
 
 .building_number {
     width: 138.67px;
@@ -251,7 +251,6 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 0.1em;
     /*font-size: 102.222px;*/
     /*line-height: 100%;*/
     /* or 102px */
