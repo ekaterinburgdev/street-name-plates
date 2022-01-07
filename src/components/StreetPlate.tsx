@@ -26,12 +26,17 @@ const StreetPlate = () => {
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [platePrice, setPlatePrice] = React.useState(4990)
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('0.75em');
+    const [fontSizeStreetName, setFontSizeStreetName] = React.useState('0.45em');
     const [indexActiveSuggestion, setIndexActiveSuggestion] = React.useState(0);
 
     const {colorContext} = React.useContext(ChangeColorContext);
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const changePlateLengthSize = (lengthStreetName: number) => {
+        if (fontSizeStreetName != '0.45em'){
+            setFontSizeStreetName('0.45em');
+        }
+
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
             setPlateWidthPX('225px');
@@ -50,6 +55,13 @@ const StreetPlate = () => {
             setPlatePrice(11990);
             ExportPrice = 11990;
             //изменение в сааамую большую табличку
+
+            if (lengthStreetName > 15){
+                setFontSizeStreetName('0.35em');
+            }
+            if (lengthStreetName > 19){
+                setFontSizeStreetName('0.28em');
+            }
         }
 
         setButtonSendOrderContext({...buttonSendOrderContext, plateLength: plateLengthSize, platePrice: platePrice})
@@ -65,7 +77,7 @@ const StreetPlate = () => {
 
         const maximumSuggestions = 4;
 
-        changePlateLengthSize(value.length);
+        // changePlateLengthSize(value.length);
 
         let streets = await (await fetch( `./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
         //console.log(event.target.baseURI);
@@ -249,6 +261,8 @@ const StreetPlate = () => {
                         onKeyDown={navOnSuggestion}
                         value={inputVal}
                         placeholder={'8 Марта'}
+                        style={{fontSize: fontSizeStreetName}}
+
                     />
                     <input
                         className={Style.street_latin}
