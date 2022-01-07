@@ -255,7 +255,6 @@ const StreetPlate = () => {
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
                 <div className={Style.separator}></div>
-                <div className={Style.building}>
                     <input
                         type={'text'}
                         maxLength={6}
@@ -267,13 +266,6 @@ const StreetPlate = () => {
                         }}
                         style={{fontSize: fontSizeBuildingNumber}}
                     />
-                    {/*<div>*/}
-                    {/*    <input className={'building-near-number'} placeholder={'7'}/>*/} {/*Вроде решили это убрать*/}
-                    {/*    →*/}
-                    {/*    <input className={'building-near-number'} placeholder={'7'}*/}
-                    {/*           style={{marginLeft: '0px', textAlign: "right"}}/>*/}
-                    {/*</div>*/}
-                </div>
             </div>
             <div className={Style.size_and_price_container}>
                 <span className={Style.plate_length_size}>320×{plateLengthSize}</span>

@@ -144,7 +144,7 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 0.15em;
+    font-size: 0.13em;
     line-height: 29px;
 
     letter-spacing: 0.11em;
@@ -183,7 +183,7 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 0.15em;
+    font-size: 0.13em;
     line-height: 28px;
     /* or 28px */
 
@@ -221,11 +221,11 @@
     margin: 15.11px 2px;
     border-radius: 10px;
     opacity: 0.5;
-
 }
 
 .building {
-    padding: 0px;
+    padding-top: -30px;
+    margin: 0px;
     align-content: center;
 }
 
@@ -251,6 +251,7 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
+    font-size: 0.1em;
     /*font-size: 102.222px;*/
     /*line-height: 100%;*/
     /* or 102px */
@@ -262,6 +263,16 @@
     /* Тёмно-синий */
 
     color: var(--font-color);
+
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0px;
+}
+
+.building_number::placeholder {
+    color: var(--font-color);
+    opacity: 0.5;
 }
 
 /*.building_near_number {*/
