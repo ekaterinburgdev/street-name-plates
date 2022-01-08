@@ -71,6 +71,8 @@ const StreetPlate = () => {
         setInputVal(undefined); // костыль... (наверное)
         setStreetType('');
         setLatinName('');
+        setIsHistory(false);
+
         const value: string = event.target.value || '';
 
         changePlateLengthSize(value.length);
@@ -112,17 +114,18 @@ const StreetPlate = () => {
         }
     }
 
-    const checkHistory = async (bNum) => {
+    const checkHistory = async (bNum: string, sName: string, sType: string ) => {
         console.log(`
-        тип: ${streetType},
-        название: ${inputVal},
+        тип: ${sType},
+        название: ${sName},
         номер: ${bNum}
         `)
-        const h = await (await fetch(`./api/info?street=${inputVal}&building=${bNum}&type=${streetType}`)).json();
+        const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
         console.log(h);
         const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
         setIsHistory(isH);
         console.log(isH);
+
     }
 
     const getSuggestion = (suggestion: StreetType) => {
@@ -139,7 +142,7 @@ const StreetPlate = () => {
         )
     }
 
-    const setStreet = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    const setStreet = async (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         const streetName = event.currentTarget.innerText.split(' ').slice(1).join(' ');
 
         const sug = suggestions.filter(suggestion => suggestion.streetName.toUpperCase() == streetName.toUpperCase())[0];
@@ -148,6 +151,7 @@ const StreetPlate = () => {
         setLatinName(sug.streetLatin);
         setStreetType(sug.streetType);
         setIsFind(false);
+        await checkHistory(buildNumber, sug.streetName, sug.streetType);
 
         setButtonSendOrderContext({
             ...buttonSendOrderContext, street: sug
@@ -183,6 +187,7 @@ const StreetPlate = () => {
             setLatinName(sug.streetLatin);
             setStreetType(sug.streetType);
             setIsFind(false);
+            checkHistory(buildNumber, sug.streetName, sug.streetType);
 
             setButtonSendOrderContext({
                 ...buttonSendOrderContext, street: sug
@@ -280,7 +285,7 @@ const StreetPlate = () => {
                         placeholder={'7'}
                         onChange={event => {
                             adjustFrontSize(event);
-                            checkHistory(event.target.value);
+                            checkHistory(event.target.value, inputVal, streetType);
                         }}
                         style={{fontSize: fontSizeBuildingNumber}}
                     />
