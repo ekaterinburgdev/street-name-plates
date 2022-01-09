@@ -108,6 +108,12 @@
     cursor: default;
 }
 
+.StyledSubmitButton:focus {
+    color: #fec72e;
+    cursor: default;
+    outline: none;
+}
+
 input {
     font-family: Iset Sans;
     font-style: normal;

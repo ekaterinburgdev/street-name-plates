@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {createContext, useState} from "react";
 import OrderButton from "./OrderButton";
 import {StreetType} from "./StreerPlate";
 import {ExportPrice} from "./StreerPlate";
+import {IsPressedButton} from "./OrderButton";
 
 type MessageDataType = {
     street: StreetType,
@@ -176,7 +177,7 @@ function OrderForm() {
                     lineHeight: "140%",
                     margin: "40px 20px 20px 20px"
                 }}>
-                    Общая стоимость <span style={{marginLeft: "3em"}}/>{
+                    Общая стоимость<span style={{marginLeft: "90px"}}/>{
                     ExportPrice == undefined ? calculateFinalPrice(4990)
                         : calculateFinalPrice(ExportPrice)
                 } ₽
@@ -195,10 +196,13 @@ function OrderForm() {
             lineHeight: "140%",
             margin: "40px 20px 20px 20px"
         }}>
-            Общая стоимость<span style={{marginLeft: "50px"}}/>до {
+            Общая стоимость<span style={{marginLeft: "70px"}}/>до {
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
-        } ₽ <br/><span style={{fontSize: "smaller !important", opacity: "0.5"}}/>зависит от сложности работ
+        } ₽ <br/>
+            <span style={{fontSize: "20px !important", opacity: "0.5"}}>
+                зависит от сложности работ
+            </span>
         </p>
     }
 
@@ -221,7 +225,7 @@ function OrderForm() {
         const isMounting = props.isMounting;
         const isDismounting = props.isDismounting;
 
-        if (IsSendMail) {
+        if (IsPressedButton) {
             return <Text/>
         }
 
@@ -243,6 +247,7 @@ function OrderForm() {
                     Мы напишем или позвоним, чтобы обсудить детали и оплату.
                 </p>
                 <input required={true}
+                       autoComplete="none"
                        className={'StyledInput'} {...inputNameProps}
                        placeholder="Имя"
                        onChange={event => setButtonSendOrderContext({
@@ -253,6 +258,7 @@ function OrderForm() {
                     className={'StyledInput'}
                     {...inputCommProps}
                     placeholder="Способ связи. Например, email"
+                    autoComplete="none"
                     onChange={event => setButtonSendOrderContext({
                         ...buttonSendOrderContext,
                         clientContact: event.target.value
