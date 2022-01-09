@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import OrderButton from "./OrderButton";
 import {StreetType} from "./StreerPlate";
 import {ExportPrice} from "./StreerPlate";
-import {IsButtonPressed} from "./OrderButton";
 
 type MessageDataType = {
     street: StreetType,
@@ -32,9 +31,6 @@ export const ButtonSendOrderContext = React.createContext({
     buttonSendOrderContext: defaultMessageData,
     setButtonSendOrderContext: (messageData: MessageDataType) => {}
 })
-
-export let Name = ""
-export let Contact = ""
 
 function useInput(defaultValue) {
     const [value, setValue] = useState(defaultValue);
@@ -155,18 +151,6 @@ function OrderForm() {
         color: "#FFFFFF"
     };
 
-    const styleFinalPrice = {
-        fontFamily: "Iset Sans",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        display: "inline-block",
-        color: "white",
-        fontSize: "40px",
-        lineHeight: "140%",
-        TextAlign: "center",
-        margin: "40px 20px 20px 20px"
-    };
-
     function calculateFinalPrice(price : number) {
         if (buttonSendOrderContext.dismantlingOldPlate) {
             price += 2990
@@ -182,7 +166,16 @@ function OrderForm() {
     function FinalPrice() {
         return (
             <div>
-                <p style={styleFinalPrice}>
+                <p style={{
+                    fontFamily: "Iset Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    display: "inline-block",
+                    color: "white",
+                    fontSize: "40px",
+                    lineHeight: "140%",
+                    margin: "40px 20px 20px 20px"
+                }}>
                     Общая стоимость <span style={{marginLeft: "3em"}}/>{
                     ExportPrice == undefined ? calculateFinalPrice(4990)
                         : calculateFinalPrice(ExportPrice)
@@ -192,8 +185,17 @@ function OrderForm() {
     }
 
     function FinalPriceWithDismountingOrMounting() {
-        return <p style={styleFinalPrice}>
-            Общая стоимость<span style={{marginLeft: "3em"}}/>{
+        return <p style={{
+            fontFamily: "Iset Sans",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            display: "inline-block",
+            color: "white",
+            fontSize: "40px",
+            lineHeight: "140%",
+            margin: "40px 20px 20px 20px"
+        }}>
+            Общая стоимость<span style={{marginLeft: "50px"}}/>до {
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
         } ₽ <br/><span style={{fontSize: "smaller !important", opacity: "0.5"}}/>зависит от сложности работ
@@ -201,8 +203,17 @@ function OrderForm() {
     }
 
     function Text() {
-        return <p style={styleFinalPrice}>
-            Мы свяжемся с вами и расскажем, что дальше
+        return <p style={{
+            fontFamily: "Iset Sans",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            display: "inline-block",
+            color: "white",
+            fontSize: "40px",
+            lineHeight: "140%",
+            textAlign: "center",
+            margin: "40px 20px 20px 20px"
+        }}>Мы свяжемся с вами и расскажем, что дальше
         </p>
     }
 
@@ -210,7 +221,7 @@ function OrderForm() {
         const isMounting = props.isMounting;
         const isDismounting = props.isDismounting;
 
-        if (IsButtonPressed) {
+        if (IsSendMail) {
             return <Text/>
         }
 
@@ -220,6 +231,8 @@ function OrderForm() {
             return <FinalPrice/>
         }
     }
+
+    let IsSendMail = false
 
     return (
         <div className={'inputs-container'}>
@@ -247,10 +260,19 @@ function OrderForm() {
                 />
                 <FinalCheckbox/>
                 <OrderButton onClickHandler={
-                    () => console.log(2)
+                    (event) => {
+                        if (!IsSendMail) {
+                            IsSendMail = true
+                            sendMail(event)
+                                .then(_ => console.log("Email send successful"))
+                                .catch(_ => console.log("Something went wrong"))
+                        } else {
+                            console.log("Email has already been sent")
+                        }
+                    }
                 }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
-                                  isDismounting={buttonSendOrderContext.dismantlingOldPlate} />
+                                  isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
                 <br/>
             </form>
         </div>

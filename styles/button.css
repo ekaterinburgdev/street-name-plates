@@ -39,6 +39,8 @@
 }
 
 .OrderButtonAnimation::before {
+    animation-duration: 3s;
+    animation-name: slidein;
     content: "";
     position: absolute;
     top: 0;
@@ -50,8 +52,60 @@
     border: none;
 }
 
+@keyframes slidein {
+    from {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        margin: -10px;
+        border-radius: inherit;
+        background: linear-gradient(
+                #fec72e,
+                #fec72e,
+                #00d200,
+                #00d200,
+                #00b4ff,
+                #00b4ff
+        );
+    }
+
+    to {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: none;
+    }
+
+    50% {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        margin: -10px;
+        border-radius: inherit;
+        background: linear-gradient(
+                #00d200,
+                #00b4ff,
+                #00b4ff,
+                #fec72e,
+                #fec72e,
+                #00d200
+        );
+    }
+}
+
 .StyledSubmitButton {
     color: #fec72e;
+    cursor: default;
 }
 
 input {

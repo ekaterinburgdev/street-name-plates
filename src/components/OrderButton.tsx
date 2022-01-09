@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import {ButtonSendOrderContext} from "./OrderForm";
 
-export let IsButtonPressed = false
+export let IsPressedButton = false
 
 const OrderButton = ({ onClickHandler }) => {
     let [style, setStyle] = useState("OrderButton")
@@ -12,10 +12,10 @@ const OrderButton = ({ onClickHandler }) => {
     function animationButton(func) {
         return function () {
             if (buttonSendOrderContext.buttonSendOrderContext.clientContact && buttonSendOrderContext.buttonSendOrderContext.clientName) {
-                IsButtonPressed = true
                 setStyle("OrderButtonAnimation")
                 setVal("Спасибо!")
                 setClassName("StyledSubmitButton")
+                IsPressedButton = true
                 return func.apply(this, arguments)
             }
         }
