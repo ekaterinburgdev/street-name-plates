@@ -1,4 +1,4 @@
-.Button {
+.OrderButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -18,6 +18,42 @@
     border-radius: 100px;
 }
 
+.OrderButtonAnimation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    margin-top: 50px;
+    background: black;
+
+    width: 900px;
+    height: 150px;
+
+    position: relative;
+    box-sizing: border-box;
+
+    background-clip: padding-box;
+    border: solid 10px transparent;
+    border-radius: 100px;
+}
+
+.OrderButtonAnimation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -10px;
+    border: none;
+}
+
+.StyledSubmitButton {
+    color: #fec72e;
+}
+
 input {
     font-family: Iset Sans;
     font-style: normal;
@@ -33,7 +69,7 @@ input {
     cursor: pointer;
 }
 
-.Button::before {
+.OrderButton::before {
     content: "";
     position: absolute;
     top: 0;

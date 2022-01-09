@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import Button from "./Button";
+import OrderButton from "./OrderButton";
 import {StreetType} from "./StreerPlate";
 import {ExportPrice} from "./StreerPlate";
+import {IsButtonPressed} from "./OrderButton";
 
 type MessageDataType = {
     street: StreetType,
@@ -29,9 +30,11 @@ export const defaultMessageData: MessageDataType = {
 
 export const ButtonSendOrderContext = React.createContext({
     buttonSendOrderContext: defaultMessageData,
-    setButtonSendOrderContext: (messageData: MessageDataType) => {
-    }
+    setButtonSendOrderContext: (messageData: MessageDataType) => {}
 })
+
+export let Name = ""
+export let Contact = ""
 
 function useInput(defaultValue) {
     const [value, setValue] = useState(defaultValue);
@@ -156,6 +159,7 @@ function OrderForm() {
         fontFamily: "Iset Sans",
         fontStyle: "normal",
         fontWeight: "normal",
+        display: "inline-block",
         color: "white",
         fontSize: "40px",
         lineHeight: "140%",
@@ -176,38 +180,29 @@ function OrderForm() {
     }
 
     function FinalPrice() {
+        return (
+            <div>
+                <p style={styleFinalPrice}>
+                    Общая стоимость <span style={{marginLeft: "3em"}}/>{
+                    ExportPrice == undefined ? calculateFinalPrice(4990)
+                        : calculateFinalPrice(ExportPrice)
+                } ₽
+                </p>
+            </div>)
+    }
+
+    function FinalPriceWithDismountingOrMounting() {
         return <p style={styleFinalPrice}>
-            Общая стоимость — до {
+            Общая стоимость<span style={{marginLeft: "3em"}}/>{
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
-        } ₽
+        } ₽ <br/><span style={{fontSize: "smaller !important", opacity: "0.5"}}/>зависит от сложности работ
         </p>
     }
 
-    function FinalPriceWithMounting() {
+    function Text() {
         return <p style={styleFinalPrice}>
-            Общая стоимость зависит от сложности монтажа, но будет до {
-            ExportPrice == undefined ? calculateFinalPrice(4990)
-                : calculateFinalPrice(ExportPrice)
-        } ₽
-        </p>
-    }
-
-    function FinalPriceWithDismounting() {
-        return <p style={styleFinalPrice}>
-            Общая стоимость зависит от сложности демонтажа, но будет до {
-            ExportPrice == undefined ? calculateFinalPrice(4990)
-                : calculateFinalPrice(ExportPrice)
-        } ₽
-        </p>
-    }
-
-    function FinalPriceWithDismountingAndMounting() {
-        return <p style={styleFinalPrice}>
-            Общая стоимость зависит от сложности монтажа и демонтажа, но будет до {
-            ExportPrice == undefined ? calculateFinalPrice(4990)
-                : calculateFinalPrice(ExportPrice)
-        } ₽
+            Мы свяжемся с вами и расскажем, что дальше
         </p>
     }
 
@@ -215,12 +210,12 @@ function OrderForm() {
         const isMounting = props.isMounting;
         const isDismounting = props.isDismounting;
 
-        if (isMounting && isDismounting) {
-            return <FinalPriceWithDismountingAndMounting/>
-        } else if (isMounting) {
-            return <FinalPriceWithMounting/>
-        } else if (isDismounting) {
-            return <FinalPriceWithDismounting/>
+        if (IsButtonPressed) {
+            return <Text/>
+        }
+
+        if (isMounting || isDismounting) {
+            return <FinalPriceWithDismountingOrMounting/>
         } else {
             return <FinalPrice/>
         }
@@ -228,9 +223,7 @@ function OrderForm() {
 
     return (
         <div className={'inputs-container'}>
-            <form onSubmit={() => {
-                event.preventDefault()
-            }}>
+            <form onSubmit={ event => event.preventDefault() }>
                 <p style={styleInfoText}>
                     Оставьте любимый способ связи.
                     <br/>
@@ -241,7 +234,7 @@ function OrderForm() {
                        placeholder="Имя"
                        onChange={event => setButtonSendOrderContext({
                            ...buttonSendOrderContext,
-                           clientName: event.target.value
+                           clientName: event.target.value,
                        })}/>
                 <input required={true}
                     className={'StyledInput'}
@@ -253,8 +246,8 @@ function OrderForm() {
                     })}
                 />
                 <FinalCheckbox/>
-                <Button value={"Оформить заявку на табличку"} onClick={
-                    (event) => sendMail(event)
+                <OrderButton onClickHandler={
+                    () => console.log(2)
                 }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
                                   isDismounting={buttonSendOrderContext.dismantlingOldPlate} />
