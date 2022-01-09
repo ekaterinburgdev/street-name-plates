@@ -16,42 +16,31 @@ const Home = () => {
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
 
     return (
-        <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
-            <ChangeColorContext.Provider value={valueColorContext}>
-                <div style={{margin: '0px', padding: '0px'}}>
-                    <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
-                        <div className={Style.front_wrapper}>
-                            <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
-                            <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                            <StreerPlate/>
+        <>
+            <div className={Style.header}>
+
+            </div>
+            <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
+                <ChangeColorContext.Provider value={valueColorContext}>
+                    <div style={{margin: '0px', padding: '0px'}}>
+                        <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
+                            <div className={Style.front_wrapper}>
+                                <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
+                                <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
+                                <StreerPlate/>
+                            </div>
+                        </div>
+                        <div className={Style.inputs}>
+                            <div className={Style.change_color_container}>
+                                <p className={Style.inputs_p_wrapper}>Фасад</p>
+                                <ChangeColor/>
+                            </div>
+                            <OrderForm/>
                         </div>
                     </div>
-                    <div className={Style.inputs}>
-                        <div className={Style.change_color_container}>
-                            <p className={Style.inputs_p_wrapper}>Фасад</p>
-                            <ChangeColor/>
-                        </div>
-                        <OrderForm/>
-                    </div>
-                </div>
-                {/*<div style={{backgroundImage: `url("${colorContext.frontImage}")`}}>*/}
-                {/*    <div className={Style.container_start}>*/}
-                {/*        <div>*/}
-                {/*            <h1>Заказ адресной таблички</h1>*/}
-                {/*            <p>Введите название улицы и номер дома</p>*/}
-                {/*        </div>*/}
-                {/*        <ChangeColor className={Style.change_color}/>*/}
-                {/*    </div>*/}
-                {/*    <div className={Style.container_start}>*/}
-                {/*        <div>*/}
-                {/*            <StreerPlate/>*/}
-                {/*            <Inputs/>*/}
-                {/*        </div>*/}
-                {/*        <Window/>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-            </ChangeColorContext.Provider>
-        </ButtonSendOrderContext.Provider>
+                </ChangeColorContext.Provider>
+            </ButtonSendOrderContext.Provider>
+        </>
     )
 }
 

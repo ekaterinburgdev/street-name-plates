@@ -19,6 +19,14 @@
     align-items: center;
 }
 
+.header {
+    height: 765px;
+    width: 100%;
+    background: no-repeat;
+    background-size: cover;
+    background-image: url("../public/cover.png");
+}
+
 .front_wrapper {
     margin: 0px;
     padding: 0px;
