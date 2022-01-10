@@ -54,6 +54,38 @@
 
 }
 
+.line {
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 140%;
+    /* identical to box height, or 56px */
+
+    text-align: center;
+    margin-bottom: 25px;
+    /* Белый */
+
+    color: #FFFFFF;
+}
+
+.doc_link {
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 140%;
+    /* identical to box height, or 56px */
+
+    text-align: center;
+    text-decoration-line: underline;
+
+    /* Белый */
+
+    color: #FFFFFF;
+
+}
+
 .container_start {
     display: flex;
 }
