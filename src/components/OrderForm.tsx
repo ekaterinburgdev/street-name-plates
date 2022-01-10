@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useState} from "react";
 import OrderButton from "./OrderButton";
-import {StreetType} from "./StreerPlate";
-import {ExportPrice} from "./StreerPlate";
+import {StreetType} from "./StreetPlate";
+import {ExportPrice} from "./StreetPlate";
 import {IsPressedButton} from "./OrderButton";
 
 type MessageDataType = {
