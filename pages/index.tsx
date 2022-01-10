@@ -1,4 +1,4 @@
-import StreerPlate from "../src/components/StreerPlate";
+import StreetPlate from "../src/components/StreetPlate";
 import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/components/OrderForm';
 import Window from "../src/components/Window";
 import ChangeColor from "../src/components/ChangeColor";
@@ -41,6 +41,16 @@ const Home = () => {
                                 <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
                                 <StreerPlate/>
                             </div>
+
+        <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
+            <ChangeColorContext.Provider value={valueColorContext}>
+                <div style={{margin: '0px', padding: '0px'}}>
+                    <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
+                        <div className={Style.front_wrapper}>
+                            <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
+                            <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
+                            <StreetPlate/>
+
                         </div>
                         <div className={Style.inputs}>
                             <div className={Style.change_color_container}>
