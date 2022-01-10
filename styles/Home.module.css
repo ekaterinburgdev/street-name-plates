@@ -46,6 +46,14 @@
     color: #FFFFFF;
 }
 
+.bad_plates_container {
+    width: 100%;
+    height: 642px;
+    background: url("../public/bad_plates.png") no-repeat;
+    background-size: 100% auto;
+
+}
+
 .container_start {
     display: flex;
 }

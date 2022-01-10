@@ -32,6 +32,7 @@ const Home = () => {
                     и насмотренность у жителей и гостей города.
                 </p>
             </div>
+            <div className={Style.bad_plates_container}></div>
             <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
                 <ChangeColorContext.Provider value={valueColorContext}>
                     <div style={{margin: '0px', padding: '0px'}}>
