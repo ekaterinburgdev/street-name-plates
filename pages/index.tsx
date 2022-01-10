@@ -18,7 +18,19 @@ const Home = () => {
     return (
         <>
             <div className={Style.header}>
-
+            </div>
+            <div className={Style.description_wrapper}>
+                <h1 className={Style.description_heading}>Адресные таблички</h1>
+                <p className={Style.description_text}>
+                    В Екатеринбурге несколько тысяч зданий, на каждом
+                    из них висит как минимум одна адресная табличка.
+                    Мы смотрим на них каждый день и с их помощью
+                    ориентируемся в улицах и номерах домов. Это одна
+                    из самых часто встречающихся деталей городской
+                    навигации. Таблички могли бы выполнять не только
+                    функциональную роль, но и воспитывать вкус
+                    и насмотренность у жителей и гостей города.
+                </p>
             </div>
             <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
                 <ChangeColorContext.Provider value={valueColorContext}>
