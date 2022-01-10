@@ -33,10 +33,11 @@ const Home = () => {
                 </p>
             </div>
             <div className={Style.bad_plates_container}></div>
-            <div >
+            <div>
                 <p className={Style.line}>_____</p>
                 <p className={Style.doc_link}>
-                    <a href={'https://docs.google.com/document/d/1etPPaqAu97npLfrJSLkCIbtDx4_RMURUv5bBg2AFr9U/edit?usp=sharing'} rel="noreferrer" target='_blank'>
+                    <a href={'https://docs.google.com/document/d/1etPPaqAu97npLfrJSLkCIbtDx4_RMURUv5bBg2AFr9U/edit?usp=sharing'}
+                       rel="noreferrer" target='_blank'>
                         Черновик анонса в гуглодоке
                     </a>
                 </p>
@@ -62,6 +63,36 @@ const Home = () => {
                     </div>
                 </ChangeColorContext.Provider>
             </ButtonSendOrderContext.Provider>
+            {/*<div>*/}
+            {/*    <div>*/}
+            {/*        <ul>*/}
+            {/*            <li>дизайн</li>*/}
+            {/*            <li><a>Паша Омелёхин</a></li>*/}
+            {/*        </ul>*/}
+            {/*        <ul>*/}
+            {/*            <li>*/}
+            {/*                промодизайн</li>*/}
+            {/*            <li><a></a></li>*/}
+            {/*        </ul>*/}
+            {/*        <ul>*/}
+            {/*            <li></li>*/}
+            {/*            <li><a></a></li>*/}
+            {/*        </ul>*/}
+            {/*        <ul>*/}
+            {/*            <li></li>*/}
+            {/*            <li><a></a></li>*/}
+            {/*        </ul>*/}
+            {/*        <ul>*/}
+            {/*            <li></li>*/}
+            {/*            <li><a></a></li>*/}
+            {/*        </ul>*/}
+            {/*        <ul>*/}
+            {/*            <li></li>*/}
+            {/*            <li><a></a></li>*/}
+            {/*        </ul>*/}
+            {/*    </div>*/}
+
+            {/*</div>*/}
         </>
     )
 }
