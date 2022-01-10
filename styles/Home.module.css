@@ -1,9 +1,57 @@
 .my_header {
+    display: flex;
+    justify-content: space-between;
+
     height: 765px;
     width: 100%;
     background: no-repeat;
     background-size: cover;
     background-image: url("../public/cover.png");
+}
+
+.my_header a {
+    margin-left: 10px;
+    margin-top: 10px;
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 140%;
+    /* identical to box height, or 56px */
+
+    text-align: center;
+    text-decoration-line: underline;
+
+    /* Белый */
+
+    color: #FFFFFF;
+}
+
+.button_to_scroll {
+    margin-top: 40px;
+    margin-right: 40px;
+
+    width: 282px;
+    height: 68px;
+    background-color: Transparent;
+
+    border: 10px solid #FEC72E;
+    box-sizing: border-box;
+    border-radius: 40px;
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    /* identical to box height, or 28px */
+
+    text-align: center;
+
+    /* Белый */
+
+    color: #FFFFFF;
 }
 
 .description_wrapper{

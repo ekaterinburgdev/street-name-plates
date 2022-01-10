@@ -1,8 +1,6 @@
 import StreetPlate from "../src/components/StreetPlate";
 import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/components/OrderForm';
-import Window from "../src/components/Window";
 import ChangeColor from "../src/components/ChangeColor";
-import Price from "../src/components/Price";
 import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
 import React from "react";
 import Style from '../styles/Home.module.css';
@@ -15,9 +13,13 @@ const Home = () => {
     const [buttonSendOrderContext, setButtonSendOrderContext] = React.useState(defaultMessageData);
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
 
+    const refPlate = React.useRef(null);
+
     return (
         <>
             <div className={Style.my_header}>
+                <a href={''} rel="noreferrer" target='_blank'>Дизайн-код Екатеринбурга</a>
+                <button className={Style.button_to_scroll} onClick={() => refPlate.current.scrollIntoView()}>Заказать табличку</button>
             </div>
             <div className={Style.description_wrapper}>
                 <h1 className={Style.description_heading}>Адресные таблички</h1>
@@ -48,9 +50,10 @@ const Home = () => {
                     <div style={{margin: '0px', padding: '0px'}}>
                         <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
                             <div className={Style.front_wrapper}>
+                                <div ref={refPlate}></div> {/*якорь для скролла) (и снова костыли)*/}
                                 <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                                 <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                                <StreetPlate/>
+                                <StreetPlate />
                             </div>
                         </div>
                         <div className={Style.inputs}>
@@ -63,36 +66,6 @@ const Home = () => {
                     </div>
                 </ChangeColorContext.Provider>
             </ButtonSendOrderContext.Provider>
-            {/*<div>*/}
-            {/*    <div>*/}
-            {/*        <ul>*/}
-            {/*            <li>дизайн</li>*/}
-            {/*            <li><a>Паша Омелёхин</a></li>*/}
-            {/*        </ul>*/}
-            {/*        <ul>*/}
-            {/*            <li>*/}
-            {/*                промодизайн</li>*/}
-            {/*            <li><a></a></li>*/}
-            {/*        </ul>*/}
-            {/*        <ul>*/}
-            {/*            <li></li>*/}
-            {/*            <li><a></a></li>*/}
-            {/*        </ul>*/}
-            {/*        <ul>*/}
-            {/*            <li></li>*/}
-            {/*            <li><a></a></li>*/}
-            {/*        </ul>*/}
-            {/*        <ul>*/}
-            {/*            <li></li>*/}
-            {/*            <li><a></a></li>*/}
-            {/*        </ul>*/}
-            {/*        <ul>*/}
-            {/*            <li></li>*/}
-            {/*            <li><a></a></li>*/}
-            {/*        </ul>*/}
-            {/*    </div>*/}
-
-            {/*</div>*/}
         </>
     )
 }
