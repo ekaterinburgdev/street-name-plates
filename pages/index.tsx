@@ -1,5 +1,5 @@
-import Autocomplete from "../src/components/Autocomplete";
-import Inputs, {defaultMessageData, ButtonSendOrderContext} from '../src/components/inputs';
+import StreerPlate from "../src/components/StreerPlate";
+import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/components/OrderForm';
 import Window from "../src/components/Window";
 import ChangeColor from "../src/components/ChangeColor";
 import Price from "../src/components/Price";
@@ -23,16 +23,15 @@ const Home = () => {
                         <div className={Style.front_wrapper}>
                             <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                             <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                            <Autocomplete/>
+                            <StreerPlate/>
                         </div>
-                        <Price className={Style.price} isTotalPrice={false}/>
                     </div>
                     <div className={Style.inputs}>
                         <div className={Style.change_color_container}>
                             <p className={Style.inputs_p_wrapper}>Фасад</p>
                             <ChangeColor/>
                         </div>
-                        <Inputs/>
+                        <OrderForm/>
                     </div>
                 </div>
                 {/*<div style={{backgroundImage: `url("${colorContext.frontImage}")`}}>*/}
@@ -45,7 +44,7 @@ const Home = () => {
                 {/*    </div>*/}
                 {/*    <div className={Style.container_start}>*/}
                 {/*        <div>*/}
-                {/*            <Autocomplete/>*/}
+                {/*            <StreerPlate/>*/}
                 {/*            <Inputs/>*/}
                 {/*        </div>*/}
                 {/*        <Window/>*/}

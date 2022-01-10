@@ -11,6 +11,8 @@
     align-items: center;
     --front-color: #EBEAE8;
     --font-color: #26255D;
+    --text-align-input: left;
+    --plate-color: #FFFFFF;
 }
 
 .suggestion {
@@ -109,7 +111,6 @@
     align-items: center;
     margin-top: 41px; /*от инпута с латинским названием*/
     margin-left: -25px; /*костылёк)*/
-
 }
 
 /*Стили для таблички*/
@@ -118,13 +119,11 @@
     margin-top: 15.11px;
     margin-bottom: 14.67px;
     display: block;
-    /*width: 474.67px;*/
-    /*width: auto;*/
-    /*margin-right: 25px;*/
     width: calc(100% - 186px); /*костыль*/
 }
 
 .street input {
+    text-align: var(--text-align-input);
     border: none;
     background: transparent;
     outline: none;
@@ -139,7 +138,7 @@
 
 .street_type {
     display: block;
-    /*width: 426.67px;*/
+    width: 100%;
     height: 29px;
 
     font-family: Iset Sans;
@@ -147,19 +146,15 @@
     font-weight: normal;
     font-size: 29.3333px;
     line-height: 29px;
-    /* or 29px */
 
     letter-spacing: 0.11em;
     text-transform: uppercase;
-
-    /* Тёмно-синий */
 
     color: var(--font-color);
 }
 
 .street_name {
     display: block;
-    /*width: 426.67px;*/
     width: 100%;
     height: 69px;
 
@@ -207,7 +202,7 @@
 
     padding-left: 24px;
     display: flex;
-    background-color: #FFFFFF;
+    background-color: var(--plate-color);
     /*width: 640px;*/
     height: 160px;
 
@@ -310,18 +305,37 @@
     margin: 0px;
     padding: 0px;
 
-    /*background-color: whitesmoke;*/
+    /* Текст по-жирнее */
 
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 22px;
-    line-height: 31px;
-    /* or 31px */
+    font-size: 40px;
+    line-height: 140%;
 
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.size_and_price_container{
+    display: flex;
     grid-column-start: 2;
     grid-row-start: 2;
-    justify-self: center;
-    color: #00000080;
-    /*opacity: 0.5;*/ /*плохое свойство!*/
+    justify-content: space-between;
+}
+
+.price {
+    /* H3 */
+
+    font-family: Iset Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 100%;
+    /* identical to box height, or 60px */
+
+    text-align: right;
+
+    /* Белый 80% */
+
+    color: rgba(255, 255, 255, 0.8);
 }

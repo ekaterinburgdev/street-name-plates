@@ -37,14 +37,14 @@
 }
 
 .color_container:hover input ~ .checkmark {
-    border: 5px solid #777777;
+    border: 7px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
     transform-origin: center center;
     transform: scale(1.2);
 }
 
 .color_container input:checked ~ .checkmark {
-    border: 5px solid #777777;
+    border: 7px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
     transform-origin: center center;
     transform: scale(1.2);
