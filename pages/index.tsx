@@ -17,7 +17,7 @@ const Home = () => {
 
     return (
         <>
-            <div className={Style.header}>
+            <div className={Style.my_header}>
             </div>
             <div className={Style.description_wrapper}>
                 <h1 className={Style.description_heading}>Адресные таблички</h1>
