@@ -126,6 +126,8 @@ function OrderForm() {
     // @ts-ignore
     const inputCommProps = useInput();
 
+    const [isClicked, setIsClicked] = React.useState(false);
+
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const sendMail = async (event) => {
@@ -225,7 +227,7 @@ function OrderForm() {
         const isMounting = props.isMounting;
         const isDismounting = props.isDismounting;
 
-        if (IsPressedButton) {
+        if (isClicked) {
             return <Text/>
         }
 
@@ -267,6 +269,7 @@ function OrderForm() {
                 <FinalCheckbox/>
                 <OrderButton onClickHandler={
                     (event) => {
+                        setIsClicked(true);
                         if (!IsSendMail) {
                             IsSendMail = true
                             sendMail(event)
