@@ -81,7 +81,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
     } = React.useContext(ButtonSendOrderContext);
 
     return (
-        <>
+        <div className={'check-container'}>
             {checkboxes.map((checkbox, i) => (
                 <label className={'check option'} key={i}>
                     <input
@@ -105,7 +105,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                     </span>{checkbox.name}
                 </label>
             ))}
-        </>
+        </div>
     );
 }
 
@@ -144,8 +144,6 @@ function OrderForm() {
     const styleInfoText = {
         marginTop: "120px",
         marginBottom: "40px",
-
-        fontFamily: "Iset Sans",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: "2.5rem",
@@ -170,7 +168,6 @@ function OrderForm() {
         return (
             <div>
                 <p style={{
-                    fontFamily: "Iset Sans",
                     fontStyle: "normal",
                     fontWeight: "normal",
                     display: "inline-block",
@@ -189,7 +186,6 @@ function OrderForm() {
 
     function FinalPriceWithDismountingOrMounting() {
         return <p style={{
-            fontFamily: "Iset Sans",
             fontStyle: "normal",
             fontWeight: "normal",
             display: "inline-block",
@@ -210,7 +206,6 @@ function OrderForm() {
 
     function Text() {
         return <p style={{
-            fontFamily: "Iset Sans",
             fontStyle: "normal",
             fontWeight: "normal",
             display: "inline-block",

@@ -1,6 +1,7 @@
 .change_color_container {
     display: flex;
     height: 60px;
+    column-gap: 14px;
     /*width: 240px;*/
 }
 
@@ -15,7 +16,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin-right: 7px;
 }
 
 .color_container input {

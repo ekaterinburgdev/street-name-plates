@@ -1,3 +1,4 @@
+@import 'normalize.css';
 @import './font.css';
 
 html,
@@ -14,6 +15,21 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+
+input {
+  font-style: normal;
+  font-size: 3.125rem;
+  line-height: 1.4;
+  border: none;
+  display: inline;
+  width: auto;
+  height: auto;
+  background: black;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 
 * {

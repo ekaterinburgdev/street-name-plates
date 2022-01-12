@@ -1,6 +1,5 @@
 .StyledInput {
     outline: none !important;
-    font-family: Iset Sans;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -34,6 +33,10 @@
     border: 8px solid #E1222D;
 }
 
+.check-container {
+    margin: 4rem 0;
+}
+
 .check {
     display: flex;
     align-items: center;
@@ -41,12 +44,9 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     color: #FFFFFF;
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.875rem;
+    font-size: 2.5rem;
     line-height: 1.4;
-    margin-top: 30px;
+    margin-top: 1em;
 }
 
 .check__input__0 {
@@ -120,9 +120,6 @@
 p {
     margin: 0px;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 1.875rem;
     line-height: 1.4;
 

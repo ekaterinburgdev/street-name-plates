@@ -114,21 +114,6 @@
     outline: none;
 }
 
-input {
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 3.125rem;
-    line-height: 1.4;
-    border: none;
-    display: inline;
-    width: auto;
-    height: auto;
-    background: black;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
 .OrderButton::before {
     content: "";
     position: absolute;
