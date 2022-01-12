@@ -34,21 +34,15 @@
     width: 60px;
     background-color: #eee;
     border-radius: 50%;
+    transition: .15s ease transform;
 }
 
-.color_container:hover input ~ .checkmark {
-    border: 7px solid rgba(255, 255, 255, 0.3);
-    border-radius: 40px;
-    transform-origin: center center;
-    transform: scale(1.2);
-}
-
+.color_container:hover input ~ .checkmark,
 .color_container input:checked ~ .checkmark {
     border: 7px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
     transform-origin: center center;
     transform: scale(1.2);
-
 }
 
 .checkmark:after {

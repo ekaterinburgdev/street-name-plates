@@ -139,6 +139,7 @@ input {
     z-index: -1;
     margin: -10px;
     border-radius: inherit;
+    transition: .15s ease margin;
     background: linear-gradient(
             #fec72e,
             #fec72e,
@@ -147,4 +148,8 @@ input {
             #00b4ff,
             #00b4ff
     );
+}
+
+.OrderButton:hover::before {
+    margin: -15px;
 }
