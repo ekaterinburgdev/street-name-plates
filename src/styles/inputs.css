@@ -4,8 +4,6 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    order: 0;
-    flex-grow: 0;
     margin-top: 1em;
     margin-bottom: 1em;
     width: 100%;
@@ -69,22 +67,29 @@
 }
 
 .check__box__0 {
-    display: flex;
-    width: 369px;
+    flex-grow: 1;
     height: 88px;
     background-image: url("../checkboxStates/Демонтаж-Неактивный.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__0:checked + .check__box__0 {
     background-image: url("../checkboxStates/Демонтаж-Активный.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__0:focus + .check__box__0 {
     background-image: url("../checkboxStates/Демонтаж-Фокус.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__0:checked:focus + .check__box__0 {
     background-image: url("../checkboxStates/Демонтаж-Активный.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__1 {
@@ -94,22 +99,29 @@
 }
 
 .check__box__1 {
-    display: flex;
-    width: 328px;
+    flex-grow: 1;
     height: 88px;
     background-image: url("../checkboxStates/Монтаж-Неактивный.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__1:checked + .check__box__1 {
     background-image: url("../checkboxStates/Монтаж-Активный.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__1:focus + .check__box__1 {
     background-image: url("../checkboxStates/Монтаж-Фокус.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .check__input__1:checked:focus + .check__box__1 {
     background-image: url("../checkboxStates/Монтаж-Активный.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 p {
