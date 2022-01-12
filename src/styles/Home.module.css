@@ -57,7 +57,8 @@
 .description_wrapper{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    padding: 0 2rem;
 }
 
 .description_heading{
@@ -85,7 +86,7 @@
     /* or 56px */
 
     white-space: pre-line;
-    width: 1024px;
+    max-width: 1024px;
     margin-bottom: 80px;
     align-self: center;
 
@@ -155,12 +156,8 @@
 }
 
 .front_wrapper {
-    margin: 0px;
-    padding: 0px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    margin: 0;
+    padding: 0 2rem;
 }
 
 .h1_wrapper {
@@ -205,6 +202,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 2rem;
 }
 
 .change_color_container {

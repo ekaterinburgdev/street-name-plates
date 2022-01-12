@@ -251,7 +251,7 @@ const StreetPlate = () => {
             '--text-align-input' : isHistory ? 'center' : 'left',
             '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
         }}>
-            <div className={Style.plate} style={{width: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
+            <div className={Style.plate} style={{maxWidth: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
                 <div className={Style.street}>
                     <input
                         className={Style.street_type}

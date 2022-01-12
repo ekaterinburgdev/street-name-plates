@@ -1,10 +1,6 @@
 /*Стили для списка предложений автокомплита*/
 
 .plate_container {
-    display: grid;
-    grid-gap: 20px;
-    grid-auto-columns: min-content;
-    grid-auto-rows: min-content;
     margin: 0px;
     margin-top: 40px;
     padding: 0px;
@@ -196,18 +192,14 @@
 }
 
 .plate {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    margin-left: 0px;
-
-    padding-left: 24px;
     display: flex;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    padding-left: 24px;
     background-color: var(--plate-color);
     /*width: 640px;*/
     height: 160px;
     /*font-size: 180px;*/
-
-
     filter: drop-shadow(0px 5px 0px rgba(38, 37, 93, 0.3)) drop-shadow(6.22222px 17.7778px 35.5555px rgba(23, 22, 58, 0.1));
     border-radius: 10px;
     justify-content: flex-start;
@@ -307,8 +299,6 @@
     /* or 31px */
 
     transform: rotate(-90deg);
-    grid-column-start: 1;
-    grid-row-start: 1;
     justify-self: center;
     margin-left: -15px;
     margin-right: -27px; /*Два костыля, тк были отступы, не ясно откуда появившиеся*/
@@ -332,8 +322,6 @@
 
 .size_and_price_container{
     display: flex;
-    grid-column-start: 2;
-    grid-row-start: 2;
     justify-content: space-between;
 }
 

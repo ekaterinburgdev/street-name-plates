@@ -8,7 +8,8 @@
     flex-grow: 0;
     margin-top: 1em;
     margin-bottom: 1em;
-    width: 900px;
+    width: 100%;
+    max-width: 900px;
     height: 120px;
     border: none;
     padding: .8em .6em .8em .8em;
@@ -30,7 +31,7 @@
     flex-grow: 0;
     margin-top: 1em;
     margin-bottom: 1em;
-    width: 900px;
+    max-width: 900px;
     height: 120px;
     border: 8px solid #FFFFFF;
     color: #FFFFFF;
@@ -43,29 +44,15 @@
 }
 
 .StyledInput:focus:required:invalid {
-    font-family: Iset Sans;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    order: 0;
-    flex-grow: 0;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 900px;
     border: 8px solid #E1222D;
-    box-sizing: border-box;
-    border-radius: 24px;
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2.5rem;
-    line-height: 1.4;
-    background: #2F2F2F;
 }
 
 .check {
     display: flex;
+    align-items: center;
+    column-gap: 1em;
     flex-direction: row-reverse;
+    justify-content: space-between;
     color: #FFFFFF;
     font-family: Iset Sans;
     font-style: normal;
@@ -138,6 +125,6 @@ p {
 }
 
 .inputs-container {
-    width: 640px;
+    max-width: 900px;
     height: 696px;
 }
