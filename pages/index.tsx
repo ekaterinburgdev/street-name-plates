@@ -4,6 +4,7 @@ import ChangeColor from "../src/components/ChangeColor";
 import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
 import React from "react";
 import Style from '../src/styles/Home.module.css';
+import Head from 'next/head';
 
 const Home = () => {
     const [colorContext, setColorContext] = React.useState(COLORS[0]);  //насколько костыль так делать???
@@ -16,6 +17,10 @@ const Home = () => {
 
     return (
         <>
+            <Head>
+                <title>Адресные таблички | Дизайн-код Екатеринбурга</title>
+            </Head>
+
             <div className={Style.my_header}>
                 <a href={''} rel="noreferrer" target='_blank'>Дизайн-код Екатеринбурга</a>
                 <button className={Style.button_to_scroll} onClick={() => refPlate.current.scrollIntoView()}>Заказать табличку</button>
