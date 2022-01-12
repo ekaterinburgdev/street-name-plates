@@ -148,8 +148,8 @@ function OrderForm() {
         fontFamily: "Iset Sans",
         fontStyle: "normal",
         fontWeight: "normal",
-        fontSize: "40px",
-        lineHeight: "140%",
+        fontSize: "2.5rem",
+        lineHeight: "1.4",
 
         color: "#FFFFFF"
     };
@@ -175,8 +175,8 @@ function OrderForm() {
                     fontWeight: "normal",
                     display: "inline-block",
                     color: "white",
-                    fontSize: "40px",
-                    lineHeight: "140%",
+                    fontSize: "2.5rem",
+                    lineHeight: "1.4",
                     margin: "40px 20px 20px 20px"
                 }}>
                     Общая стоимость<span style={{marginLeft: "90px"}}/>{
@@ -194,15 +194,15 @@ function OrderForm() {
             fontWeight: "normal",
             display: "inline-block",
             color: "white",
-            fontSize: "40px",
-            lineHeight: "140%",
+            fontSize: "2.5rem",
+            lineHeight: "1.4",
             margin: "40px 20px 20px 20px"
         }}>
             Общая стоимость<span style={{marginLeft: "70px"}}/>до {
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
         } ₽ <br/>
-            <span style={{fontSize: "20px !important", opacity: "0.5"}}>
+            <span style={{fontSize: "1.25rem !important", opacity: "0.5"}}>
                 зависит от сложности работ
             </span>
         </p>
@@ -215,8 +215,8 @@ function OrderForm() {
             fontWeight: "normal",
             display: "inline-block",
             color: "white",
-            fontSize: "40px",
-            lineHeight: "140%",
+            fontSize: "2.5rem",
+            lineHeight: "1.4",
             textAlign: "center",
             margin: "40px 20px 20px 20px"
         }}>Мы свяжемся с вами и расскажем, что дальше

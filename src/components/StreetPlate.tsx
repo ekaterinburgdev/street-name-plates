@@ -22,7 +22,7 @@ const StreetPlate = () => {
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
     const [isHistory, setIsHistory] = React.useState(false);
     const [buildNumber, setBuildNumber] = React.useState<string>();
-    const [plateWidthPX, setPlateWidthPX] = React.useState('225px');
+    const [plateWidthPX, setPlateWidthPX] = React.useState('14.0625rem');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [platePrice, setPlatePrice] = React.useState(4990)
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('0.75em');
@@ -39,19 +39,19 @@ const StreetPlate = () => {
 
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
-            setPlateWidthPX('225px');
+            setPlateWidthPX('14.0625rem');
             setPlatePrice(4990);
             ExportPrice = 4990;
             //изменение в самую маленькую табличку
         } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
-            setPlateWidthPX('180px');
+            setPlateWidthPX('11.25rem');
             setPlatePrice(7990);
             ExportPrice = 7990;
             //изменение в среднюю табличку
         } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
-            setPlateWidthPX('150px');
+            setPlateWidthPX('9.375rem');
             setPlatePrice(11990);
             ExportPrice = 11990;
             //изменение в сааамую большую табличку

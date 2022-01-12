@@ -16,8 +16,8 @@
     /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 140%;
+    font-size: 1.25rem;
+    line-height: 1.4;
     /* identical to box height, or 56px */
 
     text-align: center;
@@ -43,8 +43,8 @@
     /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 140%;
+    font-size: 1.25rem;
+    line-height: 1.4;
     /* identical to box height, or 28px */
 
     text-align: center;
@@ -64,8 +64,8 @@
     /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: 600;
-    font-size: 120px;
-    line-height: 100%;
+    font-size: 7.5rem;
+    line-height: 1;
     /* identical to box height, or 120px */
 
 
@@ -80,8 +80,8 @@
     /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 56px;
+    font-size: 2.5rem;
+    line-height: 1.4;
     /* or 56px */
 
     white-space: pre-line;
@@ -105,8 +105,8 @@
     /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 140%;
+    font-size: 2.5rem;
+    line-height: 1.4;
     /* identical to box height, or 56px */
 
     text-align: center;
@@ -120,8 +120,8 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 140%;
+    font-size: 2.5rem;
+    line-height: 1.4;
     /* identical to box height, or 56px */
 
     text-align: center;
@@ -170,7 +170,7 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: 600;
-    font-size: 120px;
+    font-size: 7.5rem;
     line-height: 120px;
     /* or 120px */
 
@@ -186,8 +186,8 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 140%;
+    font-size: 2.5rem;
+    line-height: 1.4;
     /* identical to box height, or 56px */
 
 
@@ -217,8 +217,8 @@
     font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
-    line-height: 42px;
+    font-size: 1.875rem;
+    line-height: 1;
     /* identical to box height, or 42px */
 
 
@@ -227,19 +227,4 @@
     color: rgba(255, 255, 255, 0.8);
 
     margin-right: 40px;
-}
-
-.price {
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 60px;
-    line-height: 60px;
-    /* identical to box height, or 60px */
-
-    text-align: right;
-
-    /* Белый 80% */
-
-    color: rgba(255, 255, 255, 0.8);
 }

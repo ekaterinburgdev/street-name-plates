@@ -118,8 +118,8 @@ input {
     font-family: Iset Sans;
     font-style: normal;
     font-weight: 700;
-    font-size: 50px;
-    line-height: 140%;
+    font-size: 3.125rem;
+    line-height: 1.4;
     border: none;
     display: inline;
     width: auto;
