@@ -19,6 +19,7 @@ const Home = () => {
         <>
             <Head>
                 <title>Адресные таблички | Дизайн-код Екатеринбурга</title>
+                <meta name="viewport" content="width=768, user-scalable=no" />
             </Head>
 
             <div className={Style.my_header}>

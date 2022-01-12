@@ -168,7 +168,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 7.5rem;
-    line-height: 120px;
+    line-height: 1;
     /* or 120px */
 
 
@@ -209,6 +209,7 @@
     align-items: center;
     margin-top: 40px;
     padding: .5em 2em;
+    flex-wrap: wrap;
 }
 
 .inputs_p_wrapper {

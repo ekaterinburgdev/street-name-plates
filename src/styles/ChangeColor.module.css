@@ -2,7 +2,7 @@
     display: flex;
     height: 60px;
     column-gap: 14px;
-    /*width: 240px;*/
+    flex-wrap: wrap;
 }
 
 .color_container {
