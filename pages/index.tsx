@@ -43,7 +43,7 @@ const Home = () => {
                 <p className={Style.line}>_____</p>
                 <p className={Style.doc_link}>
                     <a href={'https://docs.google.com/document/d/1etPPaqAu97npLfrJSLkCIbtDx4_RMURUv5bBg2AFr9U/edit?usp=sharing'}
-                       rel="noreferrer" target='_blank'>
+                       rel="noreferrer" target='_blank' tabIndex={0}>
                         Черновик анонса в гуглодоке
                     </a>
                 </p>

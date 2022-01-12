@@ -258,6 +258,7 @@ const StreetPlate = () => {
                         value={streetType}
                         readOnly={true}
                         placeholder={'улица'}
+                        tabIndex={-1}
                     />
                     <input
                         className={Style.street_name}
@@ -274,6 +275,7 @@ const StreetPlate = () => {
                         value={latinName}
                         readOnly={true}
                         placeholder={'8 MARTA STREET'}
+                        tabIndex={-1}
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
