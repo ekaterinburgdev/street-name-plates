@@ -3,14 +3,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px 40px;
+    padding: .62em 2.5em;
     margin-top: 50px;
     background: black;
 
     max-width: 900px;
-    height: 150px;
+    height: 9.37em;
 
     position: relative;
+    z-index: 1;
     box-sizing: border-box;
 
     background-clip: padding-box;
@@ -36,6 +37,13 @@
     background-clip: padding-box;
     border: solid 10px transparent;
     border-radius: 100px;
+}
+
+.OrderButton input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
 }
 
 .OrderButtonAnimation::before {
