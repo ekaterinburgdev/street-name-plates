@@ -13,7 +13,7 @@
     margin-left: 10px;
     margin-top: 10px;
 
-    font-family: Iset Sans;
+    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
@@ -40,7 +40,7 @@
     box-sizing: border-box;
     border-radius: 40px;
 
-    font-family: Iset Sans;
+    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -61,7 +61,7 @@
 }
 
 .description_heading{
-    font-family: Iset Sans;
+    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: 600;
     font-size: 120px;
@@ -77,7 +77,7 @@
 .description_text{
     /* Основной текст */
 
-    font-family: Iset Sans;
+    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
     font-size: 40px;
@@ -103,7 +103,7 @@
 }
 
 .line {
-    font-family: Iset Sans;
+    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
     font-size: 40px;
