@@ -3,8 +3,7 @@ import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/comp
 import ChangeColor from "../src/components/ChangeColor";
 import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
 import React from "react";
-import Style from '../styles/Home.module.css';
-
+import Style from '../src/styles/Home.module.css';
 
 const Home = () => {
     const [colorContext, setColorContext] = React.useState(COLORS[0]);  //насколько костыль так делать???

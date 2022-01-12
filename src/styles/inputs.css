@@ -88,19 +88,19 @@
     display: flex;
     width: 369px;
     height: 88px;
-    background-image: url("../src/checkboxStates/Демонтаж-Неактивный.png");
+    background-image: url("../checkboxStates/Демонтаж-Неактивный.png");
 }
 
 .check__input__0:checked + .check__box__0 {
-    background-image: url("../src/checkboxStates/Демонтаж-Активный.png");
+    background-image: url("../checkboxStates/Демонтаж-Активный.png");
 }
 
 .check__input__0:focus + .check__box__0 {
-    background-image: url("../src/checkboxStates/Демонтаж-Фокус.png");
+    background-image: url("../checkboxStates/Демонтаж-Фокус.png");
 }
 
 .check__input__0:checked:focus + .check__box__0 {
-    background-image: url("../src/checkboxStates/Демонтаж-Активный.png");
+    background-image: url("../checkboxStates/Демонтаж-Активный.png");
 }
 
 .check__input__1 {
@@ -113,19 +113,19 @@
     display: flex;
     width: 328px;
     height: 88px;
-    background-image: url("../src/checkboxStates/Монтаж-Неактивный.png");
+    background-image: url("../checkboxStates/Монтаж-Неактивный.png");
 }
 
 .check__input__1:checked + .check__box__1 {
-    background-image: url("../src/checkboxStates/Монтаж-Активный.png");
+    background-image: url("../checkboxStates/Монтаж-Активный.png");
 }
 
 .check__input__1:focus + .check__box__1 {
-    background-image: url("../src/checkboxStates/Монтаж-Фокус.png");
+    background-image: url("../checkboxStates/Монтаж-Фокус.png");
 }
 
 .check__input__1:checked:focus + .check__box__1 {
-    background-image: url("../src/checkboxStates/Монтаж-Активный.png");
+    background-image: url("../checkboxStates/Монтаж-Активный.png");
 }
 
 p {

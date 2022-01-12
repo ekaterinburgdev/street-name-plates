@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from '../../styles/ChangeColor.module.css';
+import Style from '../styles/ChangeColor.module.css';
 import {ButtonSendOrderContext} from "./OrderForm";
 
 type ColorChangeType = {

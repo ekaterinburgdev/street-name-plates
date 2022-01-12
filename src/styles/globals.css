@@ -18,3 +18,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 75%;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 100%;
+  }
+}
