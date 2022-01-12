@@ -9,22 +9,14 @@
     background-image: url("../../public/cover.png");
 }
 
-.my_header a {
-    margin-left: 10px;
-    margin-top: 10px;
-
-    /*font-family: Iset Sans;*/
+.header_link {
+    margin-left: 2em;
+    margin-top: 1.5em;
     font-style: normal;
     font-weight: normal;
     font-size: 1.25rem;
     line-height: 1.4;
-    /* identical to box height, or 56px */
-
     text-align: center;
-    text-decoration-line: underline;
-
-    /* Белый */
-
     color: #FFFFFF;
 }
 
@@ -32,26 +24,31 @@
     margin-top: 40px;
     margin-right: 40px;
 
-    width: 282px;
-    height: 68px;
+    padding: .85em 2em .7em;
+    height: 3em;
     background-color: Transparent;
 
-    border: 10px solid #FEC72E;
+    border: .2em solid #FEC72E;
     box-sizing: border-box;
     border-radius: 40px;
 
-    /*font-family: Iset Sans;*/
     font-style: normal;
-    font-weight: 600;
-    font-size: 1.25rem;
-    line-height: 1.4;
-    /* identical to box height, or 28px */
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
 
     text-align: center;
 
     /* Белый */
 
     color: #FFFFFF;
+    transition: .15s ease all;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button_to_scroll:hover {
+    border-color: #ffffff;
 }
 
 .description_wrapper{
@@ -62,7 +59,6 @@
 }
 
 .description_heading{
-    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: 600;
     font-size: 7.5rem;
@@ -78,7 +74,6 @@
 .description_text{
     /* Основной текст */
 
-    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
@@ -111,7 +106,6 @@
 
 
 .line {
-    /*font-family: Iset Sans;*/
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
@@ -126,7 +120,6 @@
 }
 
 .doc_link {
-    font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
@@ -134,7 +127,7 @@
     /* identical to box height, or 56px */
 
     text-align: center;
-    text-decoration-line: underline;
+    text-decoration: underline;
 
     /* Белый */
 
@@ -172,7 +165,6 @@
     margin-bottom: 0px;
     margin-top: 0px;
 
-    font-family: Iset Sans;
     font-style: normal;
     font-weight: 600;
     font-size: 7.5rem;
@@ -188,7 +180,6 @@
 .p_wrapper {
     margin-top: 40px;
 
-    font-family: Iset Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
@@ -217,12 +208,10 @@
     display: flex;
     align-items: center;
     margin-top: 40px;
+    padding: .5em 2em;
 }
 
 .inputs_p_wrapper {
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 1.875rem;
     line-height: 1;
     /* identical to box height, or 42px */

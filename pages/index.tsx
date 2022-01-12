@@ -22,8 +22,8 @@ const Home = () => {
             </Head>
 
             <div className={Style.my_header}>
-                <a href={''} rel="noreferrer" target='_blank'>Дизайн-код Екатеринбурга</a>
-                <button className={Style.button_to_scroll} onClick={() => refPlate.current.scrollIntoView()}>Заказать табличку</button>
+                <a href={''} className={Style.header_link} rel="noreferrer" target='_blank'>Дизайн-код Екатеринбурга</a>
+                <a href="#order" className={Style.button_to_scroll}>Заказать табличку</a>
             </div>
             <div className={Style.description_wrapper}>
                 <h1 className={Style.description_heading}>Адресные таблички</h1>
@@ -53,8 +53,7 @@ const Home = () => {
                 <ChangeColorContext.Provider value={valueColorContext}>
                     <div style={{margin: '0px', padding: '0px'}}>
                         <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
-                            <div className={Style.front_wrapper}>
-                                <div ref={refPlate}></div> {/*якорь для скролла) (и снова костыли)*/}
+                            <div id="order" className={Style.front_wrapper}>
                                 <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                                 <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
                                 <StreetPlate />
