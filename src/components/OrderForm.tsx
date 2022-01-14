@@ -1,8 +1,7 @@
-import React, {createContext, useContext, useState} from "react";
+import React, {useState} from "react";
 import OrderButton from "./OrderButton";
 import {StreetType} from "./StreetPlate";
 import {ExportPrice} from "./StreetPlate";
-import {IsPressedButton} from "./OrderButton";
 
 type MessageDataType = {
     street: StreetType,
@@ -150,7 +149,6 @@ function OrderForm() {
         fontWeight: "normal",
         fontSize: "2.5rem",
         lineHeight: "1.4",
-
         color: "#FFFFFF"
     };
 
@@ -196,7 +194,7 @@ function OrderForm() {
             lineHeight: "1",
             margin: "40px 20px 20px 20px"
         }}>
-            Общая стоимость<span style={{marginLeft: "304px"}}/>до <span style={{fontWeight: "600"}}/>{
+            Общая стоимость<span style={{marginLeft: "19rem"}}/>до <span style={{fontWeight: "600"}}/>{
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
         } ₽ <br/>

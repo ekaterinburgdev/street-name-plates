@@ -98,7 +98,6 @@
     min-width: 236px;
     border-radius: 56px;
     border: 10px solid #FEC72E;
-    outline: 5px solid #ffffff;
 }
 
 .check__input:hover + .check__box,
@@ -118,6 +117,7 @@
     min-width: 236px;
     border-radius: 56px;
     border: 10px solid #FEC72E;
+    outline: 5px solid #ffffff;
 }
 
 p {
