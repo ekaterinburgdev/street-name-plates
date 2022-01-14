@@ -48,84 +48,77 @@
     margin-top: 1em;
 }
 
-.check__input__0 {
+.check__box__price {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.check__box__price:before {
+    content: "";
+    display: inline-block;
+    margin-inline-end: 24px;
+    transform: rotate(45deg);
+    height: 24px;
+    width: 12px;
+    border-bottom: 7px solid #FFFFFF;
+    border-right: 7px solid #FFFFFF;
+    opacity: 0.2;
+}
+
+.check__box__price:before {
+    content: "";
+    display: inline-block;
+    margin-inline-end: 24px;
+    transform: rotate(45deg);
+    height: 24px;
+    width: 12px;
+    border-bottom: 7px solid #FFFFFF;
+    border-right: 7px solid #FFFFFF;
+}
+
+.check__input {
     position: absolute;
     -webkit-appearance: none;
     appearance: none;
 }
 
-.check__box__0 {
+.check__box {
     flex-grow: 1;
     height: 88px;
-    background-image: url("../checkboxStates/Демонтаж-Неактивный.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: contain;
+    border-radius: 56px;
+    border: 10px solid #2F2F2F;
     transition: .15s ease;
 }
 
-.check__input__0:checked + .check__box__0 {
-    background-image: url("../checkboxStates/Демонтаж-Активный.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: contain;
-}
-
-.check__input__0:hover + .check__box__0,
-.check__input__0:focus-visible + .check__box__0 {
-    background-image: url("../checkboxStates/Демонтаж-Фокус.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: contain;
-}
-
-.check__input__0:checked:focus-visible + .check__box__0 {
-    background-image: url("../checkboxStates/Демонтаж-Активный.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: contain;
-}
-
-.check__input__1 {
-    position: absolute;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.check__box__1 {
-    flex-grow: 1;
+.check__input:checked + .check__box {
     height: 88px;
-    background-image: url("../checkboxStates/Монтаж-Неактивный.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 100%;
-    transition: .15s ease;
+    border-radius: 56px;
+    border: 10px solid #FEC72E;
 }
 
-.check__input__1:checked + .check__box__1 {
-    background-image: url("../checkboxStates/Монтаж-Активный.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 100%;
+.check__input:checked:focus + .check__box {
+    height: 88px;
+    border-radius: 56px;
+    border: 10px solid #FEC72E;
+    outline: 5px solid #ffffff;
 }
 
-.check__input__1:hover + .check__box__1,
-.check__input__1:focus-visible + .check__box__1 {
-    background-image: url("../checkboxStates/Монтаж-Фокус.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 100%;
+.check__input:hover + .check__box,
+.check__input:focus-visible + .check__box {
+    height: 88px;
+    border-radius: 56px;
+    border: 10px solid #FFFFFF;
 }
 
-.check__input__1:checked:focus-visible + .check__box__1 {
-    background-image: url("../checkboxStates/Монтаж-Активный.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 100%;
+.check__input:checked:focus-visible + .check__box {
+    height: 88px;
+    border-radius: 56px;
+    border: 10px solid #FEC72E;
 }
 
 p {
-    margin: 0px;
+    margin: 0;
 
     font-size: 1.875rem;
     line-height: 1.4;

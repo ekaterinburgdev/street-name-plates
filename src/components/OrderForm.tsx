@@ -85,7 +85,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
             {checkboxes.map((checkbox, i) => (
                 <label className={'check option'} key={i}>
                     <input
-                        className={`check__input__${i}`}
+                        className={`check__input`}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -97,11 +97,13 @@ function Checkboxes({checkboxes, setCheckbox}) {
                                     dismantlingOldPlate: e.target.checked
                                 });
                             }
-                            // alert(checkbox.name);
                             setCheckbox(i, e.target.checked);
                         }}
                     />
-                    <span className={`check__box__${i}`}>
+                    <span className={`check__box`}>
+                        <p className={`check__box__price`}>
+                           до {checkbox.name == 'Демонтаж старой таблички' ? 2990 : 6990} ₽
+                        </p>
                     </span>{checkbox.name}
                 </label>
             ))}
@@ -173,10 +175,10 @@ function OrderForm() {
                     display: "inline-block",
                     color: "white",
                     fontSize: "2.5rem",
-                    lineHeight: "1.4",
+                    lineHeight: "1",
                     margin: "40px 20px 20px 20px"
                 }}>
-                    Общая стоимость<span style={{marginLeft: "90px"}}/>{
+                    Общая стоимость<span style={{marginLeft: "304px"}}/>{
                     ExportPrice == undefined ? calculateFinalPrice(4990)
                         : calculateFinalPrice(ExportPrice)
                 } ₽
@@ -191,14 +193,14 @@ function OrderForm() {
             display: "inline-block",
             color: "white",
             fontSize: "2.5rem",
-            lineHeight: "1.4",
+            lineHeight: "1",
             margin: "40px 20px 20px 20px"
         }}>
-            Общая стоимость<span style={{marginLeft: "70px"}}/>до {
+            Общая стоимость<span style={{marginLeft: "304px"}}/>до <span style={{fontWeight: "600"}}/>{
             ExportPrice == undefined ? calculateFinalPrice(4990)
                 : calculateFinalPrice(ExportPrice)
         } ₽ <br/>
-            <span style={{fontSize: "1.25rem !important", opacity: "0.5"}}>
+            <span style={{opacity: "0.5", fontSize: "20px", fontWeight: "300"}}>
                 зависит от сложности работ
             </span>
         </p>
