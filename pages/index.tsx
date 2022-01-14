@@ -62,7 +62,7 @@ const Home = () => {
                         </div>
                         <div className={Style.inputs}>
                             <div className={Style.change_color_container}>
-                                <p className={Style.inputs_p_wrapper}>Фасад</p>
+                                <p className={Style.inputs_p_wrapper}>Цвет фасада</p>
                                 <ChangeColor/>
                             </div>
                             <OrderForm/>

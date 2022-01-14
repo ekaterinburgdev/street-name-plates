@@ -215,12 +215,6 @@
 .inputs_p_wrapper {
     font-size: 1.875rem;
     line-height: 1;
-    /* identical to box height, or 42px */
-
-
-    /* Белый 80% */
-
-    color: rgba(255, 255, 255, 0.8);
-
+    color: rgba(255, 255, 255, 1);
     margin-right: 40px;
 }

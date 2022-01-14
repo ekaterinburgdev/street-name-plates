@@ -63,7 +63,8 @@
     width: 0.75rem;
     border-bottom: 7px solid #FFFFFF;
     border-right: 7px solid #FFFFFF;
-    opacity: 0.2;
+    /* TODO: научить менять это значение при дефолтном состоянии на 0.2 */
+    opacity: 1;
 }
 
 .check__input {
