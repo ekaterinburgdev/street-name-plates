@@ -1,12 +1,10 @@
 .my_header {
     display: flex;
     justify-content: space-between;
-
     height: 765px;
     width: 100%;
-    background: no-repeat;
     background-size: cover;
-    background-image: url("../../public/cover.png");
+    background: url("../../public/cover.png") no-repeat;
 }
 
 .header_link {
@@ -23,24 +21,17 @@
 .button_to_scroll {
     margin-top: 40px;
     margin-right: 40px;
-
     padding: .85em 2em .7em;
     height: 3em;
     background-color: Transparent;
-
     border: .2em solid #FEC72E;
     box-sizing: border-box;
     border-radius: 40px;
-
     font-style: normal;
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 1;
-
     text-align: center;
-
-    /* Белый */
-
     color: #FFFFFF;
     transition: .15s ease all;
     cursor: pointer;
@@ -63,30 +54,18 @@
     font-weight: 600;
     font-size: 7.5rem;
     line-height: 1;
-    /* identical to box height, or 120px */
-
-
-    /* Жёлтый */
-
     color: #FEC72E;
 }
 
 .description_text{
-    /* Основной текст */
-
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
     line-height: 1.4;
-    /* or 56px */
-
     white-space: pre-line;
     max-width: 1024px;
     margin-bottom: 80px;
     align-self: center;
-
-    /* Белый */
-
     color: #FFFFFF;
 }
 
@@ -103,19 +82,13 @@
     padding-bottom: 44%;
 }
 
-
-
 .line {
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
     line-height: 1.4;
-    /* identical to box height, or 56px */
-
     text-align: center;
     margin-bottom: 25px;
-    /* Белый */
-
     color: #FFFFFF;
 }
 
@@ -124,13 +97,8 @@
     font-weight: normal;
     font-size: 2.5rem;
     line-height: 1.4;
-    /* identical to box height, or 56px */
-
     text-align: center;
     text-decoration: underline;
-
-    /* Белый */
-
     color: #FFFFFF;
 
 }
@@ -146,7 +114,9 @@
 
 
 .front {
-    margin: 0px;
+    z-index: 1;
+    position: relative;
+    margin: 0;
     padding-top: 120px;
     padding-bottom: 160px;
     background: no-repeat;
@@ -157,44 +127,33 @@
 }
 
 .front_wrapper {
+    z-index: 1;
     margin: 0;
     padding: 0 2rem;
 }
 
 .h1_wrapper {
-    margin-bottom: 0px;
-    margin-top: 0px;
-
+    z-index: 1;
+    margin-bottom: 0;
+    margin-top: 0;
     font-style: normal;
     font-weight: 600;
     font-size: 7.5rem;
     line-height: 1;
-    /* or 120px */
-
-
-    /* Белый */
-
     color: #FFFFFF;
 }
 
 .p_wrapper {
     margin-top: 40px;
-
     font-style: normal;
     font-weight: normal;
     font-size: 2.5rem;
     line-height: 1.4;
-    /* identical to box height, or 56px */
-
-
-    /* Белый 80% */
-
     color: rgba(255, 255, 255, 0.8);
 }
 
 .plate_wrapper {
     margin-top: 40px;
-    /*margin-bottom: 160px;*/
 }
 
 .inputs {

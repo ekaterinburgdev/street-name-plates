@@ -128,7 +128,7 @@ function OrderForm() {
     const inputCommProps = useInput();
 
     const [isClicked, setIsClicked] = React.useState(false);
-
+    const [isSendMail, setIsSendMail] = React.useState(false);
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const sendMail = async (event) => {
@@ -239,8 +239,6 @@ function OrderForm() {
         }
     }
 
-    let IsSendMail = false
-
     return (
         <div className={'inputs-container'}>
             <form onSubmit={ event => event.preventDefault() }>
@@ -271,11 +269,11 @@ function OrderForm() {
                 <OrderButton onClickHandler={
                     (event) => {
                         setIsClicked(true);
-                        if (!IsSendMail) {
-                            IsSendMail = true
+                        if (!isSendMail) {
+                            setIsSendMail(true)
                             sendMail(event)
                                 .then(_ => console.log("Email send successful"))
-                                .catch(_ => console.log("Something went wrong"))
+                                .catch(_ => console.log(`Something went wrong: ${event}`))
                         } else {
                             console.log("Email has already been sent")
                         }

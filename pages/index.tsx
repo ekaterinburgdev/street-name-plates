@@ -5,6 +5,7 @@ import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
 import React from "react";
 import Style from '../src/styles/Home.module.css';
 import Head from 'next/head';
+import Image from "next/image";
 
 const Home = () => {
     const [colorContext, setColorContext] = React.useState(COLORS[0]);  //насколько костыль так делать???
@@ -14,6 +15,7 @@ const Home = () => {
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
 
     const refPlate = React.useRef(null);
+    console.log(colorContext.frontImage)
 
     return (
         <>
@@ -39,7 +41,7 @@ const Home = () => {
                     и насмотренность у жителей и гостей города.
                 </p>
             </div>
-            <div className={Style.bad_plates_container}></div>
+            <div className={Style.bad_plates_container}/>
             <div>
                 <p className={Style.line}>_____</p>
                 <p className={Style.doc_link}>
@@ -53,7 +55,12 @@ const Home = () => {
             <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
                 <ChangeColorContext.Provider value={valueColorContext}>
                     <div style={{margin: '0px', padding: '0px'}}>
-                        <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
+                        <div className={Style.front}>
+                            <div style={{zIndex: "-1"}}/>
+                            <Image src={`/${colorContext.frontImage}`}
+                                   alt={colorContext.color}
+                                   layout='fill'
+                                   priority/>
                             <div id="order" className={Style.front_wrapper}>
                                 <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                                 <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
