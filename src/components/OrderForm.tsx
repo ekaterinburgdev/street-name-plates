@@ -164,19 +164,21 @@ function OrderForm() {
         return price
     }
 
+    const finalPriceStyle = {
+        fontStyle: "normal",
+        fontWeight: "400",
+        display: "inline-block",
+        color: "white",
+        fontSize: "2.5rem",
+        lineHeight: "1",
+        margin: "5.125rem 1.25rem 5rem 1.25rem"
+    }
+
     function FinalPrice() {
         return (
             <div>
-                <p style={{
-                    fontStyle: "normal",
-                    fontWeight: "normal",
-                    display: "inline-block",
-                    color: "white",
-                    fontSize: "2.5rem",
-                    lineHeight: "1",
-                    margin: "40px 20px 20px 20px"
-                }}>
-                    Общая стоимость<span style={{marginLeft: "304px"}}/>{
+                <p style={finalPriceStyle}>
+                    Общая стоимость<span style={{marginLeft: "18rem"}}/>{
                     ExportPrice == undefined ? calculateFinalPrice(4990)
                         : calculateFinalPrice(ExportPrice)
                 } ₽
@@ -185,35 +187,39 @@ function OrderForm() {
     }
 
     function FinalPriceWithDismountingOrMounting() {
-        return <p style={{
-            fontStyle: "normal",
-            fontWeight: "normal",
-            display: "inline-block",
-            color: "white",
-            fontSize: "2.5rem",
-            lineHeight: "1",
-            margin: "40px 20px 20px 20px"
-        }}>
-            Общая стоимость<span style={{marginLeft: "19rem"}}/>до <span style={{fontWeight: "600"}}/>{
-            ExportPrice == undefined ? calculateFinalPrice(4990)
-                : calculateFinalPrice(ExportPrice)
-        } ₽ <br/>
-            <span style={{opacity: "0.5", fontSize: "20px", fontWeight: "300"}}>
-                зависит от сложности работ
-            </span>
-        </p>
+        return (
+            <>
+                <p style={finalPriceStyle}>
+                        <span/>
+                            Общая стоимость
+                        <span style={{marginLeft: "18rem"}}/>
+                        <span/>до {
+                                ExportPrice == undefined ? calculateFinalPrice(4990)
+                                                         : calculateFinalPrice(ExportPrice)
+                        } ₽
+                </p>
+                <p style={{
+                        opacity: "0.5",
+                        fontSize: "20px",
+                        fontWeight: "300",
+                        color: "white",
+                        margin: "-4.375rem 1.25rem 4rem 1.25rem"
+                    }}>
+                    зависит от сложности работ
+                </p>
+            </>)
     }
 
     function Text() {
         return <p style={{
             fontStyle: "normal",
-            fontWeight: "normal",
+            fontWeight: "400",
             display: "inline-block",
             color: "white",
             fontSize: "2.5rem",
             lineHeight: "1.4",
             textAlign: "center",
-            margin: "40px 20px 20px 20px"
+            margin: "1rem 1.25rem 5rem 1.25rem"
         }}>Мы свяжемся с вами и расскажем, что дальше
         </p>
     }
@@ -277,7 +283,6 @@ function OrderForm() {
                 }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
                                   isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
-                <br/>
             </form>
         </div>
     );

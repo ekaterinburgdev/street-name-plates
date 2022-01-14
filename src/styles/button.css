@@ -45,8 +45,7 @@
 }
 
 .OrderButtonAnimation::before {
-    animation-duration: 3s;
-    animation-name: pressAnimation;
+    animation: 1s ease-out pressAnimation;
     content: "";
     position: absolute;
     top: 0;
@@ -61,19 +60,13 @@
     from {
         content: "";
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
         z-index: -1;
         margin: -10px;
         border-radius: inherit;
         background: linear-gradient(
-                #fec72e,
+                -45deg,
                 #fec72e,
                 #00d200,
-                #00d200,
-                #00b4ff,
                 #00b4ff
         );
     }
@@ -98,12 +91,9 @@
         margin: -10px;
         border-radius: inherit;
         background: linear-gradient(
-                #00d200,
-                #00b4ff,
-                #00b4ff,
-                #fec72e,
-                #fec72e,
-                #00d200
+                rgba(254, 199, 46, 1),
+                rgba(0, 210, 0, 1),
+                rgba(0, 180, 255, 1)
         );
     }
 }
@@ -131,12 +121,9 @@
     border-radius: inherit;
     transition: .15s ease margin;
     background: linear-gradient(
-            #fec72e,
-            #fec72e,
-            #00d200,
-            #00d200,
-            #00b4ff,
-            #00b4ff
+            rgba(254, 199, 46, 1),
+            rgba(0, 210, 0, 1),
+            rgba(0, 180, 255, 1)
     );
 }
 
