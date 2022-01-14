@@ -4,7 +4,7 @@
     height: 765px;
     width: 100%;
     background-size: cover;
-    background: url("../../public/cover.png") no-repeat;
+    background: url("../../public/cover.webp") no-repeat;
 }
 
 .header_link {
@@ -71,7 +71,7 @@
 
 .bad_plates_container {
     width: 100%;
-    background: url("../../public/bad_plates.png") no-repeat;
+    background: url("../../public/bad_plates.webp") no-repeat;
     background-size: 100% auto;
     aspect-ratio: 1439 / 642;
 }
