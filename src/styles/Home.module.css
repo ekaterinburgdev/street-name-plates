@@ -4,7 +4,6 @@
     height: 765px;
     width: 100%;
     background-size: cover;
-    background: url("../../public/cover.webp") no-repeat;
 }
 
 .header_link {

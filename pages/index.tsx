@@ -10,12 +10,9 @@ import Image from "next/image";
 const Home = () => {
     const [colorContext, setColorContext] = React.useState(COLORS[0]);  //насколько костыль так делать???
     const valueColorContext = {colorContext, setColorContext};
-
     const [buttonSendOrderContext, setButtonSendOrderContext] = React.useState(defaultMessageData);
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
-
     const refPlate = React.useRef(null);
-    console.log(colorContext.frontImage)
 
     return (
         <>
@@ -25,8 +22,17 @@ const Home = () => {
             </Head>
 
             <div className={Style.my_header}>
-                <a href={''} className={Style.header_link} rel="noreferrer" target='_blank'>Дизайн-код Екатеринбурга</a>
-                <a href="#order" className={Style.button_to_scroll}>Заказать табличку</a>
+                <div style={{zIndex: "-1"}}/>
+                <Image src={`/cover.webp`}
+                       layout='fill'
+                       alt={"Превьюшка"}
+                       priority={true}/>
+                <a style={{zIndex: "1",
+                    position: "absolute",
+                    left: "0"}} href={''} className={Style.header_link} rel="noreferrer" target='_blank'>
+                    Дизайн-код Екатеринбурга
+                </a>
+                <a style={{zIndex: "1"}} href="#order" className={Style.button_to_scroll}>Заказать табличку</a>
             </div>
             <div className={Style.description_wrapper}>
                 <h1 className={Style.description_heading}>Адресные таблички</h1>

@@ -45,7 +45,7 @@ const ChangeColor = (props) => {
                                     setButtonSendOrderContext({...buttonSendOrderContext, color: color.fontColor})
                                 }}
                             />
-                            <span className={Style.checkmark} style={{backgroundColor: color.color}}></span>
+                            <span className={Style.checkmark} style={{backgroundColor: color.color}}/>
                         </label>
                     ))
                 }
