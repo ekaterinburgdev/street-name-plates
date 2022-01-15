@@ -22,17 +22,12 @@ const Home = () => {
             </Head>
 
             <div className={Style.my_header}>
-                <div style={{zIndex: "-1"}}/>
-                <Image src={`/cover.webp`}
-                       layout='fill'
-                       alt={"Превьюшка"}
-                       priority={true}/>
-                <a style={{zIndex: "1",
-                    position: "absolute",
-                    left: "0"}} href={''} className={Style.header_link} rel="noreferrer" target='_blank'>
+                <a href={''} className={Style.header_link} rel="noreferrer" target='_blank'>
                     Дизайн-код Екатеринбурга
                 </a>
-                <a style={{zIndex: "1"}} href="#order" className={Style.button_to_scroll}>Заказать табличку</a>
+                <a style={{zIndex: "1"}} href="#order" className={Style.button_to_scroll}>
+                    Заказать табличку
+                </a>
             </div>
             <div className={Style.description_wrapper}>
                 <h1 className={Style.description_heading}>Адресные таблички</h1>
