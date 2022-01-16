@@ -1,6 +1,471 @@
 [
    {
       "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "2"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Антона Валека",
+      "building_no": "11"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "12"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Попова",
+      "building_no": "2"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "14"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Попова",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "22"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "23"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "24"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "32"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "72"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Куйбышева",
+      "building_no": "45"
+   },
+   {
+      "type": "Улица",
+      "street_name": "8 Марта",
+      "building_no": "28"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Радищева",
+      "building_no": "2"
+   },
+   {
+      "type": "Улица",
+      "street_name": "8 Марта",
+      "building_no": "62"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Народной Воли",
+      "building_no": "45"
+   },
+   {
+      "type": "Улица",
+      "street_name": "8 Марта",
+      "building_no": "68"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Декабристов",
+      "building_no": "56, литер А"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Гоголя",
+      "building_no": "42"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Карла Маркса",
+      "building_no": "10"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Горького",
+      "building_no": "15"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Первомайская",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Карла Либкнехта",
+      "building_no": "36"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Первомайская",
+      "building_no": "20"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Куйбышева",
+      "building_no": "39"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Хохрякова",
+      "building_no": "83, литера Е"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Культуры",
+      "building_no": "2"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Орджоникидзе",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Культуры",
+      "building_no": "3"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Красных партизан",
+      "building_no": "9"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "13"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Сакко и Ванцетти",
+      "building_no": "41"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "13б"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Маршала Жукова",
+      "building_no": "1"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "19"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Вайнера",
+      "building_no": "6"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "28"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Воеводина",
+      "building_no": "2"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "29"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Володарского",
+      "building_no": "2"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "43"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Карла Либкнехта",
+      "building_no": "15"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "47"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Карла Либкнехта",
+      "building_no": "20"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "105"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Мира",
+      "building_no": "26"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "6"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Московская",
+      "building_no": "26"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "22"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Хохрякова",
+      "building_no": "30"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "31-г / 8"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "41"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Толмачева",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "64"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Гоголя",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Пушкина",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "37"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Пушкина",
+      "building_no": "2"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Малышева",
+      "building_no": "39"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Пушкина",
+      "building_no": "28"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Первомайская",
+      "building_no": "14"
+   },
+   {
+      "type": "Набережная",
+      "street_name": "Рабочей молодежи",
+      "building_no": "3"
+   },
+   {
+      "type": "Переулок",
+      "street_name": "Химиков",
+      "building_no": "2"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Розы Люксембург",
+      "building_no": "39"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Карла Маркса",
+      "building_no": "18"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Культуры",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Машиностроителей",
+      "building_no": "4"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Чапаева",
+      "building_no": "11"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Большакова",
+      "building_no": "69"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Энгельса",
+      "building_no": "16"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Розы Люксембург",
+      "building_no": "11"
+   },
+   {
+      "type": "Улица",
+      "street_name": "8 Марта",
+      "building_no": "4, литера В"
+   },
+   {
+      "type": "Улица",
+      "street_name": "8 Марта",
+      "building_no": "23"
+   },
+   {
+      "type": "Улица",
+      "street_name": "8 Марта",
+      "building_no": "25"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "6, литер Б"
+   },
+   {
+      "type": "Проспект",
+      "street_name": "Ленина",
+      "building_no": "22"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Хохрякова",
+      "building_no": "1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Пушкина",
+      "building_no": "9, литер А"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Пушкина",
+      "building_no": "9, литер А1"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Пушкина",
+      "building_no": "9, литер А2"
+   },
+   {
+      "type": "Набережная",
+      "street_name": "Рабочей молодежи",
+      "building_no": "2"
+   },
+   {
+      "type": "Набережная",
+      "street_name": "Рабочей молодежи",
+      "building_no": "23"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер А"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер АЗ"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер М"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер Л"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер N"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер О"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер O"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер XVI"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер XXXV"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Репина",
+      "building_no": "5, литер XXXVI"
+   },
+   {
+      "type": "Улица",
+      "street_name": "Чапаева",
+      "building_no": "7а"
+   },
+   {
+      "type": "Улица",
       "street_name": "Добролюбова",
       "building_no": "9"
    },
