@@ -18,7 +18,7 @@ const Home = () => {
         return h.is_hist ?? false
     }
 
-    function IsHistory() {
+    const IsHistory = () => {
         const isHist = checkHistory();
 
         if (isHist) {

@@ -64,9 +64,11 @@
     width: 0.75rem;
     border-bottom: 7px solid #FFFFFF;
     border-right: 7px solid #FFFFFF;
+    transition: .15s ease;
     /* TODO: научить менять это значение при дефолтном состоянии на 0.2 */
-    opacity: 1;
+    opacity: 0.2;
 }
+
 
 .check__input {
     position: absolute;
@@ -93,6 +95,14 @@
     border: 10px solid #FEC72E;
 }
 
+.check__input:checked + .check__box .check__box__price:before {
+    /*background-color: green;*/
+    border-bottom: 7px solid #FEC72E;
+    border-right: 7px solid #FEC72E;
+    opacity: 1;
+}
+
+
 .check__input:checked:focus + .check__box {
     height: 5.5rem;
     width: 19.625rem;
@@ -110,6 +120,11 @@
     min-width: 236px;
     border-radius: 56px;
     border: 10px solid #FFFFFF;
+}
+
+.check__input:hover + .check__box .check__box__price:before,
+.check__input:focus-visible + .check__box .check__box__price:before {
+    opacity: 1;
 }
 
 .check__input:checked:focus-visible + .check__box {

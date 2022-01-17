@@ -82,7 +82,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
     return (
         <div className={'check-container'}>
             {checkboxes.map((checkbox, i) => (
-                <label className={'check option'} key={i}>
+                <label className={'check'} key={i}>
                     <input
                         className={`check__input`}
                         type="checkbox"
