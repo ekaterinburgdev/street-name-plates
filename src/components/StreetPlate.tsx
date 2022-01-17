@@ -116,16 +116,15 @@ const StreetPlate = () => {
 
     const checkHistory = async (bNum: string, sName: string, sType: string ) => {
         console.log(`
-        тип: ${sType},
-        название: ${sName},
-        номер: ${bNum}
+            тип: ${sType},
+            название: ${sName},
+            номер: ${bNum}
         `)
         const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
         console.log(h);
         const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
         setIsHistory(isH);
         console.log(isH);
-
     }
 
     const getSuggestion = (suggestion: StreetType) => {

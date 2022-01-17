@@ -1,7 +1,6 @@
 import StreetPlate from "../src/components/StreetPlate";
-import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/components/OrderForm';
-import ChangeColor from "../src/components/ChangeColor";
-import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
+import OrderForm, {ButtonSendOrderContext, defaultMessageData} from '../src/components/OrderForm';
+import ChangeColor, {ChangeColorContext, COLORS} from "../src/components/ChangeColor";
 import React from "react";
 import Style from '../src/styles/Home.module.css';
 import Head from 'next/head';
@@ -13,6 +12,29 @@ const Home = () => {
     const [buttonSendOrderContext, setButtonSendOrderContext] = React.useState(defaultMessageData);
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
     const refPlate = React.useRef(null);
+
+    const checkHistory = async () => {
+        const h = await (await fetch(`./api/info?street=${buttonSendOrderContext.street.streetName}&building=${buttonSendOrderContext.build}&type=${buttonSendOrderContext.street.streetType}`)).json();
+        return h.is_hist ?? false
+    }
+
+    function IsHistory() {
+        const isHist = checkHistory();
+
+        if (isHist) {
+            return <p style={{
+                 fontSize: "1.875rem",
+                 lineHeight: "1.4",
+                 color: "white",
+                 opacity: "0.8",
+                 margin: "30px 0px 0px 0px",
+            }}>
+                Поздравляем, у Вас историческое здание !
+            </p>
+        }
+
+        return <p/>
+    }
 
     return (
         <>
@@ -65,7 +87,7 @@ const Home = () => {
                             <div id="order" className={Style.front_wrapper}>
                                 <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                                 <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                                <StreetPlate />
+                                <StreetPlate/>
                             </div>
                         </div>
                         <div className={Style.inputs}>
