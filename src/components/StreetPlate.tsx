@@ -295,6 +295,7 @@ const StreetPlate = () => {
                 <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
                 <span className={Style.price}>{platePrice} ₽</span>
             </div>
+            {isHistory && (<p className={Style.is_history_description}>Поздравляем, у Вас историческое здание!</p>)}
         </div>
     )
 };
