@@ -3,16 +3,14 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px 40px;
+    padding: .62em 2.5em;
     margin-top: 50px;
     background: black;
-
-    width: 900px;
-    height: 150px;
-
+    max-width: 900px;
+    height: 9.37em;
     position: relative;
+    z-index: 1;
     box-sizing: border-box;
-
     background-clip: padding-box;
     border: solid 10px transparent;
     border-radius: 100px;
@@ -26,49 +24,49 @@
     padding: 10px 40px;
     margin-top: 50px;
     background: black;
-
-    width: 900px;
+    max-width: 900px;
     height: 150px;
-
     position: relative;
     box-sizing: border-box;
-
     background-clip: padding-box;
     border: solid 10px transparent;
     border-radius: 100px;
 }
 
+.OrderButton input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.OrderButton input:focus {
+    color: #FEC72E;
+}
+
 .OrderButtonAnimation::before {
-    animation-duration: 3s;
-    animation-name: slidein;
+    animation: 1s ease-out pressAnimation;
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: -1;
     margin: -10px;
     border: none;
 }
 
-@keyframes slidein {
+@keyframes pressAnimation {
     from {
         content: "";
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
         z-index: -1;
         margin: -10px;
         border-radius: inherit;
         background: linear-gradient(
-                #fec72e,
+                -45deg,
                 #fec72e,
                 #00d200,
-                #00d200,
-                #00b4ff,
                 #00b4ff
         );
     }
@@ -93,12 +91,9 @@
         margin: -10px;
         border-radius: inherit;
         background: linear-gradient(
-                #00d200,
-                #00b4ff,
-                #00b4ff,
-                #fec72e,
-                #fec72e,
-                #00d200
+                rgba(254, 199, 46, 1),
+                rgba(0, 210, 0, 1),
+                rgba(0, 180, 255, 1)
         );
     }
 }
@@ -114,21 +109,6 @@
     outline: none;
 }
 
-input {
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 50px;
-    line-height: 140%;
-    border: none;
-    display: inline;
-    width: auto;
-    height: auto;
-    background: black;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
 .OrderButton::before {
     content: "";
     position: absolute;
@@ -139,12 +119,15 @@ input {
     z-index: -1;
     margin: -10px;
     border-radius: inherit;
+    transition: .15s ease margin;
     background: linear-gradient(
-            #fec72e,
-            #fec72e,
-            #00d200,
-            #00d200,
-            #00b4ff,
-            #00b4ff
+            rgba(254, 199, 46, 1),
+            rgba(0, 210, 0, 1),
+            rgba(0, 180, 255, 1)
     );
+}
+
+.OrderButton:hover::before {
+    margin: -15px;
+    filter: contrast(1.1);
 }

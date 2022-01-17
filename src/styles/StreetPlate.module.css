@@ -1,10 +1,6 @@
 /*Стили для списка предложений автокомплита*/
 
 .plate_container {
-    display: grid;
-    grid-gap: 20px;
-    grid-auto-columns: min-content;
-    grid-auto-rows: min-content;
     margin: 0px;
     margin-top: 40px;
     padding: 0px;
@@ -22,11 +18,8 @@
     margin: 0px;
     padding-left: 15px;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 1.25rem;
+    line-height: 1.4;
 
     text-align: left;
     vertical-align: middle; /*по вертикали выравнивать = боль=( пришлось юзать костыль в виде span в li*/
@@ -46,11 +39,8 @@
     margin: 0px;
     padding-left: 15px;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 1.25rem;
+    line-height: 1.4;
 
     text-align: left;
     vertical-align: middle; /*по вертикали выравнивать = боль=( пришлось юзать костыль в виде span в li*/
@@ -141,11 +131,8 @@
     width: 100%;
     height: 15%;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.13em;
-    line-height: 29px;
+    line-height: 1;
 
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -158,11 +145,8 @@
     width: 100%;
     height: 70%;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.45em;
-    line-height: 69px;
+    line-height: 4.3125rem;
     /* or 69px */
 
     letter-spacing: 0.03em;
@@ -180,11 +164,8 @@
     width: 100%;
     height: 15%;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.13em;
-    line-height: 28px;
+    line-height: 1;
     /* or 28px */
 
     letter-spacing: 0.18em;
@@ -196,18 +177,14 @@
 }
 
 .plate {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    margin-left: 0px;
-
-    padding-left: 24px;
     display: flex;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    padding-left: 24px;
     background-color: var(--plate-color);
     /*width: 640px;*/
     height: 160px;
     /*font-size: 180px;*/
-
-
     filter: drop-shadow(0px 5px 0px rgba(38, 37, 93, 0.3)) drop-shadow(6.22222px 17.7778px 35.5555px rgba(23, 22, 58, 0.1));
     border-radius: 10px;
     justify-content: flex-start;
@@ -248,15 +225,9 @@
     /*margin-top: 24.11px;*/
     margin-left: 15.11px;
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
     /*font-size: 102.222px;*/
     /*line-height: 100%;*/
     /* or 102px */
-    type: text;
-    maxlength: "6";
-
     text-align: center;
 
     /* Тёмно-синий */
@@ -279,9 +250,6 @@
 /*    width: 30px;*/
 /*    margin-left: 36.44px;*/
 
-/*    font-family: Iset Sans;*/
-/*    font-style: normal;*/
-/*    font-weight: normal;*/
 /*    font-size: 26.6667px;*/
 /*    line-height: 27px;*/
 
@@ -299,16 +267,11 @@
 
     /*background-color: whitesmoke;*/
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 22px;
-    line-height: 31px;
+    font-size: 1.375rem;
+    line-height: 1.4;
     /* or 31px */
 
     transform: rotate(-90deg);
-    grid-column-start: 1;
-    grid-row-start: 1;
     justify-self: center;
     margin-left: -15px;
     margin-right: -27px; /*Два костыля, тк были отступы, не ясно откуда появившиеся*/
@@ -321,29 +284,21 @@
 
     /* Текст по-жирнее */
 
-    font-family: Iset Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 40px;
-    line-height: 140%;
+    font-size: 2.5rem;
+    line-height: 1.4;
 
     color: rgba(255, 255, 255, 0.8);
 }
 
 .size_and_price_container{
     display: flex;
-    grid-column-start: 2;
-    grid-row-start: 2;
     justify-content: space-between;
 }
 
 .price {
     /* H3 */
-
-    font-family: Iset Sans;
-    font-style: normal;
     font-weight: 600;
-    font-size: 60px;
+    font-size: 3.75rem;
     line-height: 100%;
     /* identical to box height, or 60px */
 

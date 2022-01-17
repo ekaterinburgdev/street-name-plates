@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from '../../styles/ChangeColor.module.css';
+import Style from '../styles/ChangeColor.module.css';
 import {ButtonSendOrderContext} from "./OrderForm";
 
 type ColorChangeType = {
@@ -10,11 +10,11 @@ type ColorChangeType = {
 }
 
 export const COLORS: ColorChangeType[] = [
-    {color: '#4E4D4B', frontImage: './frontImages/gray.jpg', fontColor: '#26255D', checked: true},
-    {color: '#BFAA40', frontImage: './frontImages/yellow.jpg', fontColor: '#8F7D24', checked: false},
-    {color: '#658655', frontImage: './frontImages/green.jpg', fontColor: '#536B47', checked: false},
-    {color: '#953737', frontImage: './frontImages/red.jpg', fontColor: '#993333', checked: false},
-    {color: '#266D90', frontImage: './frontImages/blue.jpg', fontColor: '#26255D', checked: false}
+    {color: '#4E4D4B', frontImage: 'gray.webp', fontColor: '#26255D', checked: true},
+    {color: '#BFAA40', frontImage: 'yellow.webp', fontColor: '#8F7D24', checked: false},
+    {color: '#658655', frontImage: 'green.webp', fontColor: '#536B47', checked: false},
+    {color: '#953737', frontImage: 'red.webp', fontColor: '#993333', checked: false},
+    {color: '#266D90', frontImage: 'blue.webp', fontColor: '#26255D', checked: false}
 ]
 
 export const DEFAULTCOLOR = COLORS[0]
@@ -45,7 +45,7 @@ const ChangeColor = (props) => {
                                     setButtonSendOrderContext({...buttonSendOrderContext, color: color.fontColor})
                                 }}
                             />
-                            <span className={Style.checkmark} style={{backgroundColor: color.color}}></span>
+                            <span className={Style.checkmark} style={{backgroundColor: color.color}}/>
                         </label>
                     ))
                 }

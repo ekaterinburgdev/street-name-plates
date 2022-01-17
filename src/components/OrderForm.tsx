@@ -1,8 +1,7 @@
-import React, {createContext, useContext, useState} from "react";
+import React, {useState} from "react";
 import OrderButton from "./OrderButton";
 import {StreetType} from "./StreetPlate";
 import {ExportPrice} from "./StreetPlate";
-import {IsPressedButton} from "./OrderButton";
 
 type MessageDataType = {
     street: StreetType,
@@ -81,11 +80,11 @@ function Checkboxes({checkboxes, setCheckbox}) {
     } = React.useContext(ButtonSendOrderContext);
 
     return (
-        <>
+        <div className={'check-container'}>
             {checkboxes.map((checkbox, i) => (
                 <label className={'check option'} key={i}>
                     <input
-                        className={`check__input__${i}`}
+                        className={`check__input`}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -97,15 +96,17 @@ function Checkboxes({checkboxes, setCheckbox}) {
                                     dismantlingOldPlate: e.target.checked
                                 });
                             }
-                            // alert(checkbox.name);
                             setCheckbox(i, e.target.checked);
                         }}
                     />
-                    <span className={`check__box__${i}`}>
+                    <span className={`check__box`}>
+                        <p className={`check__box__price`}>
+                           до {checkbox.name == 'Демонтаж старой таблички' ? 2990 : 6990} ₽
+                        </p>
                     </span>{checkbox.name}
                 </label>
             ))}
-        </>
+        </div>
     );
 }
 
@@ -127,7 +128,7 @@ function OrderForm() {
     const inputCommProps = useInput();
 
     const [isClicked, setIsClicked] = React.useState(false);
-
+    const [isSendMail, setIsSendMail] = React.useState(false);
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const sendMail = async (event) => {
@@ -144,13 +145,10 @@ function OrderForm() {
     const styleInfoText = {
         marginTop: "120px",
         marginBottom: "40px",
-
-        fontFamily: "Iset Sans",
         fontStyle: "normal",
         fontWeight: "normal",
-        fontSize: "40px",
-        lineHeight: "140%",
-
+        fontSize: "2.5rem",
+        lineHeight: "1.4",
         color: "#FFFFFF"
     };
 
@@ -166,20 +164,21 @@ function OrderForm() {
         return price
     }
 
+    const finalPriceStyle = {
+        fontStyle: "normal",
+        fontWeight: "400",
+        display: "inline-block",
+        color: "white",
+        fontSize: "2.5rem",
+        lineHeight: "1",
+        margin: "5.125rem 1.25rem 5rem 1.25rem"
+    }
+
     function FinalPrice() {
         return (
             <div>
-                <p style={{
-                    fontFamily: "Iset Sans",
-                    fontStyle: "normal",
-                    fontWeight: "normal",
-                    display: "inline-block",
-                    color: "white",
-                    fontSize: "40px",
-                    lineHeight: "140%",
-                    margin: "40px 20px 20px 20px"
-                }}>
-                    Общая стоимость<span style={{marginLeft: "90px"}}/>{
+                <p style={finalPriceStyle}>
+                    Общая стоимость<span style={{marginLeft: "18rem"}}/>{
                     ExportPrice == undefined ? calculateFinalPrice(4990)
                         : calculateFinalPrice(ExportPrice)
                 } ₽
@@ -188,37 +187,39 @@ function OrderForm() {
     }
 
     function FinalPriceWithDismountingOrMounting() {
-        return <p style={{
-            fontFamily: "Iset Sans",
-            fontStyle: "normal",
-            fontWeight: "normal",
-            display: "inline-block",
-            color: "white",
-            fontSize: "40px",
-            lineHeight: "140%",
-            margin: "40px 20px 20px 20px"
-        }}>
-            Общая стоимость<span style={{marginLeft: "70px"}}/>до {
-            ExportPrice == undefined ? calculateFinalPrice(4990)
-                : calculateFinalPrice(ExportPrice)
-        } ₽ <br/>
-            <span style={{fontSize: "20px !important", opacity: "0.5"}}>
-                зависит от сложности работ
-            </span>
-        </p>
+        return (
+            <>
+                <p style={finalPriceStyle}>
+                        <span/>
+                            Общая стоимость
+                        <span style={{marginLeft: "18rem"}}/>
+                        <span/>до {
+                                ExportPrice == undefined ? calculateFinalPrice(4990)
+                                                         : calculateFinalPrice(ExportPrice)
+                        } ₽
+                </p>
+                <p style={{
+                        opacity: "0.5",
+                        fontSize: "20px",
+                        fontWeight: "300",
+                        color: "white",
+                        margin: "-4.375rem 1.25rem 4rem 1.25rem"
+                    }}>
+                    зависит от сложности работ
+                </p>
+            </>)
     }
 
     function Text() {
         return <p style={{
-            fontFamily: "Iset Sans",
             fontStyle: "normal",
-            fontWeight: "normal",
+            fontWeight: "400",
             display: "inline-block",
             color: "white",
-            fontSize: "40px",
-            lineHeight: "140%",
+            fontSize: "2.5rem",
+            lineHeight: "1.4",
             textAlign: "center",
-            margin: "40px 20px 20px 20px"
+            margin: "1rem 1.25rem 5rem 1.25rem"
         }}>Мы свяжемся с вами и расскажем, что дальше
         </p>
     }
@@ -237,8 +238,6 @@ function OrderForm() {
             return <FinalPrice/>
         }
     }
-
-    let IsSendMail = false
 
     return (
         <div className={'inputs-container'}>
@@ -270,11 +269,11 @@ function OrderForm() {
                 <OrderButton onClickHandler={
                     (event) => {
                         setIsClicked(true);
-                        if (!IsSendMail) {
-                            IsSendMail = true
+                        if (!isSendMail) {
+                            setIsSendMail(true)
                             sendMail(event)
                                 .then(_ => console.log("Email send successful"))
-                                .catch(_ => console.log("Something went wrong"))
+                                .catch(_ => console.log(`Something went wrong: ${event}`))
                         } else {
                             console.log("Email has already been sent")
                         }
@@ -282,7 +281,6 @@ function OrderForm() {
                 }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
                                   isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
-                <br/>
             </form>
         </div>
     );

@@ -1,25 +1,55 @@
 import StreetPlate from "../src/components/StreetPlate";
-import OrderForm, {defaultMessageData, ButtonSendOrderContext} from '../src/components/OrderForm';
-import ChangeColor from "../src/components/ChangeColor";
-import {COLORS, ChangeColorContext} from "../src/components/ChangeColor";
+import OrderForm, {ButtonSendOrderContext, defaultMessageData} from '../src/components/OrderForm';
+import ChangeColor, {ChangeColorContext, COLORS} from "../src/components/ChangeColor";
 import React from "react";
-import Style from '../styles/Home.module.css';
-
+import Style from '../src/styles/Home.module.css';
+import Head from 'next/head';
+import Image from "next/image";
 
 const Home = () => {
     const [colorContext, setColorContext] = React.useState(COLORS[0]);  //насколько костыль так делать???
     const valueColorContext = {colorContext, setColorContext};
-
     const [buttonSendOrderContext, setButtonSendOrderContext] = React.useState(defaultMessageData);
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
-
     const refPlate = React.useRef(null);
+
+    const checkHistory = async () => {
+        const h = await (await fetch(`./api/info?street=${buttonSendOrderContext.street.streetName}&building=${buttonSendOrderContext.build}&type=${buttonSendOrderContext.street.streetType}`)).json();
+        return h.is_hist ?? false
+    }
+
+    function IsHistory() {
+        const isHist = checkHistory();
+
+        if (isHist) {
+            return <p style={{
+                 fontSize: "1.875rem",
+                 lineHeight: "1.4",
+                 color: "white",
+                 opacity: "0.8",
+                 margin: "30px 0px 0px 0px",
+            }}>
+                Поздравляем, у Вас историческое здание !
+            </p>
+        }
+
+        return <p/>
+    }
 
     return (
         <>
+            <Head>
+                <title>Адресные таблички | Дизайн-код Екатеринбурга</title>
+                <meta name="viewport" content="width=768, user-scalable=no" />
+            </Head>
+
             <div className={Style.my_header}>
-                <a href={''} rel="noreferrer" target='_blank'>Дизайн-код Екатеринбурга</a>
-                <button className={Style.button_to_scroll} onClick={() => refPlate.current.scrollIntoView()}>Заказать табличку</button>
+                <a href={''} className={Style.header_link} rel="noreferrer" target='_blank'>
+                    Дизайн-код Екатеринбурга
+                </a>
+                <a style={{zIndex: "1"}} href="#order" className={Style.button_to_scroll}>
+                    Заказать табличку
+                </a>
             </div>
             <div className={Style.description_wrapper}>
                 <h1 className={Style.description_heading}>Адресные таблички</h1>
@@ -34,12 +64,12 @@ const Home = () => {
                     и насмотренность у жителей и гостей города.
                 </p>
             </div>
-            <div className={Style.bad_plates_container}></div>
+            <div className={Style.bad_plates_container}/>
             <div>
                 <p className={Style.line}>_____</p>
                 <p className={Style.doc_link}>
                     <a href={'https://docs.google.com/document/d/1etPPaqAu97npLfrJSLkCIbtDx4_RMURUv5bBg2AFr9U/edit?usp=sharing'}
-                       rel="noreferrer" target='_blank'>
+                       rel="noreferrer" target='_blank' tabIndex={0}>
                         Черновик анонса в гуглодоке
                     </a>
                 </p>
@@ -48,17 +78,21 @@ const Home = () => {
             <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
                 <ChangeColorContext.Provider value={valueColorContext}>
                     <div style={{margin: '0px', padding: '0px'}}>
-                        <div style={{backgroundImage: `url("${colorContext.frontImage}")`}} className={Style.front}>
-                            <div className={Style.front_wrapper}>
-                                <div ref={refPlate}></div> {/*якорь для скролла) (и снова костыли)*/}
+                        <div className={Style.front}>
+                            <div style={{zIndex: "-1"}}/>
+                            <Image src={`/${colorContext.frontImage}`}
+                                   alt={colorContext.color}
+                                   layout='fill'
+                                   priority/>
+                            <div id="order" className={Style.front_wrapper}>
                                 <h1 className={Style.h1_wrapper}>Заказ адресной<br/>таблички</h1>
                                 <p className={Style.p_wrapper}>Введите название улицы и номер дома</p>
-                                <StreetPlate />
+                                <StreetPlate/>
                             </div>
                         </div>
                         <div className={Style.inputs}>
                             <div className={Style.change_color_container}>
-                                <p className={Style.inputs_p_wrapper}>Фасад</p>
+                                <p className={Style.inputs_p_wrapper}>Цвет фасада</p>
                                 <ChangeColor/>
                             </div>
                             <OrderForm/>

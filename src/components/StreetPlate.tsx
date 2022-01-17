@@ -1,6 +1,6 @@
 import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
-import Style from '../../styles/StreetPlate.module.css'
+import Style from '../styles/StreetPlate.module.css'
 import {ButtonSendOrderContext} from "./OrderForm";
 
 export type StreetType = {
@@ -22,7 +22,7 @@ const StreetPlate = () => {
     const [savedInnerHtml, setSavedInnerHtml] = React.useState<string>();
     const [isHistory, setIsHistory] = React.useState(false);
     const [buildNumber, setBuildNumber] = React.useState<string>();
-    const [plateWidthPX, setPlateWidthPX] = React.useState('225px');
+    const [plateWidthPX, setPlateWidthPX] = React.useState('14.0625rem');
     const [plateLengthSize, setPlateLengthSize] = React.useState('1300мм');
     const [platePrice, setPlatePrice] = React.useState(4990)
     const [fontSizeBuildingNumber, setFontSizeBuildingNumber] = React.useState('0.75em');
@@ -39,19 +39,19 @@ const StreetPlate = () => {
 
         if (lengthStreetName <= 8) {
             setPlateLengthSize('1300мм');
-            setPlateWidthPX('225px');
+            setPlateWidthPX('14.0625rem');
             setPlatePrice(4990);
             ExportPrice = 4990;
             //изменение в самую маленькую табличку
         } else if (lengthStreetName >= 9 && lengthStreetName <= 13) {
             setPlateLengthSize('1700мм');
-            setPlateWidthPX('180px');
+            setPlateWidthPX('11.25rem');
             setPlatePrice(7990);
             ExportPrice = 7990;
             //изменение в среднюю табличку
         } else if (lengthStreetName >= 14) {
             setPlateLengthSize('2050мм');
-            setPlateWidthPX('150px');
+            setPlateWidthPX('9.375rem');
             setPlatePrice(11990);
             ExportPrice = 11990;
             //изменение в сааамую большую табличку
@@ -116,16 +116,15 @@ const StreetPlate = () => {
 
     const checkHistory = async (bNum: string, sName: string, sType: string ) => {
         console.log(`
-        тип: ${sType},
-        название: ${sName},
-        номер: ${bNum}
+            тип: ${sType},
+            название: ${sName},
+            номер: ${bNum}
         `)
         const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
         console.log(h);
         const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
         setIsHistory(isH);
         console.log(isH);
-
     }
 
     const getSuggestion = (suggestion: StreetType) => {
@@ -251,13 +250,14 @@ const StreetPlate = () => {
             '--text-align-input' : isHistory ? 'center' : 'left',
             '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
         }}>
-            <div className={Style.plate} style={{width: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
+            <div className={Style.plate} style={{maxWidth: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
                 <div className={Style.street}>
                     <input
                         className={Style.street_type}
                         value={streetType}
                         readOnly={true}
                         placeholder={'улица'}
+                        tabIndex={-1}
                     />
                     <input
                         className={Style.street_name}
@@ -274,6 +274,7 @@ const StreetPlate = () => {
                         value={latinName}
                         readOnly={true}
                         placeholder={'8 MARTA STREET'}
+                        tabIndex={-1}
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>

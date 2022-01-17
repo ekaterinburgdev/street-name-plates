@@ -1,0 +1,135 @@
+.StyledInput {
+    outline: none !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    max-width: 900px;
+    border: 8px solid transparent;
+    padding: .8em .6em .8em .8em;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    background: #2F2F2F;
+    border-radius: 24px;
+    transition: .15s ease all;
+}
+
+.StyledInput:hover {
+    background: #3f3f3f;
+}
+
+.StyledInput:focus {
+    background: white;
+    color: black
+}
+
+.StyledInput_error {
+    border: 8px solid #E1222D;
+}
+
+.check-container {
+    margin: 4rem 0;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    margin-top: 1em;
+}
+
+.check__box__price {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.2rem;
+}
+
+.check__box__price:before {
+    content: "";
+    display: inline-block;
+    margin-inline-end: 24px;
+    transform: rotate(45deg);
+    height: 1.5rem;
+    width: 0.75rem;
+    border-bottom: 7px solid #FFFFFF;
+    border-right: 7px solid #FFFFFF;
+    /* TODO: научить менять это значение при дефолтном состоянии на 0.2 */
+    opacity: 1;
+}
+
+.check__input {
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.check__box {
+    height: 5.5rem;
+    width: 19.625rem;
+    min-height: 66px;
+    min-width: 236px;
+    border-radius: 56px;
+    border: 10px solid #2F2F2F;
+    transition: .15s ease;
+}
+
+.check__input:checked + .check__box {
+    height: 5.5rem;
+    width: 19.625rem;
+    min-height: 66px;
+    min-width: 236px;
+    border-radius: 56px;
+    border: 10px solid #FEC72E;
+}
+
+.check__input:checked:focus + .check__box {
+    height: 5.5rem;
+    width: 19.625rem;
+    min-height: 66px;
+    min-width: 236px;
+    border-radius: 56px;
+    border: 10px solid #FEC72E;
+}
+
+.check__input:hover + .check__box,
+.check__input:focus-visible + .check__box {
+    height: 5.5rem;
+    width: 19.625rem;
+    min-height: 66px;
+    min-width: 236px;
+    border-radius: 56px;
+    border: 10px solid #FFFFFF;
+}
+
+.check__input:checked:focus-visible + .check__box {
+    height: 5.5rem;
+    width: 19.625rem;
+    min-height: 66px;
+    min-width: 236px;
+    border-radius: 56px;
+    border: 10px solid #FEC72E;
+    outline: 5px solid #ffffff;
+}
+
+p {
+    margin: 0;
+    font-size: 1.875rem;
+    line-height: 1.4;
+    color: #000000;
+}
+
+.inputs-container {
+    max-width: 900px;
+    height: 696px;
+}
