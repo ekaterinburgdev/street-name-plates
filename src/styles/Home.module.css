@@ -5,6 +5,7 @@
     width: 100%;
     background-size: cover;
     background-image: url("../../public/cover.webp");
+    background-position: right;
 }
 
 .header_link {
