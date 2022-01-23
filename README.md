@@ -1,6 +1,10 @@
-[Документация на API](https://atkishkin.gitbook.io/api-adresnye-tablichki/)
+# Дополнительные материалы
 
-Приложение работает на базе [React](https://reactjs.org/) и [Next.js](https://nextjs.org/) (bootstrapped via [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)).
+* [Документация на API](https://atkishkin.gitbook.io/api-adresnye-tablichki/)
+
+* [Презентация функционала первой версии](https://atkishkinvlad.github.io/presentations/)
+
+* Приложение работает на базе [React](https://reactjs.org/) и [Next.js](https://nextjs.org/) (bootstrapped via [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)).
 
 ## Запуск
 
