@@ -278,7 +278,7 @@ function OrderForm() {
                                 .then(_ => console.log("Email send successful"))
                                 .catch(_ => console.log(`Something went wrong: ${event}`))
                         } else {
-                            console.log("Email has already been sent")
+                            alert("Форма уже отправлена\nДля повтроной отправлки перезагрузите страницу")
                         }
                     }
                 }/>

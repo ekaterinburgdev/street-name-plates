@@ -62,10 +62,9 @@
     transform: rotate(45deg);
     height: 1.5rem;
     width: 0.75rem;
-    border-bottom: 7px solid #FFFFFF;
-    border-right: 7px solid #FFFFFF;
+    border-bottom: 0.5rem solid #FFFFFF;
+    border-right: 0.5rem solid #FFFFFF;
     transition: .15s ease;
-    /* TODO: научить менять это значение при дефолтном состоянии на 0.2 */
     opacity: 0.2;
 }
 
@@ -77,12 +76,15 @@
 }
 
 .check__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 5.5rem;
     width: 19.625rem;
     min-height: 66px;
     min-width: 236px;
     border-radius: 56px;
-    border: 10px solid #2F2F2F;
+    border: 0.9rem solid #2F2F2F;
     transition: .15s ease;
 }
 
@@ -92,13 +94,12 @@
     min-height: 66px;
     min-width: 236px;
     border-radius: 56px;
-    border: 10px solid #FEC72E;
+    border-color: #FEC72E;
 }
 
 .check__input:checked + .check__box .check__box__price:before {
-    /*background-color: green;*/
-    border-bottom: 7px solid #FEC72E;
-    border-right: 7px solid #FEC72E;
+    border-bottom-color: #FEC72E;
+    border-right-color: #FEC72E;
     opacity: 1;
 }
 
@@ -109,7 +110,7 @@
     min-height: 66px;
     min-width: 236px;
     border-radius: 56px;
-    border: 10px solid #FEC72E;
+    border-color: #FEC72E;
 }
 
 .check__input:hover + .check__box,
@@ -119,7 +120,7 @@
     min-height: 66px;
     min-width: 236px;
     border-radius: 56px;
-    border: 10px solid #FFFFFF;
+    border-color: #FFFFFF;
 }
 
 .check__input:hover + .check__box .check__box__price:before,
@@ -133,7 +134,7 @@
     min-height: 66px;
     min-width: 236px;
     border-radius: 56px;
-    border: 10px solid #FEC72E;
+    border-color: #FEC72E;
     outline: 5px solid #ffffff;
 }
 
