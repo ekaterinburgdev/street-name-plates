@@ -77,7 +77,7 @@ const StreetPlate = () => {
 
         changePlateLengthSize(value.length);
 
-        const maximumSuggestions = 4;
+        const maximumSuggestions = 5;
 
         // changePlateLengthSize(value.length);
 

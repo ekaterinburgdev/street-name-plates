@@ -3,7 +3,7 @@ import {ButtonSendOrderContext} from "./OrderForm";
 
 export let IsPressedButton = false
 
-const OrderButton = ({ onClickHandler }) => {
+const OrderButton = ({onClickHandler}) => {
     let [style, setStyle] = useState("OrderButton")
     let [val, setVal] = useState("Оформить заявку на табличку")
     let [className, setClassName] = useState("")
@@ -23,9 +23,18 @@ const OrderButton = ({ onClickHandler }) => {
 
     return (
         <div className={style}>
-            <input type={"submit"}
-                   onClick={animationButton(onClickHandler)}
-                   value={val} className={className}/>
+        <span style={{
+            backgroundColor: 'black',
+            position: 'absolute',
+            borderRadius: 'inherit',
+            height: '100%',
+            width: '100%'
+        }}>
+            <input
+                type={"submit"}
+                onClick={animationButton(onClickHandler)}
+                value={val} className={className}/>
+        </span>
         </div>
     );
 };

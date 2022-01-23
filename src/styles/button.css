@@ -21,12 +21,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px 40px;
+    padding: .62em 2.5em;
     margin-top: 50px;
     background: black;
     max-width: 900px;
-    height: 150px;
+    height: 9.37em;
     position: relative;
+    z-index: 1;
     box-sizing: border-box;
     background-clip: padding-box;
     border: solid 10px transparent;
@@ -40,108 +41,41 @@
     border-radius: inherit;
 }
 
+.OrderButtonAnimation input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    animation: fadeIn 0.5s;
+}
+
 .OrderButton input:focus {
     color: #FEC72E;
 }
 
 .OrderButtonAnimation::before {
-    transition: .2s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    margin: -10px;
-    border: none;
+    z-index: -1;
+    margin: -15px;
+    border-radius: inherit;
+    background: linear-gradient(
+            rgba(254, 199, 46, 1),
+            rgba(0, 210, 0, 1),
+            rgba(0, 180, 255, 1)
+    );
 }
 
-@keyframes pressAnimation {
-    from {
-        transition: .15s ease;
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        margin: -10px;
-        border-radius: inherit;
-        background: linear-gradient(
-                rgba(254, 199, 46, 1),
-                rgba(0, 210, 0, 1),
-                rgba(0, 180, 255, 1)
-        );
-    }
-
-    33% {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        margin: -10px;
-        border-radius: inherit;
-        background: linear-gradient(
-                rgba(254, 199, 46, 0.6),
-                rgba(0, 210, 0, 0.6),
-                rgba(0, 180, 255, 0.6)
-        );
-    }
-
-   66% {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        margin: -10px;
-        border-radius: inherit;
-        background: linear-gradient(
-                rgba(254, 199, 46, 0.4),
-                rgba(0, 210, 0, 0.4),
-                rgba(0, 180, 255, 0.4)
-        );
-    }
-
-    99% {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        margin: -10px;
-        border-radius: inherit;
-        background: linear-gradient(
-                rgba(254, 199, 46, 0.2),
-                rgba(0, 210, 0, 0.2),
-                rgba(0, 180, 255, 0.2)
-        );
-    }
-
-    to {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        margin: -10px;
-        border-radius: inherit;
-        background: linear-gradient(
-                rgba(254, 199, 46, 0),
-                rgba(0, 210, 0, 0),
-                rgba(0, 180, 255, 0)
-        );
-    }
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 .StyledSubmitButton {
