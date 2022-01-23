@@ -9,14 +9,30 @@
 }
 
 .header_link {
+    z-index: 1;
+    box-shadow: 0 3px 0 0 hsl(0deg 0% 100% / 30%);
+    text-decoration: none;
     margin-left: 2em;
-    margin-top: 1.5em;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.25rem;
+    font-size: 1.7rem;
     line-height: 1.4;
     text-align: center;
     color: #FFFFFF;
+}
+
+.header_link:hover {
+    z-index: 1;
+    box-shadow: 0 3px 0 0 rgb(255 200 0 / 80%);
+    text-decoration: none;
+    margin-left: 2em;
+    margin-top: 1.7em;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    text-align: center;
+    color: #FEC72E;
 }
 
 .button_to_scroll {

@@ -21,9 +21,11 @@ const Home = () => {
             </Head>
 
             <div className={Style.my_header}>
-                <a href={''} className={Style.header_link} rel="noreferrer" target='_blank'>
-                    Дизайн-код Екатеринбурга
-                </a>
+                <div className={"header_link_container"} style={{marginTop: "2em"}}>
+                    <a href={'https://ekaterinburg.design/'} className={Style.header_link} rel="noreferrer" target='_blank'>
+                        Дизайн-код Екатеринбурга
+                    </a>
+                </div>
                 <a style={{zIndex: "1"}} href="#order" className={Style.button_to_scroll}>
                     Заказать табличку
                 </a>
