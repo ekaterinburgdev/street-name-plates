@@ -11,30 +11,6 @@ const Home = () => {
     const valueColorContext = {colorContext, setColorContext};
     const [buttonSendOrderContext, setButtonSendOrderContext] = React.useState(defaultMessageData);
     const valueButtonSendOrderContext = {buttonSendOrderContext, setButtonSendOrderContext};
-    const refPlate = React.useRef(null);
-
-    const checkHistory = async () => {
-        const h = await (await fetch(`./api/info?street=${buttonSendOrderContext.street.streetName}&building=${buttonSendOrderContext.build}&type=${buttonSendOrderContext.street.streetType}`)).json();
-        return h.is_hist ?? false
-    }
-
-    const IsHistory = () => {
-        const isHist = checkHistory();
-
-        if (isHist) {
-            return <p style={{
-                 fontSize: "1.875rem",
-                 lineHeight: "1.4",
-                 color: "white",
-                 opacity: "0.8",
-                 margin: "30px 0px 0px 0px",
-            }}>
-                Поздравляем, у Вас историческое здание !
-            </p>
-        }
-
-        return <p/>
-    }
 
     return (
         <>
@@ -70,7 +46,7 @@ const Home = () => {
                 <p className={Style.doc_link}>
                     <a href={'https://docs.google.com/document/d/1etPPaqAu97npLfrJSLkCIbtDx4_RMURUv5bBg2AFr9U/edit?usp=sharing'}
                        rel="noreferrer" target='_blank' tabIndex={0}>
-                        Черновик анонса в гуглодоке
+                        Анонса в гуглодоке
                     </a>
                 </p>
                 <p className={Style.line}>_____</p>

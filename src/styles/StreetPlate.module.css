@@ -291,11 +291,10 @@
     padding: 0px;
 
     /* Текст по-жирнее */
-
     font-size: 2.5rem;
     line-height: 1.4;
 
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255);
 }
 
 .size_and_price_container{
@@ -308,11 +307,8 @@
     font-weight: 600;
     font-size: 3.75rem;
     line-height: 100%;
-    /* identical to box height, or 60px */
 
     text-align: right;
 
-    /* Белый 80% */
-
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255);
 }

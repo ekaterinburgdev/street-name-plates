@@ -29,7 +29,8 @@ export const defaultMessageData: MessageDataType = {
 
 export const ButtonSendOrderContext = React.createContext({
     buttonSendOrderContext: defaultMessageData,
-    setButtonSendOrderContext: (messageData: MessageDataType) => {}
+    setButtonSendOrderContext: (messageData: MessageDataType) => {
+    }
 })
 
 function useInput(defaultValue) {
@@ -152,7 +153,7 @@ function OrderForm() {
         color: "#FFFFFF"
     };
 
-    function calculateFinalPrice(price : number) {
+    function calculateFinalPrice(price: number) {
         if (buttonSendOrderContext.dismantlingOldPlate) {
             price += 2990
         }
@@ -165,9 +166,10 @@ function OrderForm() {
     }
 
     const finalPriceStyle = {
+        display: 'flex',
+        justifyContent: 'space-between',
         fontStyle: "normal",
         fontWeight: "400",
-        display: "inline-block",
         color: "white",
         fontSize: "2.5rem",
         lineHeight: "1",
@@ -178,10 +180,11 @@ function OrderForm() {
         return (
             <div>
                 <p style={finalPriceStyle}>
-                    Общая стоимость<span style={{marginLeft: "18rem"}}/>{
-                    ExportPrice == undefined ? calculateFinalPrice(4990)
-                        : calculateFinalPrice(ExportPrice)
-                } ₽
+                    <span>Общая стоимость</span>
+                    <span style={{fontWeight: 700}}>{
+                        ExportPrice == undefined ? calculateFinalPrice(4990)
+                            : calculateFinalPrice(ExportPrice)
+                    } ₽</span>
                 </p>
             </div>)
     }
@@ -190,21 +193,19 @@ function OrderForm() {
         return (
             <>
                 <p style={finalPriceStyle}>
-                        <span/>
-                            Общая стоимость
-                        <span style={{marginLeft: "18rem"}}/>
-                        <span/>до {
-                                ExportPrice == undefined ? calculateFinalPrice(4990)
-                                                         : calculateFinalPrice(ExportPrice)
-                        } ₽
+                    <span>Общая стоимость</span>
+                    <span style={{fontWeight: 700}}>до {
+                        ExportPrice == undefined ? calculateFinalPrice(4990)
+                            : calculateFinalPrice(ExportPrice)
+                    } ₽</span>
                 </p>
                 <p style={{
-                        opacity: "0.5",
-                        fontSize: "20px",
-                        fontWeight: "300",
-                        color: "white",
-                        margin: "-4.375rem 1.25rem 4rem 1.25rem"
-                    }}>
+                    opacity: "0.5",
+                    fontSize: "20px",
+                    fontWeight: "300",
+                    color: "white",
+                    margin: "-4.375rem 1.25rem 4rem 1.25rem"
+                }}>
                     зависит от сложности работ
                 </p>
             </>)
@@ -241,7 +242,7 @@ function OrderForm() {
 
     return (
         <div className={'inputs-container'}>
-            <form onSubmit={ event => event.preventDefault() }>
+            <form onSubmit={event => event.preventDefault()}>
                 <p style={styleInfoText}>
                     Оставьте любимый способ связи.
                     <br/>
@@ -256,14 +257,14 @@ function OrderForm() {
                            clientName: event.target.value,
                        })}/>
                 <input required={true}
-                    className={'StyledInput'}
-                    {...inputCommProps}
-                    placeholder="Способ связи. Например, email"
-                    autoComplete="none"
-                    onChange={event => setButtonSendOrderContext({
-                        ...buttonSendOrderContext,
-                        clientContact: event.target.value
-                    })}
+                       className={'StyledInput'}
+                       {...inputCommProps}
+                       placeholder="Способ связи. Например, email"
+                       autoComplete="none"
+                       onChange={event => setButtonSendOrderContext({
+                           ...buttonSendOrderContext,
+                           clientContact: event.target.value
+                       })}
                 />
                 <FinalCheckbox/>
                 <OrderButton onClickHandler={
@@ -285,4 +286,5 @@ function OrderForm() {
         </div>
     );
 }
+
 export default OrderForm;
