@@ -57,10 +57,10 @@ const StreetPlate = () => {
             //изменение в сааамую большую табличку
 
             if (lengthStreetName > 15){
-                setFontSizeStreetName('0.35em');
+                setFontSizeStreetName('0.33em');
             }
             if (lengthStreetName > 19){
-                setFontSizeStreetName('0.28em');
+                setFontSizeStreetName('0.25em');
             }
         }
 
@@ -74,17 +74,9 @@ const StreetPlate = () => {
         setIsHistory(false);
 
         const value: string = event.target.value || '';
-
         changePlateLengthSize(value.length);
-
         const maximumSuggestions = 5;
-
-        // changePlateLengthSize(value.length);
-
         let streets = await (await fetch( `./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
-        //console.log(event.target.baseURI);
-        //console.log(window.location.href);
-        //console.log(document.URL);
 
 
         const newSuggestions = streets.hasOwnProperty('streets') ? streets.streets.map(s => {
@@ -95,15 +87,8 @@ const StreetPlate = () => {
             };
             return res
         }) : [];
+
         setSuggestions(newSuggestions);
-
-        //Старый код:
-
-        // const newSuggestions = STREETS.filter(street =>
-        //     street.streetName.toUpperCase().indexOf(value.toUpperCase()) == 0).slice(-5);
-        // setSuggestions(newSuggestions);
-        // console.log('newSuggestions');
-        // console.log(newSuggestions);
 
         if (value.length != 0 && newSuggestions.length > 0) {
             setInputPref(value);
@@ -115,16 +100,9 @@ const StreetPlate = () => {
     }
 
     const checkHistory = async (bNum: string, sName: string, sType: string ) => {
-        console.log(`
-            тип: ${sType},
-            название: ${sName},
-            номер: ${bNum}
-        `)
         const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
-        console.log(h);
         const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
         setIsHistory(isH);
-        console.log(isH);
     }
 
     const getSuggestion = (suggestion: StreetType) => {
@@ -223,9 +201,7 @@ const StreetPlate = () => {
     const adjustFrontSize = (event: React.ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value;
         setBuildNumber(val);
-        setButtonSendOrderContext({...buttonSendOrderContext, build: val}); //нужно поменять название метода из-за этой строчки
-
-        //считай нейронку написал:)
+        setButtonSendOrderContext({...buttonSendOrderContext, build: val});
 
         if (val.length == 1) {
             setFontSizeBuildingNumber('0.75em');
@@ -237,11 +213,9 @@ const StreetPlate = () => {
             setFontSizeBuildingNumber('0.27em');
         } else if (val.length == 5) {
             setFontSizeBuildingNumber('0.22em');
-        } else if (val.length == 6) {
-            setFontSizeBuildingNumber('0.17em');
+        } else if (val.length > 5) {
+            setFontSizeBuildingNumber('0.20em');
         }
-        console.log(buildNumber);
-
     }
 
     return (
@@ -278,10 +252,9 @@ const StreetPlate = () => {
                     />
                     {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
-                <div className={Style.separator}></div>
+                <div className={Style.separator}/>
                     <input
                         type={'text'}
-                        maxLength={6}
                         className={Style.building_number}
                         placeholder={'7'}
                         onChange={event => {
