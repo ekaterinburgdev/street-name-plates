@@ -167,20 +167,22 @@ function OrderForm() {
 
     const finalPriceStyle = {
         display: 'flex',
+        padding: 0,
         justifyContent: 'space-between',
+        alignItems: 'center',
         fontStyle: "normal",
-        fontWeight: "400",
+        fontWeight: 400,
         color: "white",
-        fontSize: "2.5rem",
+        fontSize: "3.8rem",
         lineHeight: "1",
-        margin: "5.125rem 1.25rem 5rem 1.25rem"
+        margin: "5.125rem 1.25rem 0rem 1.25rem",
     }
 
     function FinalPrice() {
         return (
             <div>
-                <p style={finalPriceStyle}>
-                    <span>Общая стоимость</span>
+                <p style={{...finalPriceStyle, paddingBottom:'2rem'}}> {/*paddingBottom:'2rem' - костыль для пустого пространства внизу*/}
+                    <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>{
                         ExportPrice == undefined ? calculateFinalPrice(4990)
                             : calculateFinalPrice(ExportPrice)
@@ -193,18 +195,18 @@ function OrderForm() {
         return (
             <>
                 <p style={finalPriceStyle}>
-                    <span>Общая стоимость</span>
+                    <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>до {
                         ExportPrice == undefined ? calculateFinalPrice(4990)
                             : calculateFinalPrice(ExportPrice)
                     } ₽</span>
                 </p>
                 <p style={{
-                    opacity: "0.5",
-                    fontSize: "20px",
-                    fontWeight: "300",
+                    fontSize: "2rem",
+                    fontWeight: 300,
                     color: "white",
-                    margin: "-4.375rem 1.25rem 4rem 1.25rem"
+                    margin: "0rem 1.25rem 4rem 1.5rem",
+                    paddingBottom: '2.5rem', //костыль, чтобы появилось пустое пространство
                 }}>
                     зависит от сложности работ
                 </p>
@@ -214,7 +216,7 @@ function OrderForm() {
     function Text() {
         return <p style={{
             fontStyle: "normal",
-            fontWeight: "400",
+            fontWeight: 400,
             display: "inline-block",
             color: "white",
             fontSize: "2.5rem",
