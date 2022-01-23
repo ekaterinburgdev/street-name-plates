@@ -221,9 +221,9 @@ function OrderForm() {
             color: "white",
             fontSize: "2.5rem",
             lineHeight: "1.4",
-            textAlign: "center",
-            margin: "1rem 1.25rem 5rem 1.25rem"
-        }}>Мы свяжемся с вами и расскажем, что дальше
+            textAlign: "left",
+            margin: "1rem 1.25rem 5rem 0rem"
+        }}>Мы свяжемся с вами и расскажем, что делать дальше
         </p>
     }
 
