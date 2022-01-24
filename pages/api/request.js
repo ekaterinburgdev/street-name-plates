@@ -12,11 +12,13 @@ const RECEPIENTS = process.env.RECEPIENTS.split(', ');
 /*
 ожидается, что в body запроса будет лежать строка следующего формата:
 user_data: {"type": "улица", "street_name": "Малышева", 
-"customer_name": "ФАРШШШШШ", "number": 1, "dismanting": false, 
+"customer_name": "ФАРШШШШШ", "number": "1", "dismanting": false, 
 "mounting": false, "color-code": "FF7F50", "communication": "@vasya_ebaaat"}
 */
 export default async function handler(req, res) {
+  console.log("/////////////////////////////////")
   let body = "";
+  console.log(req.body)
   try {
     body = JSON.parse(/({.+})/.exec(req.body)[1]);
   } catch (e) {
