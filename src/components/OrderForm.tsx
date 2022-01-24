@@ -133,7 +133,7 @@ function OrderForm() {
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const sendMail = async (event) => {
-        const a = await fetch(/*event.target.baseURI*/'https://eplates.vercel.app/api/request', {
+        const a = await fetch(/*event.target.baseURI*/'./api/request', {
             method: 'POST',
             mode: 'no-cors',
             headers: {
