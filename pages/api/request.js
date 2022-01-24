@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const validation_info = validate(body["type"], body["street_name"], body["number"])
+  const validation_info = validate(body["type"], body["street_name"], body["number"].toString())
   if (!validation_info["is_valid"]) {
     return res.status(400).json({ });
   }
