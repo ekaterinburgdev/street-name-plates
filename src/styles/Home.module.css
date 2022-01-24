@@ -1,11 +1,13 @@
 .my_header {
     display: flex;
     justify-content: space-between;
-    height: 765px;
+    /*height: 765px;*/
+    height: 48em;
     width: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url("../../public/TopPlate.webp");
+    background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../../public/cover.webp");
-    background-position: right;
+    /*background-position: center;*/
 }
 
 .header_link {
