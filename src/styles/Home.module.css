@@ -4,10 +4,10 @@
     /*height: 765px;*/
     height: 48em;
     width: 100%;
-    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url("../../public/TopPlate.webp");
+    background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url("../../public/aboba.webp");
     background-repeat: no-repeat;
     background-size: cover;
-    /*background-position: center;*/
+    background-position: 40% center;
 }
 
 .header_link {
