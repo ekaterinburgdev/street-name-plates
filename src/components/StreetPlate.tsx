@@ -34,7 +34,7 @@ const StreetPlate = () => {
     const {buttonSendOrderContext, setButtonSendOrderContext} = React.useContext(ButtonSendOrderContext);
 
     const changePlateLengthSize = (lengthStreetName: number) => {
-        if (fontSizeStreetName != '0.45em'){
+        if (fontSizeStreetName != '0.45em') {
             setFontSizeStreetName('0.45em');
         }
 
@@ -57,10 +57,10 @@ const StreetPlate = () => {
             ExportPrice = 11990;
             //изменение в сааамую большую табличку
 
-            if (lengthStreetName > 15){
+            if (lengthStreetName > 15) {
                 setFontSizeStreetName('0.33em');
             }
-            if (lengthStreetName > 19){
+            if (lengthStreetName > 19) {
                 setFontSizeStreetName('0.25em');
             }
         }
@@ -77,7 +77,7 @@ const StreetPlate = () => {
         const value: string = event.target.value || '';
         changePlateLengthSize(value.length);
         const maximumSuggestions = 5;
-        let streets = await (await fetch( `./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
+        let streets = await (await fetch(`./api/autocomplete?street=${value}&maximumSuggestions=${maximumSuggestions}`)).json();
 
 
         const newSuggestions = streets.hasOwnProperty('streets') ? streets.streets.map(s => {
@@ -100,7 +100,7 @@ const StreetPlate = () => {
         }
     }
 
-    const checkHistory = async (bNum: string, sName: string, sType: string ) => {
+    const checkHistory = async (bNum: string, sName: string, sType: string) => {
         const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
         const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
         setIsHistory(isH);
@@ -121,6 +121,7 @@ const StreetPlate = () => {
     }
 
     const setStreet = async (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        console.log('сет стриит')
         const streetName = event.currentTarget.innerText.split(' ').slice(1).join(' ');
 
         const sug = suggestions.filter(suggestion => suggestion.streetName.toUpperCase() == streetName.toUpperCase())[0];
@@ -134,10 +135,9 @@ const StreetPlate = () => {
         setButtonSendOrderContext({
             ...buttonSendOrderContext, street: sug
         });
-
     }
 
-    const navOnSuggestion = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const navOnSuggestion = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         const key = event.key || '';
 
         if (!isFind) {
@@ -165,7 +165,7 @@ const StreetPlate = () => {
             setLatinName(sug.streetLatin);
             setStreetType(sug.streetType);
             setIsFind(false);
-            checkHistory(buildNumber, sug.streetName, sug.streetType);
+            await checkHistory(buildNumber, sug.streetName, sug.streetType);
 
             setButtonSendOrderContext({
                 ...buttonSendOrderContext, street: sug
@@ -180,7 +180,9 @@ const StreetPlate = () => {
                     <li key={suggestion.streetName + suggestion.streetType}>
                         <span
                             className={index != indexActiveSuggestion ? Style.suggestion : Style.suggestion_active}
-                            onClick={setStreet}
+                            onMouseDown={async (event) => {
+                                await setStreet(event)
+                            }}
                             onMouseEnter={event => {
                                 const sug = event.currentTarget.innerText;
                                 setSavedInnerHtml(event.currentTarget.innerHTML);
@@ -206,7 +208,7 @@ const StreetPlate = () => {
 
         if (val.length == 1) {
             setFontSizeBuildingNumber('0.75em');
-        } else if (val.length == 2){
+        } else if (val.length == 2) {
             setFontSizeBuildingNumber('0.55em')
         } else if (val.length == 3) {
             setFontSizeBuildingNumber('0.36em');
@@ -222,8 +224,8 @@ const StreetPlate = () => {
     return (
         <div className={Style.plate_container} /*@ts-ignore*/ style={{
             '--font-color': isHistory ? '#FFFFFF' : colorContext.fontColor,
-            '--text-align-input' : isHistory ? 'center' : 'left',
-            '--plate-color' : isHistory ? '#000000' : '#FFFFFF'
+            '--text-align-input': isHistory ? 'center' : 'left',
+            '--plate-color': isHistory ? '#000000' : '#FFFFFF'
         }}>
             <div className={Style.plate} style={{maxWidth: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
                 <div className={Style.street}>
@@ -258,16 +260,16 @@ const StreetPlate = () => {
                     {isShow && isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
                 <div className={Style.separator}/>
-                    <input
-                        type={'text'}
-                        className={Style.building_number}
-                        placeholder={'7'}
-                        onChange={event => {
-                            adjustFrontSize(event);
-                            checkHistory(event.target.value, inputVal, streetType);
-                        }}
-                        style={{fontSize: fontSizeBuildingNumber, cursor: 'text'}}
-                    />
+                <input
+                    type={'text'}
+                    className={Style.building_number}
+                    placeholder={'7'}
+                    onChange={event => {
+                        adjustFrontSize(event);
+                        checkHistory(event.target.value, inputVal, streetType);
+                    }}
+                    style={{fontSize: fontSizeBuildingNumber, cursor: 'text'}}
+                />
             </div>
             <div className={Style.size_and_price_container}>
                 <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
