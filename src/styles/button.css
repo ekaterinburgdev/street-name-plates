@@ -1,3 +1,16 @@
+input {
+    font-style: normal;
+    font-size: 3.125rem;
+    line-height: 1.4;
+    border: none;
+    display: inline;
+    width: auto;
+    height: auto;
+    background: #2a2b3c;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
 .OrderButton {
     display: flex;
     flex-direction: row;
@@ -67,9 +80,16 @@
     margin: -15px;
     border-radius: inherit;
     background: linear-gradient(
-            rgba(254, 199, 46, 1),
-            rgba(0, 210, 0, 1),
-            rgba(0, 180, 255, 1)
+            to right,
+            rgba(254, 199, 46, 1) 20%,
+            rgba(0, 210, 0, 1) 20%,
+            rgba(0, 210, 0, 1) 40%,
+            rgba(0, 180, 255, 1) 40%,
+            rgba(0, 180, 255, 1) 60%,
+            rgba(254, 199, 46, 1) 60%,
+            rgba(254, 199, 46, 1) 80%,
+            rgba(0, 210, 0, 1) 80%,
+            rgba(0, 210, 0, 1) 100%
     );
 }
 
@@ -101,9 +121,16 @@
     border-radius: inherit;
     transition: .15s ease margin;
     background: linear-gradient(
-            rgba(254, 199, 46, 1),
-            rgba(0, 210, 0, 1),
-            rgba(0, 180, 255, 1)
+            to right,
+            rgba(254, 199, 46, 1) 20%,
+            rgba(0, 210, 0, 1) 20%,
+            rgba(0, 210, 0, 1) 40%,
+            rgba(0, 180, 255, 1) 40%,
+            rgba(0, 180, 255, 1) 60%,
+            rgba(254, 199, 46, 1) 60%,
+            rgba(254, 199, 46, 1) 80%,
+            rgba(0, 210, 0, 1) 80%,
+            rgba(0, 210, 0, 1) 100%
     );
 }
 
