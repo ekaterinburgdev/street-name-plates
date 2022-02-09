@@ -33,7 +33,9 @@ const OrderButton = ({onClickHandler}) => {
             <input
                 type={"submit"}
                 onClick={animationButton(onClickHandler)}
-                value={val} className={className}/>
+                value={val} className={className}
+                style={{backgroundColor:'#123'}}
+            />
         </span>
         </div>
     );
