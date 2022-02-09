@@ -102,7 +102,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                         }}
                     />
                     <span className={`check__box`}>
-                        <span className={'mark'}></span>
+                        <span className={'mark'}/>
                     </span>{checkbox.name}
                 </label>
             ))}

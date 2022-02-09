@@ -35,6 +35,7 @@
 
 .check-container {
     margin: 4rem 0;
+    display:block;
 }
 
 .check {
