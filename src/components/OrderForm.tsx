@@ -82,6 +82,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
 
     return (
         <div className={'check-container'}>
+            <div onClick={""}/>
             {checkboxes.map((checkbox, i) => (
                 <label className={'check'} key={i}>
                     <input
