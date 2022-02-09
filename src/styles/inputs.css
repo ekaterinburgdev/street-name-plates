@@ -38,6 +38,7 @@
 }
 
 .check {
+    cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 1em;
@@ -74,6 +75,8 @@
     position: absolute;
     -webkit-appearance: none;
     appearance: none;
+    cursor: pointer;
+
 }
 
 .check__box {
