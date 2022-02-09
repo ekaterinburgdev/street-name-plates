@@ -14,6 +14,7 @@ export let ExportPrice;
 
 const StreetPlate = () => {
     const [isFind, setIsFind] = React.useState(false);
+    const [isShow, setIsShow] = React.useState(false);
     const [suggestions, setSuggestions] = React.useState<StreetType[]>([]);
     const [inputVal, setInputVal] = React.useState<string>();
     const [inputPref, setInputPref] = React.useState<string>();
@@ -236,6 +237,8 @@ const StreetPlate = () => {
                     <input
                         className={Style.street_name}
                         type={'text'}
+                        onFocus={() => setIsShow(true)}
+                        onBlur={() => setIsShow(false)}
                         onChange={findSuggestions}
                         onKeyDown={navOnSuggestion}
                         value={inputVal}
@@ -250,7 +253,7 @@ const StreetPlate = () => {
                         placeholder={'8 MARTA STREET'}
                         tabIndex={-1}
                     />
-                    {isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
+                    {isShow && isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
                 </div>
                 <div className={Style.separator}/>
                     <input
