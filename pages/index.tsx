@@ -71,7 +71,7 @@ const Home = () => {
             </div>
             <ButtonSendOrderContext.Provider value={valueButtonSendOrderContext}>
                 <ChangeColorContext.Provider value={valueColorContext}>
-                    <div className={Style.container_form}>
+                    {/*<div className={Style.container_form}>*/}
                         <div className={Style.form_wrapper}>
                             <div className={Style.front}>
                                 {/*<div style={{zIndex: "-1"}}/>*/}
@@ -96,7 +96,7 @@ const Home = () => {
                                 <OrderForm/>
                             </div>
                         </div>
-                    </div>
+                    {/*</div>*/}
                 </ChangeColorContext.Provider>
             </ButtonSendOrderContext.Provider>
         </>

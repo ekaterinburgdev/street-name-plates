@@ -139,10 +139,11 @@
 
 .form_wrapper {
     /*padding: 1rem;*/
-    display: inline-block;
-    background-color: #3f3f3f;
+    margin: 2rem;
+    /*display: inline-block;*/
+    background-color: #2a2b3c;
     border-radius: 8px;
-    min-width: 9rem;
+    /*min-width: 9rem;*/
 }
 
 .front {

@@ -144,7 +144,6 @@ function OrderForm() {
     }
 
     const styleInfoText = {
-        marginTop: "120px",
         marginBottom: "40px",
         fontStyle: "normal",
         fontWeight: "normal",
