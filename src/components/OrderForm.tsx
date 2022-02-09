@@ -102,7 +102,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                     />
                     <span className={`check__box`}>
                         <p className={`check__box__price`}>
-                           до {checkbox.name == 'Демонтаж старой таблички' ? 2990 : 6990} ₽
+                           {/*до {checkbox.name == 'Демонтаж старой таблички' ? 2990 : 6990} ₽*/}
                         </p>
                     </span>{checkbox.name}
                 </label>
