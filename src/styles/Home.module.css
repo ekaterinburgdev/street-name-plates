@@ -138,12 +138,9 @@
 }
 
 .form_wrapper {
-    /*padding: 1rem;*/
     margin: 2rem;
-    /*display: inline-block;*/
     background-color: #2a2b3c;
     border-radius: 8px;
-    /*min-width: 9rem;*/
 }
 
 .front {
