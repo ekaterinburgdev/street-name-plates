@@ -138,9 +138,9 @@
 }
 
 .form_wrapper {
-    margin: 1.75rem;
+    margin: 2rem;
     background-color: #1d1e1f;
-    border-radius: 8px;
+    border-radius: 1.75rem;
 }
 
 .front {
