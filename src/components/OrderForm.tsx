@@ -80,9 +80,11 @@ function Checkboxes({checkboxes, setCheckbox}) {
         setButtonSendOrderContext
     } = React.useContext(ButtonSendOrderContext);
 
+    let emptyText = () => { "" }
+
     return (
         <div className={'check-container'}>
-            <div onClick={""}/>
+            <div onClick={emptyText}/>
             {checkboxes.map((checkbox, i) => (
                 <label className={'check'} key={i}>
                     <input
