@@ -54,7 +54,7 @@ const checkboxesList = [
 const getDefaultCheckboxes = () =>
     checkboxesList.map((checkbox) => ({
         name: checkbox,
-        checked: false,
+        checked: true,
     }));
 
 function useCheckboxes(defaultCheckboxes) {
