@@ -33,9 +33,12 @@
     border: 8px solid #E1222D;
 }
 
+.wrap {
+    display: block;
+}
+
 .check-container {
     margin: 4rem 0;
-    display:block;
 }
 
 .check {

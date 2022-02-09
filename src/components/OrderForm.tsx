@@ -81,6 +81,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
     } = React.useContext(ButtonSendOrderContext);
 
     return (
+        <a href="javascript:void(0);" className={"wrap"}>
         <div className={'check-container'}>
             {checkboxes.map((checkbox, i) => (
                 <label className={'check'} key={i}>
@@ -107,6 +108,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                 </label>
             ))}
         </div>
+        </a>
     );
 }
 
