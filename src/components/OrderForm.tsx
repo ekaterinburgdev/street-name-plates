@@ -181,7 +181,10 @@ function OrderForm() {
     function FinalPrice() {
         return (
             <div>
-                <p style={{...finalPriceStyle, paddingBottom:'2rem'}}> {/*paddingBottom:'2rem' - костыль для пустого пространства внизу*/}
+                <p style={{
+                    ...finalPriceStyle,
+                    paddingBottom: '2rem'
+                }}> {/*paddingBottom:'2rem' - костыль для пустого пространства внизу*/}
                     <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>{
                         ExportPrice == undefined ? calculateFinalPrice(4990)
@@ -243,8 +246,7 @@ function OrderForm() {
     }
 
     return (
-        <div className={'inputs-container'}>
-            <form onSubmit={event => event.preventDefault()}>
+        <form onSubmit={event => event.preventDefault()} className={'inputs-container'}>
                 <p style={styleInfoText}>
                     Оставьте любимый способ связи.
                     <br/>
@@ -284,8 +286,7 @@ function OrderForm() {
                 }/>
                 <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
                                   isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
-            </form>
-        </div>
+        </form>
     );
 }
 

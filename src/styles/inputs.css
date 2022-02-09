@@ -146,6 +146,7 @@ p {
 }
 
 .inputs-container {
-    max-width: 900px;
-    height: 696px;
+    padding: 0;
+    margin: 0;
+    max-width: 56.25rem;
 }
