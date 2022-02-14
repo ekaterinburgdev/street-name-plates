@@ -11,9 +11,10 @@
     position: relative;
     z-index: 1;
     box-sizing: border-box;
-    background-clip: padding-box;
+    /*background-clip: padding-box;*/
     border: solid 10px transparent;
     border-radius: 100px;
+    transition: .15s ease;
 }
 
 .OrderButtonAnimation {
@@ -64,7 +65,7 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-    margin: -15px;
+    margin: -0.95rem;
     border-radius: inherit;
     background: linear-gradient(to bottom left, rgb(254, 199, 46) 33.333%, rgb(0, 210, 0) 33.333% 66.666%, rgb(0, 180, 255) 66.666%);
 }
@@ -93,13 +94,13 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-    margin: -10px;
+    margin: -0.95rem;
     border-radius: inherit;
     transition: .15s ease margin;
     background: linear-gradient(to bottom left, rgb(254, 199, 46) 33.333%, rgb(0, 210, 0) 33.333% 66.666%, rgb(0, 180, 255) 66.666%);
 }
 
 .OrderButton:hover::before {
-    margin: -15px;
+    margin: -1.25rem;
     filter: contrast(1.1);
 }

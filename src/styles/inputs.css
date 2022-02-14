@@ -58,16 +58,17 @@
 }
 
 .mark {
-    padding: 0.2rem;
+    /*padding: 0.2rem;*/
     display: inline-block;
     /*margin-inline-end: 24px;*/
     transform: rotate(45deg);
-    height: 2rem;
-    width: 1.25rem;
-    border-bottom: 0.5rem solid #FFFFFF;
-    border-right: 0.5rem solid #FFFFFF;
+    height: 2.5rem;
+    width: 1.75rem;
+    border-bottom: 0.7rem solid #FFFFFF;
+    border-right: 0.7rem solid #FFFFFF;
     transition: .15s ease;
     opacity: 0.2;
+    margin-bottom: 0.6rem;
 }
 
 
