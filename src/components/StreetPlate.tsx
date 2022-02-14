@@ -273,7 +273,7 @@ const StreetPlate = () => {
             </div>
             <div className={Style.size_and_price_container}>
                 <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
-                <span className={Style.price}>{platePrice} ₽</span>
+                <span className={Style.price}>{platePrice.toString().length == 4 ? platePrice : platePrice.toLocaleString('ru-RU')} ₽</span>
             </div>
             {isHistory && (<p className={Style.is_history_description}>Поздравляем, у Вас историческое здание!</p>)}
         </div>

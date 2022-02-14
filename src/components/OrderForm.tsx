@@ -86,7 +86,8 @@ function Checkboxes({checkboxes, setCheckbox}) {
                 <label className={'check'} key={i}>
                     <input
                         className={`check__input`}
-                        onClick={() => {}}
+                        onClick={() => {
+                        }}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -185,8 +186,8 @@ function OrderForm() {
                 }}>
                     <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>{
-                        ExportPrice == undefined ? calculateFinalPrice(4990)
-                            : calculateFinalPrice(ExportPrice)
+                        ExportPrice == undefined ? (calculateFinalPrice(4990).toString().length == 4 ? calculateFinalPrice(4990) : calculateFinalPrice(4990).toLocaleString('ru-RU'))
+                            : (calculateFinalPrice(ExportPrice).toString().length == 4 ? calculateFinalPrice(ExportPrice) : calculateFinalPrice(ExportPrice).toLocaleString('ru-RU'))
                     } ₽</span>
                 </p>
             </div>)
@@ -198,8 +199,8 @@ function OrderForm() {
                 <p style={finalPriceStyle}>
                     <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>до {
-                        ExportPrice == undefined ? calculateFinalPrice(4990)
-                            : calculateFinalPrice(ExportPrice)
+                        ExportPrice == undefined ? (calculateFinalPrice(4990).toString().length == 4 ? calculateFinalPrice(4990) : calculateFinalPrice(4990).toLocaleString('ru-RU'))
+                            : (calculateFinalPrice(ExportPrice).toString().length == 4 ? calculateFinalPrice(ExportPrice) : calculateFinalPrice(ExportPrice).toLocaleString('ru-RU'))
                     } ₽</span>
                 </p>
                 <p style={{
@@ -245,45 +246,45 @@ function OrderForm() {
 
     return (
         <form onSubmit={event => event.preventDefault()} className={'inputs-container'}>
-                <p style={styleInfoText}>
-                    Оставьте любимый способ связи.
-                    <br/>
-                    Мы напишем или позвоним, чтобы обсудить детали и оплату.
-                </p>
-                <input required={true}
-                       autoComplete="none"
-                       className={'StyledInput'} {...inputNameProps}
-                       placeholder="Имя"
-                       onChange={event => setButtonSendOrderContext({
-                           ...buttonSendOrderContext,
-                           clientName: event.target.value,
-                       })}/>
-                <input required={true}
-                       className={'StyledInput'}
-                       {...inputCommProps}
-                       placeholder="Способ связи. Например, email"
-                       autoComplete="none"
-                       onChange={event => setButtonSendOrderContext({
-                           ...buttonSendOrderContext,
-                           clientContact: event.target.value
-                       })}
-                />
-                <FinalCheckbox/>
-                <OrderButton onClickHandler={
-                    (event) => {
-                        setIsClicked(true);
-                        if (!isSendMail) {
-                            setIsSendMail(true)
-                            sendMail(event)
-                                .then(_ => console.log("Email send successful"))
-                                .catch(_ => console.log(`Something went wrong: ${event}`))
-                        } else {
-                            alert("Форма уже отправлена\nДля повтроной отправлки перезагрузите страницу")
-                        }
+            <p style={styleInfoText}>
+                Оставьте любимый способ связи.
+                <br/>
+                Мы напишем или позвоним, чтобы обсудить детали и оплату.
+            </p>
+            <input required={true}
+                   autoComplete="none"
+                   className={'StyledInput'} {...inputNameProps}
+                   placeholder="Имя"
+                   onChange={event => setButtonSendOrderContext({
+                       ...buttonSendOrderContext,
+                       clientName: event.target.value,
+                   })}/>
+            <input required={true}
+                   className={'StyledInput'}
+                   {...inputCommProps}
+                   placeholder="Способ связи. Например, email"
+                   autoComplete="none"
+                   onChange={event => setButtonSendOrderContext({
+                       ...buttonSendOrderContext,
+                       clientContact: event.target.value
+                   })}
+            />
+            <FinalCheckbox/>
+            <OrderButton onClickHandler={
+                (event) => {
+                    setIsClicked(true);
+                    if (!isSendMail) {
+                        setIsSendMail(true)
+                        sendMail(event)
+                            .then(_ => console.log("Email send successful"))
+                            .catch(_ => console.log(`Something went wrong: ${event}`))
+                    } else {
+                        alert("Форма уже отправлена\nДля повтроной отправлки перезагрузите страницу")
                     }
-                }/>
-                <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
-                                  isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
+                }
+            }/>
+            <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
+                              isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
         </form>
     );
 }
