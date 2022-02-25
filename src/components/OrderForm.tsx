@@ -143,12 +143,13 @@ function OrderForm() {
     }
 
     const styleInfoText = {
-        marginBottom: "40px",
+        marginTop: "-6.5rem",
+        marginBottom: "2.5rem",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: "2.5rem",
         lineHeight: "1.4",
-        color: "#FFFFFF"
+        color: "rgb(140, 150, 160)"
     };
 
     function calculateFinalPrice(price: number) {

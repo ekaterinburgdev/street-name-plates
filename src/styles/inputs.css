@@ -3,11 +3,11 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
     width: 100%;
     max-width: 900px;
-    border: 8px solid transparent;
+    border: solid transparent;
     padding: .8em .6em .8em .8em;
     color: #FFFFFF;
     font-style: normal;
@@ -30,7 +30,7 @@
 }
 
 .StyledInput_error {
-    border: 8px solid #E1222D;
+    border: solid #E1222D;
 }
 
 .check-container {
