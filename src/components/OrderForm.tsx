@@ -175,7 +175,7 @@ function OrderForm() {
         color: "white",
         fontSize: "3.8rem",
         lineHeight: "1",
-        margin: "5.125rem 1.25rem 0rem 0rem",
+        margin: "3rem 1.25rem 0rem 0rem",
     }
 
     function FinalPrice() {
@@ -221,10 +221,10 @@ function OrderForm() {
             fontStyle: "normal",
             fontWeight: 400,
             display: "inline-block",
-            color: "white",
+            color: "rgb(140,150,160)",
             fontSize: "2.5rem",
             lineHeight: "1.4",
-            textAlign: "left",
+            textAlign: "center",
             margin: "1rem 1.25rem 5rem 0rem"
         }}>Мы свяжемся с вами и расскажем, что делать дальше
         </p>

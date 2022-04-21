@@ -2,6 +2,7 @@ import React from 'react';
 import {ChangeColorContext} from "./ChangeColor";
 import Style from '../styles/StreetPlate.module.css'
 import {ButtonSendOrderContext} from "./OrderForm";
+import Toggle from "./Toggle";
 
 export type StreetType = {
     streetName: string,
@@ -222,62 +223,82 @@ const StreetPlate = () => {
     }
 
     return (
-        <div className={Style.plate_container} /*@ts-ignore*/ style={{
-            '--font-color': isHistory ? '#FFFFFF' : colorContext.fontColor,
-            '--text-align-input': isHistory ? 'center' : 'left',
-            '--plate-color': isHistory ? '#000000' : '#FFFFFF'
-        }}>
-            <div className={Style.plate} style={{maxWidth: '900px', height: plateWidthPX, fontSize: plateWidthPX}}>
-                <div className={Style.street}>
-                    <input
-                        className={Style.street_type}
-                        value={streetType}
-                        readOnly={true}
-                        placeholder={'улица'}
-                        tabIndex={-1}
-                        style={{cursor: 'default'}}
-                    />
-                    <input
-                        className={Style.street_name}
-                        type={'text'}
-                        onFocus={() => setIsShow(true)}
-                        onBlur={() => setIsShow(false)}
-                        onChange={findSuggestions}
-                        onKeyDown={navOnSuggestion}
-                        value={inputVal}
-                        placeholder={'8 Марта'}
-                        style={{fontSize: fontSizeStreetName, cursor: 'text'}}
-
-                    />
-                    <input
-                        className={Style.street_latin}
-                        value={latinName}
-                        readOnly={true}
-                        placeholder={'8 MARTA STREET'}
-                        tabIndex={-1}
-                        style={{cursor: 'default'}}
-                    />
-                    {isShow && isFind && renderSuggestion()} {/*пока пускай будет тут, или навсегда будет тут...*/}
-                </div>
-                <div className={Style.separator}/>
-                <input
-                    type={'text'}
-                    className={Style.building_number}
-                    placeholder={'7'}
-                    onChange={event => {
-                        adjustFrontSize(event);
-                        checkHistory(event.target.value, inputVal, streetType);
-                    }}
-                    style={{fontSize: fontSizeBuildingNumber, cursor: 'text'}}
-                />
-            </div>
-            <div className={Style.size_and_price_container}>
-                <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
-                <span className={Style.price}>{platePrice.toString().length == 4 ? platePrice : platePrice.toLocaleString('ru-RU')} ₽</span>
-            </div>
-            {isHistory && (<p className={Style.is_history_description}>Поздравляем, у Вас историческое здание!</p>)}
+      <div
+        className={Style.plate_container}
+        /*@ts-ignore*/ style={{
+          "--font-color": isHistory ? "#FFFFFF" : colorContext.fontColor,
+          "--text-align-input": isHistory ? "center" : "left",
+          "--plate-color": isHistory ? "#000000" : "#FFFFFF",
+        }}
+      >
+        <div
+          className={Style.plate}
+          style={{
+            maxWidth: "900px",
+            height: plateWidthPX,
+            fontSize: plateWidthPX,
+          }}
+        >
+          <div className={Style.street}>
+            <input
+              className={Style.street_type}
+              value={streetType}
+              readOnly={true}
+              placeholder={"улица"}
+              tabIndex={-1}
+              style={{ cursor: "default" }}
+            />
+            <input
+              className={Style.street_name}
+              type={"text"}
+              onFocus={() => setIsShow(true)}
+              onBlur={() => setIsShow(false)}
+              onChange={findSuggestions}
+              onKeyDown={navOnSuggestion}
+              value={inputVal}
+              placeholder={"8 Марта"}
+              style={{ fontSize: fontSizeStreetName, cursor: "text" }}
+            />
+            <input
+              className={Style.street_latin}
+              value={latinName}
+              readOnly={true}
+              placeholder={"8 MARTA STREET"}
+              tabIndex={-1}
+              style={{ cursor: "default" }}
+            />
+            {isShow && isFind && renderSuggestion()}{" "}
+            {/*пока пускай будет тут, или навсегда будет тут...*/}
+          </div>
+          <div className={Style.separator} />
+          <input
+            type={"text"}
+            className={Style.building_number}
+            placeholder={"7"}
+            onChange={(event) => {
+              adjustFrontSize(event);
+              checkHistory(event.target.value, inputVal, streetType);
+            }}
+            style={{ fontSize: fontSizeBuildingNumber, cursor: "text" }}
+          />
         </div>
-    )
+        <div className={Style.size_and_price_container}>
+          <span className={Style.plate_length_size}>320×{plateLengthSize}</span>
+          <span className={Style.price}>
+            {platePrice.toString().length == 4
+              ? platePrice
+              : platePrice.toLocaleString("ru-RU")}{" "}
+            ₽
+          </span>
+          <Toggle items={[{ title: "Историческое здание" }, { title: "Обычное здание" }]} />
+        </div>
+        {isHistory && (
+          <p className={Style.is_history_description}>
+            Поздравляем, у Вас историческое здание!
+          </p>
+        )}
+      </div>
+    );
 };
 
 export default StreetPlate;
