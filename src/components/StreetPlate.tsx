@@ -73,7 +73,7 @@ const StreetPlate = () => {
         setInputVal(undefined); // костыль... (наверное)
         setStreetType('');
         setLatinName('');
-        setIsHistory(false);
+        // setIsHistory(false);
 
         const value: string = event.target.value || '';
         changePlateLengthSize(value.length);
@@ -101,11 +101,11 @@ const StreetPlate = () => {
         }
     }
 
-    const checkHistory = async (bNum: string, sName: string, sType: string) => {
-        const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
-        const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
-        setIsHistory(isH);
-    }
+    // const checkHistory = async (bNum: string, sName: string, sType: string) => {
+    //     const h = await (await fetch(`./api/info?street=${sName}&building=${bNum}&type=${sType}`)).json();
+    //     const isH = h.hasOwnProperty('is_hist') ? h.is_hist : false;
+    //     setIsHistory(isH);
+    // }
 
     const getSuggestion = (suggestion: StreetType) => {
         const pref = suggestion.streetName.slice(0, inputPref?.length);
@@ -290,13 +290,8 @@ const StreetPlate = () => {
               : platePrice.toLocaleString("ru-RU")}{" "}
             ₽
           </span>
-          <Toggle items={[{ title: "Историческое здание" }, { title: "Обычное здание" }]} />
+          <Toggle isHistory={isHistory} setIsHistory={setIsHistory} />
         </div>
-        {isHistory && (
-          <p className={Style.is_history_description}>
-            Поздравляем, у Вас историческое здание!
-          </p>
-        )}
       </div>
     );
 };
