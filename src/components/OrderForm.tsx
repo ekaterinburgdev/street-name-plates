@@ -22,8 +22,8 @@ export const defaultMessageData: MessageDataType = {
     plateLength: undefined,
     clientName: undefined,
     clientContact: undefined,
-    montagePlate: false,
-    dismantlingOldPlate: false,
+    montagePlate: true,
+    dismantlingOldPlate: true,
     platePrice: 0
 };
 
@@ -54,7 +54,7 @@ const checkboxesList = [
 const getDefaultCheckboxes = () =>
     checkboxesList.map((checkbox) => ({
         name: checkbox,
-        checked: false,
+        checked: true,
     }));
 
 function useCheckboxes(defaultCheckboxes) {
@@ -86,6 +86,8 @@ function Checkboxes({checkboxes, setCheckbox}) {
                 <label className={'check'} key={i}>
                     <input
                         className={`check__input`}
+                        onClick={() => {
+                        }}
                         type="checkbox"
                         checked={checkbox.checked}
                         onChange={(e) => {
@@ -101,9 +103,7 @@ function Checkboxes({checkboxes, setCheckbox}) {
                         }}
                     />
                     <span className={`check__box`}>
-                        <p className={`check__box__price`}>
-                           до {checkbox.name == 'Демонтаж старой таблички' ? 2990 : 6990} ₽
-                        </p>
+                        <span className={'mark'}></span>
                     </span>{checkbox.name}
                 </label>
             ))}
@@ -144,13 +144,13 @@ function OrderForm() {
     }
 
     const styleInfoText = {
-        marginTop: "120px",
-        marginBottom: "40px",
+        marginTop: "-6.5rem",
+        marginBottom: "2.5rem",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: "2.5rem",
         lineHeight: "1.4",
-        color: "#FFFFFF"
+        color: "rgb(140, 150, 160)"
     };
 
     function calculateFinalPrice(price: number) {
@@ -175,17 +175,20 @@ function OrderForm() {
         color: "white",
         fontSize: "3.8rem",
         lineHeight: "1",
-        margin: "5.125rem 1.25rem 0rem 1.25rem",
+        margin: "3rem 1.25rem 0rem 0rem",
     }
 
     function FinalPrice() {
         return (
             <div>
-                <p style={{...finalPriceStyle, paddingBottom:'2rem'}}> {/*paddingBottom:'2rem' - костыль для пустого пространства внизу*/}
+                <p style={{
+                    ...finalPriceStyle,
+                    paddingBottom: '2rem'
+                }}>
                     <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>{
-                        ExportPrice == undefined ? calculateFinalPrice(4990)
-                            : calculateFinalPrice(ExportPrice)
+                        ExportPrice == undefined ? (calculateFinalPrice(4990).toString().length == 4 ? calculateFinalPrice(4990) : calculateFinalPrice(4990).toLocaleString('ru-RU'))
+                            : (calculateFinalPrice(ExportPrice).toString().length == 4 ? calculateFinalPrice(ExportPrice) : calculateFinalPrice(ExportPrice).toLocaleString('ru-RU'))
                     } ₽</span>
                 </p>
             </div>)
@@ -197,15 +200,15 @@ function OrderForm() {
                 <p style={finalPriceStyle}>
                     <span style={{fontSize: '2.5rem'}}>Общая стоимость</span>
                     <span style={{fontWeight: 700}}>до {
-                        ExportPrice == undefined ? calculateFinalPrice(4990)
-                            : calculateFinalPrice(ExportPrice)
+                        ExportPrice == undefined ? (calculateFinalPrice(4990).toString().length == 4 ? calculateFinalPrice(4990) : calculateFinalPrice(4990).toLocaleString('ru-RU'))
+                            : (calculateFinalPrice(ExportPrice).toString().length == 4 ? calculateFinalPrice(ExportPrice) : calculateFinalPrice(ExportPrice).toLocaleString('ru-RU'))
                     } ₽</span>
                 </p>
                 <p style={{
                     fontSize: "2rem",
                     fontWeight: 300,
                     color: "white",
-                    margin: "0rem 1.25rem 4rem 1.5rem",
+                    margin: "0rem 1.25rem 4rem 0rem",
                     paddingBottom: '2.5rem', //костыль, чтобы появилось пустое пространство
                 }}>
                     зависит от сложности работ
@@ -218,10 +221,10 @@ function OrderForm() {
             fontStyle: "normal",
             fontWeight: 400,
             display: "inline-block",
-            color: "white",
+            color: "rgb(140,150,160)",
             fontSize: "2.5rem",
             lineHeight: "1.4",
-            textAlign: "left",
+            textAlign: "center",
             margin: "1rem 1.25rem 5rem 0rem"
         }}>Мы свяжемся с вами и расскажем, что делать дальше
         </p>
@@ -243,49 +246,47 @@ function OrderForm() {
     }
 
     return (
-        <div className={'inputs-container'}>
-            <form onSubmit={event => event.preventDefault()}>
-                <p style={styleInfoText}>
-                    Оставьте любимый способ связи.
-                    <br/>
-                    Мы напишем или позвоним, чтобы обсудить детали и оплату.
-                </p>
-                <input required={true}
-                       autoComplete="none"
-                       className={'StyledInput'} {...inputNameProps}
-                       placeholder="Имя"
-                       onChange={event => setButtonSendOrderContext({
-                           ...buttonSendOrderContext,
-                           clientName: event.target.value,
-                       })}/>
-                <input required={true}
-                       className={'StyledInput'}
-                       {...inputCommProps}
-                       placeholder="Способ связи. Например, email"
-                       autoComplete="none"
-                       onChange={event => setButtonSendOrderContext({
-                           ...buttonSendOrderContext,
-                           clientContact: event.target.value
-                       })}
-                />
-                <FinalCheckbox/>
-                <OrderButton onClickHandler={
-                    (event) => {
-                        setIsClicked(true);
-                        if (!isSendMail) {
-                            setIsSendMail(true)
-                            sendMail(event)
-                                .then(_ => console.log("Email send successful"))
-                                .catch(_ => console.log(`Something went wrong: ${event}`))
-                        } else {
-                            alert("Форма уже отправлена\nДля повтроной отправлки перезагрузите страницу")
-                        }
+        <form onSubmit={event => event.preventDefault()} className={'inputs-container'}>
+            <p style={styleInfoText}>
+                Оставьте любимый способ связи.
+                <br/>
+                Мы напишем или позвоним, чтобы обсудить детали и оплату.
+            </p>
+            <input required={true}
+                   autoComplete="none"
+                   className={'StyledInput'} {...inputNameProps}
+                   placeholder="Имя"
+                   onChange={event => setButtonSendOrderContext({
+                       ...buttonSendOrderContext,
+                       clientName: event.target.value,
+                   })}/>
+            <input required={true}
+                   className={'StyledInput'}
+                   {...inputCommProps}
+                   placeholder="Способ связи. Например, email"
+                   autoComplete="none"
+                   onChange={event => setButtonSendOrderContext({
+                       ...buttonSendOrderContext,
+                       clientContact: event.target.value
+                   })}
+            />
+            <FinalCheckbox/>
+            <OrderButton onClickHandler={
+                (event) => {
+                    setIsClicked(true);
+                    if (!isSendMail) {
+                        setIsSendMail(true)
+                        sendMail(event)
+                            .then(_ => console.log("Email send successful"))
+                            .catch(_ => console.log(`Something went wrong: ${event}`))
+                    } else {
+                        alert("Форма уже отправлена\nДля повтроной отправлки перезагрузите страницу")
                     }
-                }/>
-                <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
-                                  isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
-            </form>
-        </div>
+                }
+            }/>
+            <RenderFinalPrice isMounting={buttonSendOrderContext.montagePlate}
+                              isDismounting={buttonSendOrderContext.dismantlingOldPlate}/>
+        </form>
     );
 }
 
