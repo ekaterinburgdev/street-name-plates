@@ -2,7 +2,7 @@
 
 📗 Order form for new address plates
 
-**[eplates.vercel.app/](https://eplates.vercel.app/)**
+**[eplates.vercel.app](https://eplates.vercel.app/)**
 
 ## Development
 
