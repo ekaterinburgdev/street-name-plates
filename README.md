@@ -1,28 +1,26 @@
-## Дополнительные материалы
+# Street Name Plates
 
-* [Документация на API](https://atkishkin.gitbook.io/api-adresnye-tablichki/)
+📗 Order form for new address plates
 
-* [Презентация функционала первой версии](https://atkishkinvlad.github.io/presentations/)
+**[eplates.vercel.app/](https://eplates.vercel.app/)**
 
-* Приложение работает на базе [React](https://reactjs.org/) и [Next.js](https://nextjs.org/) (bootstrapped via [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)).
+## Development
 
-## Запуск
+1. Install [Node.js](https://nodejs.org/en/download/)
 
-Для запуска требуется [Node.js](https://nodejs.org/en/)
+2. Install dependencies
 
-### Разработка
+```
+npm i
+```
+
+3. Run local server
+
 ```
 npm run dev
 ```
-С режимом hot-reload
 
-### Запуск линтера
-```
-npm run lint
-```
+## Tools
 
-### Запуск production сервера
-```
-npm run build
-npm run start
-```
+- [Next.js](https://nextjs.org/)
+- [Vercel Serverless](https://vercel.com/)
